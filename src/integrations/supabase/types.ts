@@ -202,6 +202,57 @@ export type Database = {
         }
         Relationships: []
       }
+      wheel_of_life: {
+        Row: {
+          career: number
+          created_at: string
+          entry_date: string
+          family_friends: number
+          finances: number
+          fun_recreation: number
+          health: number
+          id: string
+          note: string | null
+          personal_growth: number
+          physical_environment: number
+          romance: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          career: number
+          created_at?: string
+          entry_date?: string
+          family_friends: number
+          finances: number
+          fun_recreation: number
+          health: number
+          id?: string
+          note?: string | null
+          personal_growth: number
+          physical_environment: number
+          romance: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          career?: number
+          created_at?: string
+          entry_date?: string
+          family_friends?: number
+          finances?: number
+          fun_recreation?: number
+          health?: number
+          id?: string
+          note?: string | null
+          personal_growth?: number
+          physical_environment?: number
+          romance?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
