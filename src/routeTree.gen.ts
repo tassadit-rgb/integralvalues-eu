@@ -9,182 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedProfessionalsRouteImport } from './routes/_authenticated/professionals'
-import { Route as AuthenticatedMoodRouteImport } from './routes/_authenticated/mood'
-import { Route as AuthenticatedJournalRouteImport } from './routes/_authenticated/journal'
-import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
-import { Route as AuthenticatedBookingsRouteImport } from './routes/_authenticated/bookings'
-import { Route as AuthenticatedProfessionalsIndexRouteImport } from './routes/_authenticated/professionals.index'
-import { Route as AuthenticatedProfessionalsIdRouteImport } from './routes/_authenticated/professionals.$id'
 
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedProfessionalsRoute =
-  AuthenticatedProfessionalsRouteImport.update({
-    id: '/professionals',
-    path: '/professionals',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedMoodRoute = AuthenticatedMoodRouteImport.update({
-  id: '/mood',
-  path: '/mood',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedJournalRoute = AuthenticatedJournalRouteImport.update({
-  id: '/journal',
-  path: '/journal',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedBookingsRoute = AuthenticatedBookingsRouteImport.update({
-  id: '/bookings',
-  path: '/bookings',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedProfessionalsIndexRoute =
-  AuthenticatedProfessionalsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedProfessionalsRoute,
-  } as any)
-const AuthenticatedProfessionalsIdRoute =
-  AuthenticatedProfessionalsIdRouteImport.update({
-    id: '/$id',
-    path: '/$id',
-    getParentRoute: () => AuthenticatedProfessionalsRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/bookings': typeof AuthenticatedBookingsRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/journal': typeof AuthenticatedJournalRoute
-  '/mood': typeof AuthenticatedMoodRoute
-  '/professionals': typeof AuthenticatedProfessionalsRouteWithChildren
-  '/professionals/$id': typeof AuthenticatedProfessionalsIdRoute
-  '/professionals/': typeof AuthenticatedProfessionalsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/bookings': typeof AuthenticatedBookingsRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/journal': typeof AuthenticatedJournalRoute
-  '/mood': typeof AuthenticatedMoodRoute
-  '/professionals/$id': typeof AuthenticatedProfessionalsIdRoute
-  '/professionals': typeof AuthenticatedProfessionalsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
-  '/auth': typeof AuthRoute
-  '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/_authenticated/bookings': typeof AuthenticatedBookingsRoute
-  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/_authenticated/journal': typeof AuthenticatedJournalRoute
-  '/_authenticated/mood': typeof AuthenticatedMoodRoute
-  '/_authenticated/professionals': typeof AuthenticatedProfessionalsRouteWithChildren
-  '/_authenticated/professionals/$id': typeof AuthenticatedProfessionalsIdRoute
-  '/_authenticated/professionals/': typeof AuthenticatedProfessionalsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/auth'
-    | '/sitemap.xml'
-    | '/bookings'
-    | '/dashboard'
-    | '/journal'
-    | '/mood'
-    | '/professionals'
-    | '/professionals/$id'
-    | '/professionals/'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/auth'
-    | '/sitemap.xml'
-    | '/bookings'
-    | '/dashboard'
-    | '/journal'
-    | '/mood'
-    | '/professionals/$id'
-    | '/professionals'
-  id:
-    | '__root__'
-    | '/'
-    | '/_authenticated'
-    | '/auth'
-    | '/sitemap.xml'
-    | '/_authenticated/bookings'
-    | '/_authenticated/dashboard'
-    | '/_authenticated/journal'
-    | '/_authenticated/mood'
-    | '/_authenticated/professionals'
-    | '/_authenticated/professionals/$id'
-    | '/_authenticated/professionals/'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
-  AuthRoute: typeof AuthRoute
-  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: '/'
-      preLoaderRoute: typeof AuthenticatedRouteRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -192,99 +48,22 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/professionals': {
-      id: '/_authenticated/professionals'
-      path: '/professionals'
-      fullPath: '/professionals'
-      preLoaderRoute: typeof AuthenticatedProfessionalsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/mood': {
-      id: '/_authenticated/mood'
-      path: '/mood'
-      fullPath: '/mood'
-      preLoaderRoute: typeof AuthenticatedMoodRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/journal': {
-      id: '/_authenticated/journal'
-      path: '/journal'
-      fullPath: '/journal'
-      preLoaderRoute: typeof AuthenticatedJournalRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/bookings': {
-      id: '/_authenticated/bookings'
-      path: '/bookings'
-      fullPath: '/bookings'
-      preLoaderRoute: typeof AuthenticatedBookingsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/professionals/': {
-      id: '/_authenticated/professionals/'
-      path: '/'
-      fullPath: '/professionals/'
-      preLoaderRoute: typeof AuthenticatedProfessionalsIndexRouteImport
-      parentRoute: typeof AuthenticatedProfessionalsRoute
-    }
-    '/_authenticated/professionals/$id': {
-      id: '/_authenticated/professionals/$id'
-      path: '/$id'
-      fullPath: '/professionals/$id'
-      preLoaderRoute: typeof AuthenticatedProfessionalsIdRouteImport
-      parentRoute: typeof AuthenticatedProfessionalsRoute
-    }
   }
 }
-
-interface AuthenticatedProfessionalsRouteChildren {
-  AuthenticatedProfessionalsIdRoute: typeof AuthenticatedProfessionalsIdRoute
-  AuthenticatedProfessionalsIndexRoute: typeof AuthenticatedProfessionalsIndexRoute
-}
-
-const AuthenticatedProfessionalsRouteChildren: AuthenticatedProfessionalsRouteChildren =
-  {
-    AuthenticatedProfessionalsIdRoute: AuthenticatedProfessionalsIdRoute,
-    AuthenticatedProfessionalsIndexRoute: AuthenticatedProfessionalsIndexRoute,
-  }
-
-const AuthenticatedProfessionalsRouteWithChildren =
-  AuthenticatedProfessionalsRoute._addFileChildren(
-    AuthenticatedProfessionalsRouteChildren,
-  )
-
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedBookingsRoute: typeof AuthenticatedBookingsRoute
-  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
-  AuthenticatedJournalRoute: typeof AuthenticatedJournalRoute
-  AuthenticatedMoodRoute: typeof AuthenticatedMoodRoute
-  AuthenticatedProfessionalsRoute: typeof AuthenticatedProfessionalsRouteWithChildren
-}
-
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedBookingsRoute: AuthenticatedBookingsRoute,
-  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
-  AuthenticatedJournalRoute: AuthenticatedJournalRoute,
-  AuthenticatedMoodRoute: AuthenticatedMoodRoute,
-  AuthenticatedProfessionalsRoute: AuthenticatedProfessionalsRouteWithChildren,
-}
-
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
-  AuthRoute: AuthRoute,
-  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
