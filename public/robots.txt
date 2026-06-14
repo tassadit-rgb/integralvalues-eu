@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /mood
+Disallow: /journal
+Disallow: /professionals
+Disallow: /bookings
