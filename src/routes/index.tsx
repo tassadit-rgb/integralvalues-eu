@@ -42,12 +42,6 @@ function Index() {
           >
             Take the WHO-5 check-in
           </Link>
-          <Link
-            to="/wheel"
-            className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/10"
-          >
-            Wheel of Life tracker
-          </Link>
         </div>
       </div>
     </div>

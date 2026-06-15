@@ -10,17 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Who5RouteImport } from './routes/who5'
-import { Route as WheelRouteImport } from './routes/wheel'
 import { Route as IndexRouteImport } from './routes/index'
 
 const Who5Route = Who5RouteImport.update({
   id: '/who5',
   path: '/who5',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WheelRoute = WheelRouteImport.update({
-  id: '/wheel',
-  path: '/wheel',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,31 +25,27 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/wheel' | '/who5'
+  fullPaths: '/' | '/who5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/wheel' | '/who5'
-  id: '__root__' | '/' | '/wheel' | '/who5'
+  to: '/' | '/who5'
+  id: '__root__' | '/' | '/who5'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
 }
 
@@ -66,13 +56,6 @@ declare module '@tanstack/react-router' {
       path: '/who5'
       fullPath: '/who5'
       preLoaderRoute: typeof Who5RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/wheel': {
-      id: '/wheel'
-      path: '/wheel'
-      fullPath: '/wheel'
-      preLoaderRoute: typeof WheelRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +70,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  WheelRoute: WheelRoute,
   Who5Route: Who5Route,
 }
 export const routeTree = rootRouteImport
