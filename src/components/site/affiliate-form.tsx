@@ -185,6 +185,22 @@ export function AffiliateForm() {
 
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border border-border bg-card px-5 py-4">
+        <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          Screening{" "}
+          <span className="text-primary">
+            {screening.outcome === "eligible" ? "passed" : "passed with notes"}
+          </span>
+        </p>
+        <button
+          type="button"
+          onClick={() => setScreening(null)}
+          className="text-xs text-primary underline"
+        >
+          Retake screening
+        </button>
+      </div>
+
       {referral && (
         <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
           Referred by code{" "}
