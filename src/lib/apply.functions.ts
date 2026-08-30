@@ -120,9 +120,9 @@ export const submitApplication = createServerFn({ method: "POST" })
         fields: data.fields,
         message: data.message || null,
         referral_code: data.referral_code || null,
-        screening: data.screening,
+        screening: data.screening as never,
         screening_outcome: data.screening_outcome,
-        referees: data.referees,
+        referees: data.referees as never,
       });
     if (error) throw new Error("Submission failed");
 
