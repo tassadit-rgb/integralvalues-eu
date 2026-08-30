@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -73,6 +74,7 @@ export function AffiliateForm() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [referral, setReferral] = useState<string | null>(null);
+  const [reference, setReference] = useState<string | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -103,8 +105,10 @@ export function AffiliateForm() {
     }
     setErrors({});
     setSubmitting(true);
+    const referenceCode = makeReference();
     const { error } = await supabase.from("affiliate_applications").insert({
       ...parsed.data,
+      reference_code: referenceCode,
       phone: parsed.data.phone || null,
       message: parsed.data.message || null,
       referral_code: referral,
@@ -114,6 +118,7 @@ export function AffiliateForm() {
       toast.error("We could not send your application. Please try again.");
       return;
     }
+    setReference(referenceCode);
     setDone(true);
     setValues(EMPTY);
     toast.success("Application received — we reply within ten working days.");
@@ -128,6 +133,24 @@ export function AffiliateForm() {
           individually and reply within ten working days
           {referral ? ` — your referral code ${referral} was recorded.` : "."}
         </p>
+        {reference && (
+          <div className="mt-6 border border-border bg-background p-6">
+            <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Your reference code
+            </p>
+            <p className="mt-2 font-serif text-3xl text-primary">{reference}</p>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
+              Keep this code. With the email you applied with, it lets you follow
+              your application progress and next steps at any time.
+            </p>
+            <Link
+              to="/affiliate/status"
+              className="mt-4 inline-block text-sm text-primary underline"
+            >
+              Track my application
+            </Link>
+          </div>
+        )}
         <Button className="mt-6" onClick={() => setDone(false)}>
           Submit another application
         </Button>
@@ -236,6 +259,11 @@ export function AffiliateForm() {
       </div>
     </form>
   );
+}
+
+function makeReference() {
+  const rand = Math.random().toString(36).slice(2, 10).toUpperCase();
+  return `IV-${rand.padEnd(8, "0")}`;
 }
 
 function makeCode(email: string) {

@@ -22,6 +22,7 @@ import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as AffiliateRouteImport } from './routes/affiliate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AffiliateStatusRouteImport } from './routes/affiliate.status'
 
 const Who5Route = Who5RouteImport.update({
   id: '/who5',
@@ -88,11 +89,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AffiliateStatusRoute = AffiliateStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => AffiliateRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/affiliate': typeof AffiliateRoute
+  '/affiliate': typeof AffiliateRouteWithChildren
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -103,11 +109,12 @@ export interface FileRoutesByFullPath {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/affiliate': typeof AffiliateRoute
+  '/affiliate': typeof AffiliateRouteWithChildren
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -118,12 +125,13 @@ export interface FileRoutesByTo {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/affiliate': typeof AffiliateRoute
+  '/affiliate': typeof AffiliateRouteWithChildren
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -134,6 +142,7 @@ export interface FileRoutesById {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/affiliate/status'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/affiliate/status'
   id:
     | '__root__'
     | '/'
@@ -181,12 +192,13 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/affiliate/status'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  AffiliateRoute: typeof AffiliateRoute
+  AffiliateRoute: typeof AffiliateRouteWithChildren
   CoachingRoute: typeof CoachingRoute
   ContactRoute: typeof ContactRoute
   CoreRoute: typeof CoreRoute
@@ -292,13 +304,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/affiliate/status': {
+      id: '/affiliate/status'
+      path: '/status'
+      fullPath: '/affiliate/status'
+      preLoaderRoute: typeof AffiliateStatusRouteImport
+      parentRoute: typeof AffiliateRoute
+    }
   }
 }
+
+interface AffiliateRouteChildren {
+  AffiliateStatusRoute: typeof AffiliateStatusRoute
+}
+
+const AffiliateRouteChildren: AffiliateRouteChildren = {
+  AffiliateStatusRoute: AffiliateStatusRoute,
+}
+
+const AffiliateRouteWithChildren = AffiliateRoute._addFileChildren(
+  AffiliateRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  AffiliateRoute: AffiliateRoute,
+  AffiliateRoute: AffiliateRouteWithChildren,
   CoachingRoute: CoachingRoute,
   ContactRoute: ContactRoute,
   CoreRoute: CoreRoute,
