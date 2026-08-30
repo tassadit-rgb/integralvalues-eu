@@ -1,12 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-import { EmotiveImage } from "@/components/site/emotive-image";
-import humanCore from "@/assets/human-core.jpg";
   CardTile,
   PageHero,
   Section,
   SiteLayout,
 } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanCore from "@/assets/human-core.jpg";
 
 export const Route = createFileRoute("/core")({
   head: () => ({

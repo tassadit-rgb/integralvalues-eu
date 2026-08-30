@@ -2,13 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
 import { AffiliateForm, ReferralCapture } from "@/components/site/affiliate-form";
 import {
-import { EmotiveImage } from "@/components/site/emotive-image";
-import humanAffiliate from "@/assets/human-affiliate.jpg";
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanAffiliate from "@/assets/human-affiliate.jpg";
 
 export const Route = createFileRoute("/affiliate")({
   head: () => ({
