@@ -5,6 +5,8 @@ import {
   Section,
   SiteLayout,
 } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanLeader from "@/assets/human-leader.jpg";
 
 export const Route = createFileRoute("/coaching")({
   head: () => ({
@@ -87,6 +89,12 @@ function CoachingPage() {
         title="So important you are. Then tap into your full potential."
         lead="Our coaching helps individuals, teams and organisations move through difficult passages, raise their performance and reach what is already theirs. Each journey is built with The Integrative Coaching Mindset, adapted to you as a unique person."
         quote="“Between life’s stimuli and our habitual responses exists choice.” — Ken Wilber"
+      />
+
+      <EmotiveImage
+        src={humanLeader}
+        alt="A leader standing at a window at dusk, city lights in violet and pink"
+        caption="Potential is not given. It is remembered."
       />
 
       <Section eyebrow="The mindset" title="Four energies, four dynamics, eight vital areas">

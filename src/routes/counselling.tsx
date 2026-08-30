@@ -5,6 +5,8 @@ import {
   Section,
   SiteLayout,
 } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanHealing from "@/assets/human-healing.jpg";
 
 export const Route = createFileRoute("/counselling")({
   head: () => ({
@@ -60,6 +62,12 @@ function CounsellingPage() {
         title="A space where what was too painful to feel can finally be felt."
         lead="Our registered psychologists and counsellors offer psychological support and therapy — short-term and focused, or longer, depending on what you need. Understanding your emotions and learning to express them improves relationships, self-esteem and well-being."
         quote="“Knowing your own darkness is the best method for dealing with the darkness of other people.” — Carl Gustav Jung"
+      />
+
+      <EmotiveImage
+        src={humanHealing}
+        alt="A woman with her eyes closed and a hand on her heart, lit in violet and cyan light"
+        caption="Healing begins the moment someone finally listens."
       />
 
       <Section eyebrow="Settings" title="Who we accompany">
