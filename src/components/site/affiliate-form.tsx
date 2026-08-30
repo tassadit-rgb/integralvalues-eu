@@ -162,10 +162,24 @@ export function AffiliateForm() {
             </Link>
           </div>
         )}
-        <Button className="mt-6" onClick={() => setDone(false)}>
+        <Button
+          className="mt-6"
+          onClick={() => {
+            setDone(false);
+            setScreening(null);
+          }}
+        >
           Submit another application
         </Button>
       </div>
+    );
+  }
+
+  if (!screening) {
+    return (
+      <AffiliateScreening
+        onComplete={(answers, outcome) => setScreening({ answers, outcome })}
+      />
     );
   }
 
