@@ -2,13 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 
 const NAV = [
-  { to: "/coaching", label: "Coaching" },
-  { to: "/counselling", label: "Counselling" },
-  { to: "/cross-culture", label: "Cross-Culture" },
-  { to: "/core", label: "Core" },
   { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/method", label: "The Integral Method" },
+  { to: "/coaching", label: "Coaching" },
+  { to: "/counselling", label: "Care & Therapy" },
+  { to: "/cross-culture", label: "Cross-Culture" },
+  { to: "/core", label: "CORE" },
+  { to: "/psyche", label: "Psyché" },
+  { to: "/for-you", label: "For You" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
