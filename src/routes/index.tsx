@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, Section } from "@/components/site/site-layout";
-import heroDunes from "@/assets/hero-dunes.jpg";
+import heroBrand from "@/assets/hero-brand.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -97,19 +97,19 @@ function HomePage() {
     <SiteLayout>
       <section className="relative overflow-hidden border-b border-border/70">
         <img
-          src={heroDunes}
-          alt="Abstract desert dunes in cream and sand tones with a thin gold horizon"
+          src={heroBrand}
+          alt="Abstract lavender field at dawn in navy, violet, pink and cyan light"
           width={1920}
           height={1088}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-background/55" />
+        <div className="absolute inset-0 bg-ink/65" />
         <div className="relative mx-auto max-w-6xl px-6 py-32 lg:px-10 lg:py-44">
-          <p className="eyebrow">Welcome to Integral Value®</p>
-          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
+          <p className="eyebrow text-background">Welcome to Integral Value®</p>
+          <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] text-background sm:text-5xl lg:text-6xl">
             Human First. Purpose Driven. Transformation Inspired.
           </h1>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80">
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-background/85">
             Helping individuals, couples, families and organisations thrive
             through an integrative approach that brings together science,
             humanity and conscious leadership.
@@ -123,7 +123,7 @@ function HomePage() {
             </Link>
             <Link
               to="/method"
-              className="border border-primary px-7 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              className="border border-background px-7 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-background transition-colors hover:bg-background hover:text-ink"
             >
               The Integral Method™
             </Link>
