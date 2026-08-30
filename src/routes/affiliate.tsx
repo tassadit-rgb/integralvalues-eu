@@ -150,7 +150,15 @@ function AffiliatePage() {
           the solidarity addendum are signed.
         </p>
         <AffiliateForm />
+        <p className="mt-8 text-sm text-muted-foreground">
+          Already applied?{" "}
+          <Link to="/affiliate/status" className="text-primary underline">
+            Track your application status
+          </Link>
+          .
+        </p>
       </Section>
+
 
       <Section eyebrow="Referral" title="Refer a practitioner">
         <div className="grid gap-10 md:grid-cols-2">
