@@ -26,17 +26,18 @@ export function SiteHeader() {
           <span className="eyebrow mt-1">Psy &amp; Co</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-[0.8rem] tracking-wide text-muted-foreground transition-colors hover:text-ink"
+              className="text-[0.72rem] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-ink"
               activeProps={{ className: "text-ink" }}
             >
               {n.label}
             </Link>
           ))}
+
           <Link
             to="/contact"
             className="border border-primary px-5 py-2 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
