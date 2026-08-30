@@ -80,6 +80,10 @@ export function AffiliateForm() {
   const [done, setDone] = useState(false);
   const [referral, setReferral] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
+  const [screening, setScreening] = useState<{
+    answers: ScreeningAnswers;
+    outcome: ScreeningOutcome;
+  } | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
