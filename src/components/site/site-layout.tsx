@@ -22,12 +22,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5 lg:px-10">
-        <Link to="/" className="group flex flex-col leading-none">
-          <span className="font-serif text-xl tracking-tight text-ink">
-            Integral Values
-          </span>
-          <span className="eyebrow mt-1">Psy &amp; Co</span>
+        <Link to="/" className="flex items-center">
+          <img
+            src={logo.url}
+            alt="Integral Value — You're not Alone"
+            width={1800}
+            height={880}
+            className="h-11 w-auto"
+          />
         </Link>
+
 
         <nav className="hidden items-center gap-5 lg:flex">
           {NAV.map((n) => (
