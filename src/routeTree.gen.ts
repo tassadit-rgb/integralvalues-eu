@@ -14,7 +14,9 @@ import { Route as WheelRouteImport } from './routes/wheel'
 import { Route as CrossCultureRouteImport } from './routes/cross-culture'
 import { Route as CounsellingRouteImport } from './routes/counselling'
 import { Route as CoreRouteImport } from './routes/core'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoachingRouteImport } from './routes/coaching'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
 const Who5Route = Who5RouteImport.update({
@@ -42,9 +44,19 @@ const CoreRoute = CoreRouteImport.update({
   path: '/core',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CoachingRoute = CoachingRouteImport.update({
   id: '/coaching',
   path: '/coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -55,7 +67,9 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/coaching': typeof CoachingRoute
+  '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
@@ -64,7 +78,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/coaching': typeof CoachingRoute
+  '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
@@ -74,7 +90,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/coaching': typeof CoachingRoute
+  '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
@@ -85,7 +103,9 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/coaching'
+    | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
@@ -94,7 +114,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/coaching'
+    | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
@@ -103,7 +125,9 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/coaching'
+    | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
@@ -113,7 +137,9 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CoachingRoute: typeof CoachingRoute
+  ContactRoute: typeof ContactRoute
   CoreRoute: typeof CoreRoute
   CounsellingRoute: typeof CounsellingRoute
   CrossCultureRoute: typeof CrossCultureRoute
@@ -158,11 +184,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoreRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/coaching': {
       id: '/coaching'
       path: '/coaching'
       fullPath: '/coaching'
       preLoaderRoute: typeof CoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -177,7 +217,9 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CoachingRoute: CoachingRoute,
+  ContactRoute: ContactRoute,
   CoreRoute: CoreRoute,
   CounsellingRoute: CounsellingRoute,
   CrossCultureRoute: CrossCultureRoute,
