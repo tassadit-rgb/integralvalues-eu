@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  AffiliateScreening,
+  type ScreeningAnswers,
+  type ScreeningOutcome,
+} from "@/components/site/affiliate-screening";
 
 const REF_STORAGE_KEY = "iv_referral_code";
 
@@ -75,6 +80,10 @@ export function AffiliateForm() {
   const [done, setDone] = useState(false);
   const [referral, setReferral] = useState<string | null>(null);
   const [reference, setReference] = useState<string | null>(null);
+  const [screening, setScreening] = useState<{
+    answers: ScreeningAnswers;
+    outcome: ScreeningOutcome;
+  } | null>(null);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -112,6 +121,8 @@ export function AffiliateForm() {
       phone: parsed.data.phone || null,
       message: parsed.data.message || null,
       referral_code: referral,
+      screening: screening?.answers ?? {},
+      screening_outcome: screening?.outcome ?? "unknown",
     });
     setSubmitting(false);
     if (error) {
@@ -151,15 +162,45 @@ export function AffiliateForm() {
             </Link>
           </div>
         )}
-        <Button className="mt-6" onClick={() => setDone(false)}>
+        <Button
+          className="mt-6"
+          onClick={() => {
+            setDone(false);
+            setScreening(null);
+          }}
+        >
           Submit another application
         </Button>
       </div>
     );
   }
 
+  if (!screening) {
+    return (
+      <AffiliateScreening
+        onComplete={(answers, outcome) => setScreening({ answers, outcome })}
+      />
+    );
+  }
+
   return (
     <form onSubmit={onSubmit} noValidate className="space-y-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 border border-border bg-card px-5 py-4">
+        <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
+          Screening{" "}
+          <span className="text-primary">
+            {screening.outcome === "eligible" ? "passed" : "passed with notes"}
+          </span>
+        </p>
+        <button
+          type="button"
+          onClick={() => setScreening(null)}
+          className="text-xs text-primary underline"
+        >
+          Retake screening
+        </button>
+      </div>
+
       {referral && (
         <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">
           Referred by code{" "}

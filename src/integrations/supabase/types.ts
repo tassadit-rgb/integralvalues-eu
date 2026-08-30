@@ -28,6 +28,8 @@ export type Database = {
           profession: string
           reference_code: string
           referral_code: string | null
+          screening: Json
+          screening_outcome: string
           status: string
           status_note: string | null
           updated_at: string
@@ -45,6 +47,8 @@ export type Database = {
           profession: string
           reference_code?: string
           referral_code?: string | null
+          screening?: Json
+          screening_outcome?: string
           status?: string
           status_note?: string | null
           updated_at?: string
@@ -62,6 +66,8 @@ export type Database = {
           profession?: string
           reference_code?: string
           referral_code?: string | null
+          screening?: Json
+          screening_outcome?: string
           status?: string
           status_note?: string | null
           updated_at?: string
