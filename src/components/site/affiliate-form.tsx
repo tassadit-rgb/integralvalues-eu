@@ -121,6 +121,8 @@ export function AffiliateForm() {
       phone: parsed.data.phone || null,
       message: parsed.data.message || null,
       referral_code: referral,
+      screening: screening?.answers ?? {},
+      screening_outcome: screening?.outcome ?? "unknown",
     });
     setSubmitting(false);
     if (error) {
