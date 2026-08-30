@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
 import fourForms from "@/assets/four-forms.jpg";
+import { DimensionIcons } from "@/components/site/dimension-icons";
 import portraitMain from "@/assets/IMG_0016.jpg.asset.json";
 import portraitFilm from "@/assets/IMG_0314.jpg.asset.json";
 import portraitStage from "@/assets/IMG_0008.jpg.asset.json";
@@ -140,6 +141,10 @@ function AboutPage() {
             </p>
           </div>
         </div>
+      </Section>
+
+      <Section muted eyebrow="Four dimensions" title="Body, Brain, Emotion, Consciousness">
+        <DimensionIcons />
       </Section>
 
       <Section eyebrow="Portraits" title="In presence">
