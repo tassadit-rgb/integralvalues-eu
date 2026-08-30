@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Who5RouteImport } from './routes/who5'
 import { Route as WheelRouteImport } from './routes/wheel'
+import { Route as MethodRouteImport } from './routes/method'
 import { Route as CrossCultureRouteImport } from './routes/cross-culture'
 import { Route as CounsellingRouteImport } from './routes/counselling'
 import { Route as CoreRouteImport } from './routes/core'
@@ -27,6 +28,11 @@ const Who5Route = Who5RouteImport.update({
 const WheelRoute = WheelRouteImport.update({
   id: '/wheel',
   path: '/wheel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrossCultureRoute = CrossCultureRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/method': typeof MethodRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/method': typeof MethodRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/method': typeof MethodRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/method'
     | '/wheel'
     | '/who5'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/method'
     | '/wheel'
     | '/who5'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/method'
     | '/wheel'
     | '/who5'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   CoreRoute: typeof CoreRoute
   CounsellingRoute: typeof CounsellingRoute
   CrossCultureRoute: typeof CrossCultureRoute
+  MethodRoute: typeof MethodRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
 }
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/wheel'
       fullPath: '/wheel'
       preLoaderRoute: typeof WheelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cross-culture': {
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   CoreRoute: CoreRoute,
   CounsellingRoute: CounsellingRoute,
   CrossCultureRoute: CrossCultureRoute,
+  MethodRoute: MethodRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
 }
