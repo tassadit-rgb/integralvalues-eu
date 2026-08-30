@@ -232,6 +232,15 @@ function ApplyPage() {
   const [referees, setReferees] = useState<Referee[]>(EMPTY_REFEREES);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [reference, setReference] = useState<string | null>(null);
+  const [startConsent, setStartConsent] = useState(false);
+  const [startConsentError, setStartConsentError] = useState<string | null>(
+    null,
+  );
+  const [consent, setConsent] = useState({
+    processing: false,
+    referees: false,
+    accuracy: false,
+  });
 
   const confirmLink = useMemo(
     () =>
