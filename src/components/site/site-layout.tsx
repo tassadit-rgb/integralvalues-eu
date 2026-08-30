@@ -49,7 +49,7 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="text-[0.75rem] uppercase tracking-[0.2em] text-muted-foreground md:hidden"
+          className="text-[0.75rem] uppercase tracking-[0.2em] text-muted-foreground lg:hidden"
           aria-expanded={open}
         >
           {open ? "Close" : "Menu"}
@@ -57,9 +57,9 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border/70 px-6 py-4 md:hidden">
+        <nav className="border-t border-border/70 px-6 py-4 lg:hidden">
           <ul className="space-y-3">
-            {NAV.map((n) => (
+            {[...NAV, { to: "/contact", label: "Contact" } as const].map((n) => (
               <li key={n.to}>
                 <Link
                   to={n.to}
@@ -73,6 +73,7 @@ export function SiteHeader() {
           </ul>
         </nav>
       )}
+
     </header>
   );
 }
