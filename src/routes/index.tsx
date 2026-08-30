@@ -3,6 +3,7 @@ import { SiteLayout, Section } from "@/components/site/site-layout";
 import heroBrand from "@/assets/hero-brand.jpg";
 import humanHands from "@/assets/human-hands.jpg";
 import { EmotiveImage } from "@/components/site/emotive-image";
+import founderReal from "@/assets/founder-real.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
