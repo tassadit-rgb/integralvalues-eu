@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Who5RouteImport } from './routes/who5'
 import { Route as WheelRouteImport } from './routes/wheel'
+import { Route as PsycheRouteImport } from './routes/psyche'
+import { Route as MethodRouteImport } from './routes/method'
+import { Route as ForYouRouteImport } from './routes/for-you'
 import { Route as CrossCultureRouteImport } from './routes/cross-culture'
 import { Route as CounsellingRouteImport } from './routes/counselling'
 import { Route as CoreRouteImport } from './routes/core'
@@ -27,6 +30,21 @@ const Who5Route = Who5RouteImport.update({
 const WheelRoute = WheelRouteImport.update({
   id: '/wheel',
   path: '/wheel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsycheRoute = PsycheRouteImport.update({
+  id: '/psyche',
+  path: '/psyche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForYouRoute = ForYouRouteImport.update({
+  id: '/for-you',
+  path: '/for-you',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CrossCultureRoute = CrossCultureRouteImport.update({
@@ -73,6 +91,9 @@ export interface FileRoutesByFullPath {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/for-you': typeof ForYouRoute
+  '/method': typeof MethodRoute
+  '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -84,6 +105,9 @@ export interface FileRoutesByTo {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/for-you': typeof ForYouRoute
+  '/method': typeof MethodRoute
+  '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -96,6 +120,9 @@ export interface FileRoutesById {
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
+  '/for-you': typeof ForYouRoute
+  '/method': typeof MethodRoute
+  '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
@@ -109,6 +136,9 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/for-you'
+    | '/method'
+    | '/psyche'
     | '/wheel'
     | '/who5'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +150,9 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/for-you'
+    | '/method'
+    | '/psyche'
     | '/wheel'
     | '/who5'
   id:
@@ -131,6 +164,9 @@ export interface FileRouteTypes {
     | '/core'
     | '/counselling'
     | '/cross-culture'
+    | '/for-you'
+    | '/method'
+    | '/psyche'
     | '/wheel'
     | '/who5'
   fileRoutesById: FileRoutesById
@@ -143,6 +179,9 @@ export interface RootRouteChildren {
   CoreRoute: typeof CoreRoute
   CounsellingRoute: typeof CounsellingRoute
   CrossCultureRoute: typeof CrossCultureRoute
+  ForYouRoute: typeof ForYouRoute
+  MethodRoute: typeof MethodRoute
+  PsycheRoute: typeof PsycheRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
 }
@@ -161,6 +200,27 @@ declare module '@tanstack/react-router' {
       path: '/wheel'
       fullPath: '/wheel'
       preLoaderRoute: typeof WheelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psyche': {
+      id: '/psyche'
+      path: '/psyche'
+      fullPath: '/psyche'
+      preLoaderRoute: typeof PsycheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-you': {
+      id: '/for-you'
+      path: '/for-you'
+      fullPath: '/for-you'
+      preLoaderRoute: typeof ForYouRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cross-culture': {
@@ -223,6 +283,9 @@ const rootRouteChildren: RootRouteChildren = {
   CoreRoute: CoreRoute,
   CounsellingRoute: CounsellingRoute,
   CrossCultureRoute: CrossCultureRoute,
+  ForYouRoute: ForYouRoute,
+  MethodRoute: MethodRoute,
+  PsycheRoute: PsycheRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
 }

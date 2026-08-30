@@ -2,13 +2,16 @@ import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 
 const NAV = [
-  { to: "/coaching", label: "Coaching" },
-  { to: "/counselling", label: "Counselling" },
-  { to: "/cross-culture", label: "Cross-Culture" },
-  { to: "/core", label: "Core" },
   { to: "/about", label: "About" },
-  { to: "/contact", label: "Contact" },
+  { to: "/method", label: "The Integral Method" },
+  { to: "/coaching", label: "Coaching" },
+  { to: "/counselling", label: "Care & Therapy" },
+  { to: "/cross-culture", label: "Cross-Culture" },
+  { to: "/core", label: "CORE" },
+  { to: "/psyche", label: "Psyché" },
+  { to: "/for-you", label: "For You" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -23,17 +26,18 @@ export function SiteHeader() {
           <span className="eyebrow mt-1">Psy &amp; Co</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-[0.8rem] tracking-wide text-muted-foreground transition-colors hover:text-ink"
+              className="text-[0.72rem] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-ink"
               activeProps={{ className: "text-ink" }}
             >
               {n.label}
             </Link>
           ))}
+
           <Link
             to="/contact"
             className="border border-primary px-5 py-2 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
@@ -45,7 +49,7 @@ export function SiteHeader() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="text-[0.75rem] uppercase tracking-[0.2em] text-muted-foreground md:hidden"
+          className="text-[0.75rem] uppercase tracking-[0.2em] text-muted-foreground lg:hidden"
           aria-expanded={open}
         >
           {open ? "Close" : "Menu"}
@@ -53,9 +57,9 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <nav className="border-t border-border/70 px-6 py-4 md:hidden">
+        <nav className="border-t border-border/70 px-6 py-4 lg:hidden">
           <ul className="space-y-3">
-            {NAV.map((n) => (
+            {[...NAV, { to: "/contact", label: "Contact" } as const].map((n) => (
               <li key={n.to}>
                 <Link
                   to={n.to}
@@ -69,6 +73,7 @@ export function SiteHeader() {
           </ul>
         </nav>
       )}
+
     </header>
   );
 }
@@ -86,9 +91,9 @@ export function SiteFooter() {
           <p className="mt-6 text-sm text-muted-foreground">hello@integralvalues.eu</p>
         </div>
         <div>
-          <p className="eyebrow">The 4C</p>
+          <p className="eyebrow">The 4 Pillars</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            {NAV.slice(0, 4).map((n) => (
+            {NAV.slice(2, 6).map((n) => (
               <li key={n.to}>
                 <Link to={n.to} className="hover:text-ink">
                   {n.label}
@@ -97,6 +102,7 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
+
         <div>
           <p className="eyebrow">Explore</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
