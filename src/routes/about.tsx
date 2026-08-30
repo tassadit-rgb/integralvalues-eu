@@ -135,10 +135,49 @@ function AboutPage() {
               loading="lazy"
               className="w-full border border-border object-cover"
             />
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              3C + 1 — Body, Brain and Emotion form the base; Consciousness
-              rises at the apex and holds them together.
-            </p>
+            <div className="space-y-4">
+              <p className="text-xs leading-relaxed text-muted-foreground">
+                3C + 1 — Body, Brain and Emotion form the base; Consciousness
+                rises at the apex and holds them together.
+              </p>
+              <dl className="space-y-4 border-t border-border pt-5 text-sm leading-relaxed">
+                <div>
+                  <dt className="font-serif text-base text-cyan">Body</dt>
+                  <dd className="text-muted-foreground">
+                    The first witness. Breath, posture, tension and fatigue
+                    carry what has not yet been said — we listen to the
+                    somatic signal before we interpret it.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-serif text-base text-purple">Brain</dt>
+                  <dd className="text-muted-foreground">
+                    The organiser. Thoughts, beliefs and learned patterns
+                    shape how a situation is read — we make those patterns
+                    visible so they can be chosen rather than repeated.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-serif text-base text-pink">Emotion</dt>
+                  <dd className="text-muted-foreground">
+                    The compass. Affect, attachment and relationship give
+                    every decision its weight — we welcome emotion as
+                    information, never as a weakness.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-serif text-base text-ink">
+                    Consciousness
+                  </dt>
+                  <dd className="text-muted-foreground">
+                    The apex. Values, meaning and wider awareness integrate
+                    the three others — this is where change stops being a
+                    technique and becomes a direction.
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
           </div>
         </div>
       </Section>
