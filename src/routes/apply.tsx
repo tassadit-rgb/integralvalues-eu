@@ -9,6 +9,7 @@ import {
   Section,
 } from "@/components/site/site-layout";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -138,6 +139,80 @@ function Steps({ current }: { current: number }) {
   );
 }
 
+function PrivacyNotice() {
+  return (
+    <div className="max-w-2xl border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground">
+      <h3 className="font-serif text-xl text-ink">
+        How we handle your information
+      </h3>
+      <ul className="mt-4 space-y-2">
+        <li>
+          <span className="text-ink">Controller.</span> Integral Values Psy &amp;
+          Co is the data controller for this application.
+        </li>
+        <li>
+          <span className="text-ink">Purpose.</span> Your details, screening
+          answers and referee contacts are used only to assess your application
+          to the Associate Network.
+        </li>
+        <li>
+          <span className="text-ink">Referees.</span> We contact your referees
+          only if your application moves to review — please make sure they agree
+          to be named.
+        </li>
+        <li>
+          <span className="text-ink">Retention.</span> Applications are kept for
+          24 months, then deleted. We never sell or share your data for
+          marketing.
+        </li>
+        <li>
+          <span className="text-ink">Your rights.</span> Under GDPR you may
+          access, correct, export or erase your data, and withdraw consent at
+          any time by writing to us via the{" "}
+          <Link to="/contact" className="text-primary underline">
+            contact page
+          </Link>
+          .
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+function ConsentBox({
+  id,
+  checked,
+  onChange,
+  error,
+  children,
+}: {
+  id: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1">
+      <div className="flex items-start gap-3">
+        <Checkbox
+          id={id}
+          checked={checked}
+          onCheckedChange={(v) => onChange(v === true)}
+          className="mt-1"
+        />
+        <Label
+          htmlFor={id}
+          className="text-sm font-normal leading-relaxed text-muted-foreground"
+        >
+          {children}
+        </Label>
+      </div>
+      {error && <p className="pl-7 text-xs text-primary">{error}</p>}
+    </div>
+  );
+}
+
 function ApplyPage() {
   const start = useServerFn(startApplication);
   const confirm = useServerFn(confirmApplication);
@@ -157,6 +232,15 @@ function ApplyPage() {
   const [referees, setReferees] = useState<Referee[]>(EMPTY_REFEREES);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [reference, setReference] = useState<string | null>(null);
+  const [startConsent, setStartConsent] = useState(false);
+  const [startConsentError, setStartConsentError] = useState<string | null>(
+    null,
+  );
+  const [consent, setConsent] = useState({
+    processing: false,
+    referees: false,
+    accuracy: false,
+  });
 
   const confirmLink = useMemo(
     () =>
@@ -202,11 +286,13 @@ function ApplyPage() {
   async function onStart(e: React.FormEvent) {
     e.preventDefault();
     const parsed = z.string().trim().email().max(255).safeParse(email);
-    if (!parsed.success) {
-      setEmailError("Enter a valid email address");
-      return;
-    }
-    setEmailError(null);
+    setEmailError(parsed.success ? null : "Enter a valid email address");
+    setStartConsentError(
+      startConsent
+        ? null
+        : "Please confirm you have read the privacy notice to continue",
+    );
+    if (!parsed.success || !startConsent) return;
     setBusy(true);
     try {
       const res = await start({ data: { email: parsed.data } });
@@ -238,6 +324,15 @@ function ApplyPage() {
         }
       }
     });
+    if (!consent.processing)
+      next["consent_processing"] =
+        "Please consent to the processing of your application data";
+    if (!consent.referees)
+      next["consent_referees"] =
+        "Please confirm your referees agreed to be contacted";
+    if (!consent.accuracy)
+      next["consent_accuracy"] =
+        "Please confirm the information you provided is accurate";
     setErrors(next);
     if (Object.keys(next).length > 0 || !parsedDetails.success) {
       toast.error("Please correct the highlighted fields.");
@@ -307,6 +402,20 @@ function ApplyPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Field>
+            <PrivacyNotice />
+            <ConsentBox
+              id="consent_start"
+              checked={startConsent}
+              onChange={(v) => {
+                setStartConsent(v);
+                if (v) setStartConsentError(null);
+              }}
+              error={startConsentError ?? undefined}
+            >
+              I have read the privacy notice and agree that Integral Values Psy
+              &amp; Co may store my email address to create and manage this
+              application.
+            </ConsentBox>
             <Button type="submit" size="lg" disabled={busy}>
               {busy ? "Preparing…" : "Get my confirmation link"}
             </Button>
