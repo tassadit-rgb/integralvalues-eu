@@ -5,6 +5,8 @@ import {
   Section,
   SiteLayout,
 } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanTogether from "@/assets/human-together.jpg";
 
 export const Route = createFileRoute("/cross-culture")({
   head: () => ({
@@ -36,6 +38,12 @@ function CrossCulturePage() {
         title="Belonging is learned twice: once at home, once elsewhere."
         lead="We accompany expatriates, returning nationals and international teams through the invisible work of adapting — decoding cultural difference, holding identity steady and rebuilding a sense of place."
         quote="“Once we accept our limits, we go beyond them.” — Albert Einstein"
+      />
+
+      <EmotiveImage
+        src={humanTogether}
+        alt="People of different cultures standing close together, lit in cyan and magenta"
+        caption="Difference becomes strength when people truly meet."
       />
 
       <Section eyebrow="Programmes" title="Three ways we work across cultures">

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, Section } from "@/components/site/site-layout";
 import heroBrand from "@/assets/hero-brand.jpg";
+import humanHands from "@/assets/human-hands.jpg";
+import { EmotiveImage } from "@/components/site/emotive-image";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -188,6 +190,13 @@ function HomePage() {
         </div>
       </Section>
 
+
+      <EmotiveImage
+        src={humanHands}
+        alt="Two hands of different skin tones reaching toward each other in violet and cyan light"
+        caption="You're not alone."
+        align="center"
+      />
 
       <Section muted eyebrow="Mission">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
