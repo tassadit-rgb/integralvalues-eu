@@ -402,6 +402,20 @@ function ApplyPage() {
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Field>
+            <PrivacyNotice />
+            <ConsentBox
+              id="consent_start"
+              checked={startConsent}
+              onChange={(v) => {
+                setStartConsent(v);
+                if (v) setStartConsentError(null);
+              }}
+              error={startConsentError ?? undefined}
+            >
+              I have read the privacy notice and agree that Integral Values Psy
+              &amp; Co may store my email address to create and manage this
+              application.
+            </ConsentBox>
             <Button type="submit" size="lg" disabled={busy}>
               {busy ? "Preparing…" : "Get my confirmation link"}
             </Button>
