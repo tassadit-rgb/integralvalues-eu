@@ -89,9 +89,9 @@ export function SiteFooter() {
           <p className="mt-6 text-sm text-muted-foreground">hello@integralvalues.eu</p>
         </div>
         <div>
-          <p className="eyebrow">The 4C</p>
+          <p className="eyebrow">The 4 Pillars</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-            {NAV.slice(0, 4).map((n) => (
+            {NAV.slice(2, 6).map((n) => (
               <li key={n.to}>
                 <Link to={n.to} className="hover:text-ink">
                   {n.label}
@@ -100,6 +100,7 @@ export function SiteFooter() {
             ))}
           </ul>
         </div>
+
         <div>
           <p className="eyebrow">Explore</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
