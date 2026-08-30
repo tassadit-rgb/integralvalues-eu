@@ -324,6 +324,15 @@ function ApplyPage() {
         }
       }
     });
+    if (!consent.processing)
+      next["consent_processing"] =
+        "Please consent to the processing of your application data";
+    if (!consent.referees)
+      next["consent_referees"] =
+        "Please confirm your referees agreed to be contacted";
+    if (!consent.accuracy)
+      next["consent_accuracy"] =
+        "Please confirm the information you provided is accurate";
     setErrors(next);
     if (Object.keys(next).length > 0 || !parsedDetails.success) {
       toast.error("Please correct the highlighted fields.");
