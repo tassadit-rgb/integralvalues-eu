@@ -26,8 +26,11 @@ export type Database = {
           message: string | null
           phone: string | null
           profession: string
+          reference_code: string
           referral_code: string | null
           status: string
+          status_note: string | null
+          updated_at: string
         }
         Insert: {
           country: string
@@ -40,8 +43,11 @@ export type Database = {
           message?: string | null
           phone?: string | null
           profession: string
+          reference_code?: string
           referral_code?: string | null
           status?: string
+          status_note?: string | null
+          updated_at?: string
         }
         Update: {
           country?: string
@@ -54,8 +60,11 @@ export type Database = {
           message?: string | null
           phone?: string | null
           profession?: string
+          reference_code?: string
           referral_code?: string | null
           status?: string
+          status_note?: string | null
+          updated_at?: string
         }
         Relationships: []
       }
