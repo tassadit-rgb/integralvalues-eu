@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
-import fourForms from "@/assets/four-forms.jpg";
+import integralPyramid from "@/assets/integral-pyramid.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
 import portraitMain from "@/assets/IMG_0016.jpg.asset.json";
 import portraitFilm from "@/assets/IMG_0314.jpg.asset.json";
@@ -128,16 +128,16 @@ function AboutPage() {
               </figcaption>
             </figure>
             <img
-              src={fourForms}
-              alt="Four line-art forms representing Body, Brain, Emotion and Consciousness"
+              src={integralPyramid}
+              alt="Integral pyramidal form: Body, Brain and Emotion at the base, Consciousness radiating at the apex"
               width={1200}
-              height={912}
+              height={1200}
               loading="lazy"
               className="w-full border border-border object-cover"
             />
             <p className="text-xs leading-relaxed text-muted-foreground">
-              Body, Brain, Emotion, Consciousness — the four dimensions we
-              read together, never separately.
+              3C + 1 — Body, Brain and Emotion form the base; Consciousness
+              rises at the apex and holds them together.
             </p>
           </div>
         </div>
