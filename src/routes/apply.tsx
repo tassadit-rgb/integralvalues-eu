@@ -139,6 +139,80 @@ function Steps({ current }: { current: number }) {
   );
 }
 
+function PrivacyNotice() {
+  return (
+    <div className="max-w-2xl border border-border bg-card p-6 text-sm leading-relaxed text-muted-foreground">
+      <h3 className="font-serif text-xl text-ink">
+        How we handle your information
+      </h3>
+      <ul className="mt-4 space-y-2">
+        <li>
+          <span className="text-ink">Controller.</span> Integral Values Psy &amp;
+          Co is the data controller for this application.
+        </li>
+        <li>
+          <span className="text-ink">Purpose.</span> Your details, screening
+          answers and referee contacts are used only to assess your application
+          to the Associate Network.
+        </li>
+        <li>
+          <span className="text-ink">Referees.</span> We contact your referees
+          only if your application moves to review — please make sure they agree
+          to be named.
+        </li>
+        <li>
+          <span className="text-ink">Retention.</span> Applications are kept for
+          24 months, then deleted. We never sell or share your data for
+          marketing.
+        </li>
+        <li>
+          <span className="text-ink">Your rights.</span> Under GDPR you may
+          access, correct, export or erase your data, and withdraw consent at
+          any time by writing to us via the{" "}
+          <Link to="/contact" className="text-primary underline">
+            contact page
+          </Link>
+          .
+        </li>
+      </ul>
+    </div>
+  );
+}
+
+function ConsentBox({
+  id,
+  checked,
+  onChange,
+  error,
+  children,
+}: {
+  id: string;
+  checked: boolean;
+  onChange: (v: boolean) => void;
+  error?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="space-y-1">
+      <div className="flex items-start gap-3">
+        <Checkbox
+          id={id}
+          checked={checked}
+          onCheckedChange={(v) => onChange(v === true)}
+          className="mt-1"
+        />
+        <Label
+          htmlFor={id}
+          className="text-sm font-normal leading-relaxed text-muted-foreground"
+        >
+          {children}
+        </Label>
+      </div>
+      {error && <p className="pl-7 text-xs text-primary">{error}</p>}
+    </div>
+  );
+}
+
 function ApplyPage() {
   const start = useServerFn(startApplication);
   const confirm = useServerFn(confirmApplication);
