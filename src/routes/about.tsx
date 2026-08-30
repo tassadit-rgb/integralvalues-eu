@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
 import integralPyramid from "@/assets/integral-pyramid.jpg";
+import founderPortrait from "@/assets/founder-portrait.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -104,6 +105,20 @@ function AboutPage() {
             </p>
           </div>
           <div className="space-y-8">
+            <figure className="space-y-3">
+              <img
+                src={founderPortrait}
+                alt="Portrait of the founder of Integral Values Psy & Co, in a dark blazer in a softly lit office"
+                width={1024}
+                height={1280}
+                loading="lazy"
+                className="w-full border border-border object-cover"
+              />
+              <figcaption className="text-xs leading-relaxed text-muted-foreground">
+                Tassadit — founder, clinical psychologist and Master Certified
+                Coach.
+              </figcaption>
+            </figure>
             <img
               src={integralPyramid}
               alt="Integral pyramidal form: Body, Brain and Emotion at the base, Consciousness radiating at the apex"

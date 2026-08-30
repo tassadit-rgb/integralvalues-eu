@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanMethod from "@/assets/human-method.jpg";
 
 export const Route = createFileRoute("/method")({
   head: () => ({
@@ -64,6 +66,12 @@ function MethodPage() {
         title="The Integral Method™ — our DNA."
         lead="Not a technique borrowed for the occasion, but a coherent architecture: a philosophy, a map, a mindset, and a journey that carries a person from self-knowledge to wholeness."
         quote="Beyond coping. Towards wholeness."
+      />
+
+      <EmotiveImage
+        src={humanMethod}
+        alt="A person ascending a luminous staircase of light through layered planes"
+        caption="One architecture, six elements, a single coherence."
       />
 
       <Section eyebrow="Architecture" title="Six elements, one coherence">

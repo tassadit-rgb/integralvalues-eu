@@ -7,6 +7,8 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanAffiliate from "@/assets/human-affiliate.jpg";
 
 export const Route = createFileRoute("/affiliate")({
   head: () => ({
@@ -63,6 +65,12 @@ function AffiliatePage() {
         title="Become an Integral Values affiliate."
         lead="A network of psychologists, coaches, supervisors and intercultural experts practising under one integrative charter — with full clinical sovereignty and shared standards."
         quote="You're not alone."
+      />
+
+      <EmotiveImage
+        src={humanAffiliate}
+        alt="Practitioners standing together in a bright modern atrium"
+        caption="A network held by shared standards."
       />
 
       <Section eyebrow="Why affiliate" title="What the network offers">
