@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanContact from "@/assets/human-contact.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -51,6 +53,12 @@ function ContactPage() {
         eyebrow="Stay with us"
         title="Feel free to drop a line."
         lead="A first fifteen-minute call costs nothing. Tell us briefly where you are and what you are looking for, and we will propose the form of support that fits."
+      />
+
+      <EmotiveImage
+        src={humanContact}
+        alt="Two open hands meeting across a calm desk in soft light"
+        caption="Reaching out is already the first step."
       />
 
       <Section>

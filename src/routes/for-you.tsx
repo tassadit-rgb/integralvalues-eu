@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanForYou from "@/assets/human-foryou.jpg";
 
 export const Route = createFileRoute("/for-you")({
   head: () => ({
@@ -31,6 +33,12 @@ function ForYouPage() {
         title="Stay with us, between sessions."
         lead="The work does not only happen in the room. Resources, reflections and a membership designed to keep the practice present in ordinary weeks."
         quote="You're not alone."
+      />
+
+      <EmotiveImage
+        src={humanForYou}
+        alt="A person standing at a wide window at dawn, looking outward"
+        caption="A quieter kind of belonging."
       />
 
       <Section eyebrow="Membership" title="A quieter kind of belonging">

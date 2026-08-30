@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanPsyche from "@/assets/human-psyche.jpg";
 
 export const Route = createFileRoute("/psyche")({
   head: () => ({
@@ -42,6 +44,12 @@ function PsychePage() {
         title="Discover yourself, with evidence."
         lead="Assessment is not a verdict. It is a careful reading of how you think, feel and function — restored to you in conversation, in plain language, by a licensed psychologist."
         quote="Self-awareness is the first step toward meaningful change."
+      />
+
+      <EmotiveImage
+        src={humanPsyche}
+        alt="A person in profile with eyes closed, soft light tracing the face"
+        caption="The inner life, measured with respect."
       />
 
       <Section eyebrow="The Lab" title="What we assess">

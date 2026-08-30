@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+import { EmotiveImage } from "@/components/site/emotive-image";
+import humanCore from "@/assets/human-core.jpg";
   CardTile,
   PageHero,
   Section,
@@ -36,6 +38,12 @@ function CorePage() {
         title="The organisational centre: leadership, people and care at work."
         lead="Core gathers the work we do inside organisations — an immersive leadership experience, executive search for general and C-suite roles, and a well-being programme designed with the people it serves."
         quote="“Becoming a leader is the same as becoming a fully integrated human being.” — Ken Wilber"
+      />
+
+      <EmotiveImage
+        src={humanCore}
+        alt="A circle of professionals in open dialogue in a bright modern room"
+        caption="Care that holds an organisation together."
       />
 
       <Section eyebrow="Programmes" title="Three pillars">
