@@ -108,7 +108,7 @@ function ContactPage() {
               <Textarea id="message" name="message" rows={6} required />
             </div>
 
-            <Button type="submit" className="rounded-none px-8 uppercase tracking-[0.18em]">
+            <Button type="submit" size="lg" className="uppercase tracking-[0.18em]">
               Send
             </Button>
             <p className="text-xs text-muted-foreground">

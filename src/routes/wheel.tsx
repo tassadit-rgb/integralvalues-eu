@@ -306,10 +306,10 @@ function WheelTracker({ userId }: { userId: string }) {
             <div className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart data={chartData} outerRadius="75%">
-                  <PolarGrid stroke="rgba(255,255,255,0.18)" />
+                  <PolarGrid stroke="var(--border)" />
                   <PolarAngleAxis
                     dataKey="area"
-                    tick={{ fill: "rgba(237,233,254,0.8)", fontSize: 10 }}
+                    tick={{ fill: "var(--muted-foreground)", fontSize: 10 }}
                   />
                   <PolarRadiusAxis
                     angle={90}
@@ -319,8 +319,8 @@ function WheelTracker({ userId }: { userId: string }) {
                   />
                   <Radar
                     dataKey="value"
-                    stroke="#e879f9"
-                    fill="#e879f9"
+                    stroke="var(--chart-1)"
+                    fill="var(--chart-1)"
                     fillOpacity={0.35}
                   />
                 </RadarChart>
