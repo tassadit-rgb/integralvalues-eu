@@ -14,6 +14,78 @@ export type Database = {
   }
   public: {
     Tables: {
+      affiliate_applications: {
+        Row: {
+          country: string
+          created_at: string
+          credentials: string
+          email: string
+          fields: string
+          full_name: string
+          id: string
+          message: string | null
+          phone: string | null
+          profession: string
+          referral_code: string | null
+          status: string
+        }
+        Insert: {
+          country: string
+          created_at?: string
+          credentials: string
+          email: string
+          fields: string
+          full_name: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+          profession: string
+          referral_code?: string | null
+          status?: string
+        }
+        Update: {
+          country?: string
+          created_at?: string
+          credentials?: string
+          email?: string
+          fields?: string
+          full_name?: string
+          id?: string
+          message?: string | null
+          phone?: string | null
+          profession?: string
+          referral_code?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
+      affiliate_referrers: {
+        Row: {
+          code: string
+          created_at: string
+          email: string
+          id: string
+          name: string | null
+          referrals_count: number
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          email: string
+          id?: string
+          name?: string | null
+          referrals_count?: number
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          email?: string
+          id?: string
+          name?: string | null
+          referrals_count?: number
+        }
+        Relationships: []
+      }
       booking_requests: {
         Row: {
           created_at: string
