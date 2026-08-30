@@ -85,29 +85,29 @@ function WheelPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-violet-950 via-purple-950 to-fuchsia-950 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-3xl px-5 py-12">
         <div className="mb-8 flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.25em] text-cyan-300/80">Self check-in</p>
+            <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80">Self check-in</p>
             <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
               Wheel of Life
             </h1>
-            <p className="mt-3 max-w-xl text-sm leading-relaxed text-violet-100/80">
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
               Rate each area from 1 to 10 based on how satisfied you feel right now. The wheel
               shows you, at a glance, where life feels full and where it could use attention.
             </p>
           </div>
           <Link
             to="/"
-            className="shrink-0 text-xs text-violet-200/70 hover:text-white"
+            className="shrink-0 text-xs text-muted-foreground hover:text-ink"
           >
             ← Home
           </Link>
         </div>
 
         {!authChecked ? (
-          <Card className="border-white/10 bg-white/5 p-6 text-violet-100/70">Loading…</Card>
+          <Card className="border-border bg-card p-6 text-muted-foreground">Loading…</Card>
         ) : !session ? (
           <AuthCard />
         ) : (
@@ -152,27 +152,27 @@ function AuthCard() {
   }
 
   return (
-    <Card className="border-white/10 bg-white/5 p-6 text-white backdrop-blur-sm">
+    <Card className="border-border bg-card p-6 text-ink backdrop-blur-sm">
       <h2 className="text-lg font-semibold">
         {mode === "signup" ? "Create your account" : "Sign in"}
       </h2>
-      <p className="mt-1 text-sm text-violet-100/70">
+      <p className="mt-1 text-sm text-muted-foreground">
         Save your wheel and track how it shifts over time.
       </p>
       <form onSubmit={submit} className="mt-5 space-y-4">
         <div className="space-y-1.5">
-          <Label htmlFor="email" className="text-violet-100/90">Email</Label>
+          <Label htmlFor="email" className="text-muted-foreground">Email</Label>
           <Input
             id="email"
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border-white/15 bg-white/5 text-white placeholder:text-violet-200/40"
+            className="border-border bg-card text-ink placeholder:text-muted-foreground"
           />
         </div>
         <div className="space-y-1.5">
-          <Label htmlFor="password" className="text-violet-100/90">Password</Label>
+          <Label htmlFor="password" className="text-muted-foreground">Password</Label>
           <Input
             id="password"
             type="password"
@@ -180,23 +180,23 @@ function AuthCard() {
             minLength={6}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="border-white/15 bg-white/5 text-white placeholder:text-violet-200/40"
+            className="border-border bg-card text-ink placeholder:text-muted-foreground"
           />
         </div>
-        {error && <p className="text-xs text-fuchsia-300">{error}</p>}
-        {info && <p className="text-xs text-cyan-300">{info}</p>}
+        {error && <p className="text-xs text-destructive">{error}</p>}
+        {info && <p className="text-xs text-muted-foreground">{info}</p>}
         <div className="flex items-center justify-between pt-2">
           <button
             type="button"
             onClick={() => setMode(mode === "signup" ? "signin" : "signup")}
-            className="text-xs text-violet-200/70 underline-offset-2 hover:text-white hover:underline"
+            className="text-xs text-muted-foreground underline-offset-2 hover:text-ink hover:underline"
           >
             {mode === "signup" ? "Have an account? Sign in" : "New here? Create account"}
           </button>
           <Button
             type="submit"
             disabled={busy}
-            className="bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-white hover:opacity-95 disabled:opacity-50"
+            className="bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50"
           >
             {busy ? "…" : mode === "signup" ? "Sign up" : "Sign in"}
           </Button>
@@ -267,22 +267,22 @@ function WheelTracker({ userId }: { userId: string }) {
 
   return (
     <div className="space-y-6">
-      <Card className="border-white/10 bg-white/5 p-6 text-white backdrop-blur-sm">
+      <Card className="border-border bg-card p-6 text-ink backdrop-blur-sm">
         <div className="grid gap-6 sm:grid-cols-[1fr_minmax(0,260px)]">
           <div>
             <h2 className="text-lg font-semibold">Today's wheel</h2>
-            <p className="mt-1 text-xs text-violet-100/70">
-              Average <span className="text-white">{average}</span> / 10
+            <p className="mt-1 text-xs text-muted-foreground">
+              Average <span className="text-ink">{average}</span> / 10
             </p>
             <div className="mt-5 space-y-4">
               {AREAS.map((a) => (
                 <div key={a.key}>
                   <div className="flex items-baseline justify-between gap-3">
                     <div>
-                      <Label className="text-sm text-white">{a.label}</Label>
-                      <p className="text-[11px] text-violet-200/60">{a.hint}</p>
+                      <Label className="text-sm text-ink">{a.label}</Label>
+                      <p className="text-[11px] text-muted-foreground">{a.hint}</p>
                     </div>
-                    <span className="bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-base font-semibold text-transparent tabular-nums">
+                    <span className="bg-clip-border text-base font-semibold text-ink tabular-nums">
                       {scores[a.key]}
                     </span>
                   </div>
@@ -295,7 +295,7 @@ function WheelTracker({ userId }: { userId: string }) {
                     onChange={(e) =>
                       setScores((s) => ({ ...s, [a.key]: Number(e.target.value) }))
                     }
-                    className="mt-1.5 w-full accent-fuchsia-400"
+                    className="mt-1.5 w-full accent-primary"
                   />
                 </div>
               ))}
@@ -327,7 +327,7 @@ function WheelTracker({ userId }: { userId: string }) {
               </ResponsiveContainer>
             </div>
             <div className="mt-4 space-y-2">
-              <Label htmlFor="note" className="text-xs text-violet-100/80">
+              <Label htmlFor="note" className="text-xs text-muted-foreground">
                 Note (optional)
               </Label>
               <Textarea
@@ -336,41 +336,41 @@ function WheelTracker({ userId }: { userId: string }) {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="What's showing up for you?"
-                className="border-white/15 bg-white/5 text-sm text-white placeholder:text-violet-200/40"
+                className="border-border bg-card text-sm text-ink placeholder:text-muted-foreground"
               />
             </div>
           </div>
         </div>
 
-        {error && <p className="mt-4 text-xs text-fuchsia-300">{error}</p>}
+        {error && <p className="mt-4 text-xs text-destructive">{error}</p>}
 
         <div className="mt-6 flex items-center justify-between gap-3">
           <button
             onClick={signOut}
-            className="text-xs text-violet-200/60 hover:text-white"
+            className="text-xs text-muted-foreground hover:text-ink"
           >
             Sign out
           </button>
           <Button
             onClick={save}
             disabled={saving}
-            className="bg-gradient-to-r from-cyan-400 to-fuchsia-500 text-white hover:opacity-95 disabled:opacity-50"
+            className="bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-50"
           >
             {saving ? "Saving…" : "Save today's wheel"}
           </Button>
         </div>
       </Card>
 
-      <Card className="border-white/10 bg-white/5 p-6 text-white backdrop-blur-sm">
+      <Card className="border-border bg-card p-6 text-ink backdrop-blur-sm">
         <h2 className="text-lg font-semibold">History</h2>
         {loading ? (
-          <p className="mt-3 text-sm text-violet-100/70">Loading…</p>
+          <p className="mt-3 text-sm text-muted-foreground">Loading…</p>
         ) : entries.length === 0 ? (
-          <p className="mt-3 text-sm text-violet-100/70">
+          <p className="mt-3 text-sm text-muted-foreground">
             No entries yet. Save your first wheel above to start tracking.
           </p>
         ) : (
-          <ul className="mt-4 divide-y divide-white/10">
+          <ul className="mt-4 divide-y divide-border">
             {entries.map((e) => {
               const avg = (
                 AREAS.reduce((s, a) => s + (e[a.key] as number), 0) / AREAS.length
@@ -385,14 +385,14 @@ function WheelTracker({ userId }: { userId: string }) {
                   <div className="min-w-0">
                     <p className="text-sm font-medium">{date}</p>
                     {e.note && (
-                      <p className="mt-0.5 truncate text-xs text-violet-200/70">{e.note}</p>
+                      <p className="mt-0.5 truncate text-xs text-muted-foreground">{e.note}</p>
                     )}
                   </div>
                   <div className="shrink-0 text-right">
-                    <span className="bg-gradient-to-r from-cyan-300 to-fuchsia-400 bg-clip-text text-lg font-semibold text-transparent tabular-nums">
+                    <span className="bg-clip-border text-lg font-semibold text-ink tabular-nums">
                       {avg}
                     </span>
-                    <span className="ml-1 text-xs text-violet-200/60">/ 10</span>
+                    <span className="ml-1 text-xs text-muted-foreground">/ 10</span>
                   </div>
                 </li>
               );
