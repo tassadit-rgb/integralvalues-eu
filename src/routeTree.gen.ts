@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as Who5RouteImport } from './routes/who5'
 import { Route as WheelRouteImport } from './routes/wheel'
+import { Route as CrossCultureRouteImport } from './routes/cross-culture'
+import { Route as CounsellingRouteImport } from './routes/counselling'
+import { Route as CoreRouteImport } from './routes/core'
+import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as IndexRouteImport } from './routes/index'
 
 const Who5Route = Who5RouteImport.update({
@@ -23,6 +27,26 @@ const WheelRoute = WheelRouteImport.update({
   path: '/wheel',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CrossCultureRoute = CrossCultureRouteImport.update({
+  id: '/cross-culture',
+  path: '/cross-culture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounsellingRoute = CounsellingRouteImport.update({
+  id: '/counselling',
+  path: '/counselling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoreRoute = CoreRouteImport.update({
+  id: '/core',
+  path: '/core',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachingRoute = CoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +55,68 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/coaching': typeof CoachingRoute
+  '/core': typeof CoreRoute
+  '/counselling': typeof CounsellingRoute
+  '/cross-culture': typeof CrossCultureRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/coaching': typeof CoachingRoute
+  '/core': typeof CoreRoute
+  '/counselling': typeof CounsellingRoute
+  '/cross-culture': typeof CrossCultureRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/coaching': typeof CoachingRoute
+  '/core': typeof CoreRoute
+  '/counselling': typeof CounsellingRoute
+  '/cross-culture': typeof CrossCultureRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/wheel' | '/who5'
+  fullPaths:
+    | '/'
+    | '/coaching'
+    | '/core'
+    | '/counselling'
+    | '/cross-culture'
+    | '/wheel'
+    | '/who5'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/wheel' | '/who5'
-  id: '__root__' | '/' | '/wheel' | '/who5'
+  to:
+    | '/'
+    | '/coaching'
+    | '/core'
+    | '/counselling'
+    | '/cross-culture'
+    | '/wheel'
+    | '/who5'
+  id:
+    | '__root__'
+    | '/'
+    | '/coaching'
+    | '/core'
+    | '/counselling'
+    | '/cross-culture'
+    | '/wheel'
+    | '/who5'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CoachingRoute: typeof CoachingRoute
+  CoreRoute: typeof CoreRoute
+  CounsellingRoute: typeof CounsellingRoute
+  CrossCultureRoute: typeof CrossCultureRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
 }
@@ -75,6 +137,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WheelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cross-culture': {
+      id: '/cross-culture'
+      path: '/cross-culture'
+      fullPath: '/cross-culture'
+      preLoaderRoute: typeof CrossCultureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counselling': {
+      id: '/counselling'
+      path: '/counselling'
+      fullPath: '/counselling'
+      preLoaderRoute: typeof CounsellingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/core': {
+      id: '/core'
+      path: '/core'
+      fullPath: '/core'
+      preLoaderRoute: typeof CoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaching': {
+      id: '/coaching'
+      path: '/coaching'
+      fullPath: '/coaching'
+      preLoaderRoute: typeof CoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +177,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CoachingRoute: CoachingRoute,
+  CoreRoute: CoreRoute,
+  CounsellingRoute: CounsellingRoute,
+  CrossCultureRoute: CrossCultureRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
 }
