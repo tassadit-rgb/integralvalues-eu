@@ -23,6 +23,7 @@ import { Route as AffiliateRouteImport } from './routes/affiliate'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AffiliateStatusRouteImport } from './routes/affiliate.status'
+import { Route as AdminApplicationsRouteImport } from './routes/admin.applications'
 
 const Who5Route = Who5RouteImport.update({
   id: '/who5',
@@ -94,6 +95,11 @@ const AffiliateStatusRoute = AffiliateStatusRouteImport.update({
   path: '/status',
   getParentRoute: () => AffiliateRoute,
 } as any)
+const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
+  id: '/admin/applications',
+  path: '/admin/applications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -109,6 +115,7 @@ export interface FileRoutesByFullPath {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRoutesByTo {
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRoutesById {
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
 }
 export interface FileRouteTypes {
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/admin/applications'
     | '/affiliate/status'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/admin/applications'
     | '/affiliate/status'
   id:
     | '__root__'
@@ -192,6 +203,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/admin/applications'
     | '/affiliate/status'
   fileRoutesById: FileRoutesById
 }
@@ -209,6 +221,7 @@ export interface RootRouteChildren {
   PsycheRoute: typeof PsycheRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
+  AdminApplicationsRoute: typeof AdminApplicationsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -311,6 +324,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AffiliateStatusRouteImport
       parentRoute: typeof AffiliateRoute
     }
+    '/admin/applications': {
+      id: '/admin/applications'
+      path: '/admin/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof AdminApplicationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -340,6 +360,7 @@ const rootRouteChildren: RootRouteChildren = {
   PsycheRoute: PsycheRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
+  AdminApplicationsRoute: AdminApplicationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
