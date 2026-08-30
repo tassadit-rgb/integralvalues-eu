@@ -7,6 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  AffiliateScreening,
+  type ScreeningAnswers,
+  type ScreeningOutcome,
+} from "@/components/site/affiliate-screening";
 
 const REF_STORAGE_KEY = "iv_referral_code";
 
