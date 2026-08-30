@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import logo from "@/assets/integral-values-logo.png.asset.json";
+import slogan from "@/assets/slogan-not-alone.png.asset.json";
+
 
 const NAV = [
   { to: "/about", label: "About" },
