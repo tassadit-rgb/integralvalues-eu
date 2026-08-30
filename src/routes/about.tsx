@@ -1,6 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
 import abstractFour from "@/assets/abstract-four.jpg";
+import portraitMain from "@/assets/IMG_0016.jpg.asset.json";
+import portraitFilm from "@/assets/IMG_0314.jpg.asset.json";
+import portraitStage from "@/assets/IMG_0008.jpg.asset.json";
+import portraitStudio from "@/assets/IMG_0021_1.jpg.asset.json";
+
+const GALLERY = [
+  { src: portraitFilm.url, alt: "Portrait of Tassadit, founder of Integral Values" },
+  { src: portraitStage.url, alt: "Tassadit speaking on stage at a TEDx conference" },
+  { src: portraitStudio.url, alt: "Black and white studio portrait of Tassadit" },
+];
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -103,20 +113,46 @@ function AboutPage() {
               and has shared it with an international network ever since.
             </p>
           </div>
-          <div>
+          <div className="space-y-8">
+            <figure>
+              <img
+                src={portraitMain.url}
+                alt="Tassadit, founder of Integral Values Psy & Co, in her practice"
+                loading="lazy"
+                className="w-full border border-border object-cover"
+              />
+              <figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">
+                Tassadit — clinical psychologist, Master Certified Coach and
+                founder of Integral Values Psy &amp; Co.
+              </figcaption>
+            </figure>
             <img
               src={abstractFour}
-              alt="Abstract composition of four overlapping circles in sand and clay tones"
+              alt="Abstract composition of four overlapping circles"
               width={1200}
               height={912}
               loading="lazy"
               className="w-full border border-border object-cover"
             />
-            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+            <p className="text-xs leading-relaxed text-muted-foreground">
               The 4C — Coaching, Counselling, Cross-Culture, Core — as four
               fields that overlap rather than four separate services.
             </p>
           </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Portraits" title="In presence">
+        <div className="grid gap-6 sm:grid-cols-3">
+          {GALLERY.map((g) => (
+            <img
+              key={g.src}
+              src={g.src}
+              alt={g.alt}
+              loading="lazy"
+              className="h-[420px] w-full border border-border object-cover"
+            />
+          ))}
         </div>
       </Section>
 
