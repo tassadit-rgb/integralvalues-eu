@@ -27,30 +27,68 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-const FOUR = [
+const JOURNEY = [
   {
-    to: "/counselling",
-    n: "01",
-    t: "Counselling",
-    d: "Individual, couple, family and group therapy with licensed psychologists, plus #Psyché assessment.",
+    step: "Discover yourself",
+    name: "Psyché®",
+    to: "/psyche",
+    body: "Gain a deeper understanding of who you are through evidence-based psychological and leadership assessments.",
+    quote: "Self-awareness is the first step toward meaningful change.",
   },
   {
+    step: "Heal yourself",
+    name: "Care & Therapy",
+    to: "/counselling",
+    body: "Restore emotional balance, strengthen relationships and reconnect with your authentic self through compassionate psychological care.",
+    quote: "Healing begins where judgment ends.",
+  },
+  {
+    step: "Unlock your potential",
+    name: "Coaching",
     to: "/coaching",
-    n: "02",
+    body: "Transform your vision into action, develop conscious leadership and build the confidence to create lasting impact.",
+    quote: "Growth starts from within.",
+  },
+  {
+    step: "Thrive together",
+    name: "Cross-Culture",
+    to: "/cross-culture",
+    body: "Build bridges across cultures, teams and organisations to foster inclusion, collaboration and global success.",
+    quote: "Diversity becomes strength when people truly connect.",
+  },
+  {
+    step: "Become whole",
+    name: "CORE",
+    to: "/core",
+    body: "Experience our signature integrative pathway, designed to align Body, Brain, Heart and Consciousness.",
+    quote: "Beyond achievement lies fulfilment.",
+  },
+] as const;
+
+const FOUR = [
+  {
+    to: "/coaching",
+    n: "01",
     t: "Coaching",
-    d: "Individual, corporate and mentor coaching guided by the Integrative Coaching Mindset.",
+    d: "Executive coaching, leadership development, career transition, life coaching, mentoring and coach supervision.",
+  },
+  {
+    to: "/counselling",
+    n: "02",
+    t: "Care & Therapy",
+    d: "Individual, couples, family, teen and sexology care for anxiety, depression, burnout, trauma and attachment.",
   },
   {
     to: "/cross-culture",
     n: "03",
     t: "Cross-Culture",
-    d: "Expatriation and relocation support, DEIB programmes and facilitated values ranking.",
+    d: "Cross-cultural coaching, relocation and expat support, global mobility, DEIB consulting and soft skills.",
   },
   {
     to: "/core",
     n: "04",
-    t: "Core",
-    d: "Integrative Leadership Experience, C-level executive search and Care & Wellbeing at Work.",
+    t: "CORE",
+    d: "Therapeutic circles, inner leadership, somatic practices, symbolic work and reflective rituals.",
   },
 ] as const;
 
@@ -67,34 +105,69 @@ function HomePage() {
         />
         <div className="absolute inset-0 bg-background/55" />
         <div className="relative mx-auto max-w-6xl px-6 py-32 lg:px-10 lg:py-44">
-          <p className="eyebrow">Integral Values Psy &amp; Co</p>
+          <p className="eyebrow">Welcome to Integral Value®</p>
           <h1 className="mt-6 max-w-3xl text-4xl leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
-            An integrative approach to the development of optimal human
-            functioning.
+            Human First. Purpose Driven. Transformation Inspired.
           </h1>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-foreground/80">
-            Counselling, coaching, cross-culture and core. Four fields, one
-            practice — dedicated to helping people thrive and flourish, in
-            their lives and in their work.
+            Helping individuals, couples, families and organisations thrive
+            through an integrative approach that brings together science,
+            humanity and conscious leadership.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               to="/contact"
               className="border border-primary bg-primary px-7 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Book a first call
+              Book a consultation
             </Link>
             <Link
-              to="/about"
+              to="/method"
               className="border border-primary px-7 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
-              Our philosophy
+              The Integral Method™
             </Link>
           </div>
         </div>
       </section>
 
-      <Section eyebrow="The 4C Framework" title="Four fields that overlap">
+      <Section
+        eyebrow="The Integral Values Journey"
+        title="Your journey begins here"
+      >
+        <ol className="space-y-px border border-border bg-border">
+          {JOURNEY.map((j, i) => (
+            <li key={j.name}>
+              <Link
+                to={j.to}
+                className="group grid gap-4 bg-card p-8 transition-colors hover:bg-accent/40 md:grid-cols-[auto_1fr_1fr] md:items-baseline md:gap-10"
+              >
+                <span className="font-serif text-3xl text-gold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span>
+                  <span className="eyebrow block">{j.step}</span>
+                  <span className="mt-2 block text-xl text-ink">{j.name}</span>
+                </span>
+                <span>
+                  <span className="block text-sm leading-relaxed text-muted-foreground">
+                    {j.body}
+                  </span>
+                  <span className="mt-3 block font-serif text-base italic text-ink/70">
+                    “{j.quote}”
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section
+        muted
+        eyebrow="The 4 Pillars"
+        title="Four pillars. One human journey."
+      >
         <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
           {FOUR.map((c) => (
             <Link
@@ -114,6 +187,7 @@ function HomePage() {
           ))}
         </div>
       </Section>
+
 
       <Section muted eyebrow="Mission">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
