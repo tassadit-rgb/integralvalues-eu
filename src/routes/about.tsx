@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
 import integralPyramid from "@/assets/integral-pyramid.jpg";
+import founderPortrait from "@/assets/founder-portrait.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
 export const Route = createFileRoute("/about")({
   head: () => ({
