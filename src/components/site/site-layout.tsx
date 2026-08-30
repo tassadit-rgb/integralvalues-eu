@@ -1,5 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import logo from "@/assets/integral-values-logo.png.asset.json";
+import slogan from "@/assets/slogan-not-alone.png.asset.json";
+
 
 const NAV = [
   { to: "/about", label: "About" },
@@ -19,12 +22,16 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5 lg:px-10">
-        <Link to="/" className="group flex flex-col leading-none">
-          <span className="font-serif text-xl tracking-tight text-ink">
-            Integral Values
-          </span>
-          <span className="eyebrow mt-1">Psy &amp; Co</span>
+        <Link to="/" className="flex items-center">
+          <img
+            src={logo.url}
+            alt="Integral Value — You're not Alone"
+            width={1800}
+            height={880}
+            className="h-11 w-auto"
+          />
         </Link>
+
 
         <nav className="hidden items-center gap-5 lg:flex">
           {NAV.map((n) => (
@@ -83,13 +90,27 @@ export function SiteFooter() {
     <footer className="mt-24 border-t border-border/70 bg-secondary/40">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 md:grid-cols-4 lg:px-10">
         <div className="md:col-span-2">
-          <p className="font-serif text-2xl text-ink">Integral Values Psy &amp; Co</p>
+          <img
+            src={logo.url}
+            alt="Integral Value"
+            width={1800}
+            height={880}
+            className="h-12 w-auto"
+          />
+          <img
+            src={slogan.url}
+            alt="You're not Alone"
+            width={1064}
+            height={600}
+            className="mt-2 h-10 w-auto"
+          />
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            An integrative approach to the development of optimal human
-            functioning — coaching, counselling, cross-culture and core.
+            Human First. Purpose Driven. Transformation Inspired. An integrative
+            approach to the development of optimal human functioning.
           </p>
           <p className="mt-6 text-sm text-muted-foreground">hello@integralvalues.eu</p>
         </div>
+
         <div>
           <p className="eyebrow">The 4 Pillars</p>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
