@@ -2,17 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
 import integralPyramid from "@/assets/integral-pyramid.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
-import portraitMain from "@/assets/IMG_0016.jpg.asset.json";
-import portraitFilm from "@/assets/IMG_0314.jpg.asset.json";
-import portraitStage from "@/assets/IMG_0008.jpg.asset.json";
-import portraitStudio from "@/assets/IMG_0021_1.jpg.asset.json";
-
-const GALLERY = [
-  { src: portraitFilm.url, alt: "Portrait of Tassadit, founder of Integral Values" },
-  { src: portraitStage.url, alt: "Tassadit speaking on stage at a TEDx conference" },
-  { src: portraitStudio.url, alt: "Black and white studio portrait of Tassadit" },
-];
-
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -115,18 +104,6 @@ function AboutPage() {
             </p>
           </div>
           <div className="space-y-8">
-            <figure>
-              <img
-                src={portraitMain.url}
-                alt="Tassadit, founder of Integral Values Psy & Co, in her practice"
-                loading="lazy"
-                className="w-full border border-border object-cover"
-              />
-              <figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">
-                Tassadit — clinical psychologist, Master Certified Coach and
-                founder of Integral Values Psy &amp; Co.
-              </figcaption>
-            </figure>
             <img
               src={integralPyramid}
               alt="Integral pyramidal form: Body, Brain and Emotion at the base, Consciousness radiating at the apex"
@@ -184,20 +161,6 @@ function AboutPage() {
 
       <Section muted eyebrow="Four dimensions" title="Body, Brain, Emotion, Consciousness">
         <DimensionIcons />
-      </Section>
-
-      <Section eyebrow="Portraits" title="In presence">
-        <div className="grid gap-6 sm:grid-cols-3">
-          {GALLERY.map((g) => (
-            <img
-              key={g.src}
-              src={g.src}
-              alt={g.alt}
-              loading="lazy"
-              className="h-[420px] w-full border border-border object-cover"
-            />
-          ))}
-        </div>
       </Section>
 
       <Section muted eyebrow="Why" title="Our core values">
