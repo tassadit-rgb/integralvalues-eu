@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
-import { AffiliateForm, ReferralCapture } from "@/components/site/affiliate-form";
+import { ReferralCapture } from "@/components/site/affiliate-form";
 import {
   Accordion,
   AccordionContent,
@@ -150,22 +150,25 @@ function AffiliatePage() {
         </div>
       </Section>
 
-      <Section muted eyebrow="Apply" title="Affiliate application form">
+      <Section muted eyebrow="Apply" title="Affiliate application">
         <p className="mb-8 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Send us your profile, credentials and the fields you practise in. We
-          review applications individually and reply within ten working days.
-          Affiliation is confirmed once the charter, the affiliate contract and
-          the solidarity addendum are signed.
+          The application happens on its own page: confirm your email ID with a
+          private link, answer the screening questions, complete your profile
+          and name three referees for review. We reply within ten working days.
         </p>
-        <AffiliateForm />
-        <p className="mt-8 text-sm text-muted-foreground">
-          Already applied?{" "}
-          <Link to="/affiliate/status" className="text-primary underline">
+        <div className="flex flex-wrap items-center gap-6">
+          <Link
+            to="/apply"
+            className="inline-flex items-center rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground"
+          >
+            Start my application
+          </Link>
+          <Link to="/affiliate/status" className="text-sm text-primary underline">
             Track your application status
           </Link>
-          .
-        </p>
+        </div>
       </Section>
+
 
 
       <Section eyebrow="Referral" title="Refer a practitioner">

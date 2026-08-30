@@ -26,6 +26,7 @@ export type Database = {
           message: string | null
           phone: string | null
           profession: string
+          referees: Json
           reference_code: string
           referral_code: string | null
           screening: Json
@@ -45,6 +46,7 @@ export type Database = {
           message?: string | null
           phone?: string | null
           profession: string
+          referees?: Json
           reference_code?: string
           referral_code?: string | null
           screening?: Json
@@ -64,6 +66,7 @@ export type Database = {
           message?: string | null
           phone?: string | null
           profession?: string
+          referees?: Json
           reference_code?: string
           referral_code?: string | null
           screening?: Json
@@ -71,6 +74,33 @@ export type Database = {
           status?: string
           status_note?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      affiliate_apply_sessions: {
+        Row: {
+          confirmed_at: string | null
+          created_at: string
+          email: string
+          id: string
+          submitted_at: string | null
+          token: string
+        }
+        Insert: {
+          confirmed_at?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          submitted_at?: string | null
+          token: string
+        }
+        Update: {
+          confirmed_at?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          submitted_at?: string | null
+          token?: string
         }
         Relationships: []
       }
