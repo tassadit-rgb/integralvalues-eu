@@ -199,7 +199,21 @@ function HomePage() {
       />
 
       <Section muted eyebrow="Mission">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1.1fr_1fr] lg:items-start">
+          <figure className="space-y-3">
+            <img
+              src={founderReal.url}
+              alt="Portrait of Dr Tassadit Cherfaoui, founder of Integral Values Psy & Co"
+              width={900}
+              height={1200}
+              loading="lazy"
+              className="w-full rounded-2xl border border-border object-cover shadow-sm"
+            />
+            <figcaption className="text-xs leading-relaxed text-muted-foreground">
+              Dr Tassadit Cherfaoui — founder, clinical psychologist and Master
+              Certified Coach.
+            </figcaption>
+          </figure>
           <p className="font-serif text-2xl leading-snug text-ink sm:text-3xl">
             A life dedicated to helping people become the best version of
             themselves — thriving, flourishing, and at home in who they are.
