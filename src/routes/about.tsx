@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
-import abstractFour from "@/assets/abstract-four.jpg";
+import fourForms from "@/assets/four-forms.jpg";
 import portraitMain from "@/assets/IMG_0016.jpg.asset.json";
 import portraitFilm from "@/assets/IMG_0314.jpg.asset.json";
 import portraitStage from "@/assets/IMG_0008.jpg.asset.json";
@@ -127,16 +127,16 @@ function AboutPage() {
               </figcaption>
             </figure>
             <img
-              src={abstractFour}
-              alt="Abstract composition of four overlapping circles"
+              src={fourForms}
+              alt="Four line-art forms representing Body, Brain, Emotion and Consciousness"
               width={1200}
               height={912}
               loading="lazy"
               className="w-full border border-border object-cover"
             />
             <p className="text-xs leading-relaxed text-muted-foreground">
-              The 4C — Coaching, Counselling, Cross-Culture, Core — as four
-              fields that overlap rather than four separate services.
+              Body, Brain, Emotion, Consciousness — the four dimensions we
+              read together, never separately.
             </p>
           </div>
         </div>
