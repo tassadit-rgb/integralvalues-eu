@@ -286,11 +286,13 @@ function ApplyPage() {
   async function onStart(e: React.FormEvent) {
     e.preventDefault();
     const parsed = z.string().trim().email().max(255).safeParse(email);
-    if (!parsed.success) {
-      setEmailError("Enter a valid email address");
-      return;
-    }
-    setEmailError(null);
+    setEmailError(parsed.success ? null : "Enter a valid email address");
+    setStartConsentError(
+      startConsent
+        ? null
+        : "Please confirm you have read the privacy notice to continue",
+    );
+    if (!parsed.success || !startConsent) return;
     setBusy(true);
     try {
       const res = await start({ data: { email: parsed.data } });
