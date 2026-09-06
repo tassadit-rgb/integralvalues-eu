@@ -192,3 +192,66 @@
     transparent
   );
 }
+
+/* --- Quiet-luxury utilities: circles, halos, soft gradients --- */
+
+@utility halo {
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in oklab, var(--purple) 18%, transparent),
+    color-mix(in oklab, var(--cyan) 8%, transparent) 55%,
+    transparent 72%
+  );
+  filter: blur(2px);
+}
+
+@utility gradient-arc {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--purple) 12%, transparent),
+    color-mix(in oklab, var(--pink) 10%, transparent) 55%,
+    color-mix(in oklab, var(--cyan) 10%, transparent)
+  );
+}
+
+@utility soft-card {
+  border-radius: 1.5rem;
+  background: var(--card);
+  box-shadow: 0 1px 2px oklch(0.2 0.08 272 / 4%), 0 24px 60px -40px oklch(0.2 0.08 272 / 22%);
+}
+
+@utility signature {
+  font-family: var(--font-signature);
+  font-size: 2.75rem;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+@utility reveal {
+  animation: iv-reveal 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes iv-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
