@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorksRouteImport } from './routes/works'
 import { Route as Who5RouteImport } from './routes/who5'
 import { Route as WheelRouteImport } from './routes/wheel'
 import { Route as PsycheRouteImport } from './routes/psyche'
@@ -28,6 +29,11 @@ import { Route as AdminApplicationsRouteImport } from './routes/admin.applicatio
 import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
 import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
 
+const WorksRoute = WorksRouteImport.update({
+  id: '/works',
+  path: '/works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const Who5Route = Who5RouteImport.update({
   id: '/who5',
   path: '/who5',
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -154,6 +161,7 @@ export interface FileRoutesByTo {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/psyche': typeof PsycheRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
+  '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
   '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
@@ -197,6 +206,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/works'
     | '/admin/applications'
     | '/affiliate/status'
     | '/lovable/email/auth/preview'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/works'
     | '/admin/applications'
     | '/affiliate/status'
     | '/lovable/email/auth/preview'
@@ -237,6 +248,7 @@ export interface FileRouteTypes {
     | '/psyche'
     | '/wheel'
     | '/who5'
+    | '/works'
     | '/admin/applications'
     | '/affiliate/status'
     | '/lovable/email/auth/preview'
@@ -258,6 +270,7 @@ export interface RootRouteChildren {
   PsycheRoute: typeof PsycheRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
+  WorksRoute: typeof WorksRoute
   AdminApplicationsRoute: typeof AdminApplicationsRoute
   LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
   LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
@@ -265,6 +278,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/works': {
+      id: '/works'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof WorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/who5': {
       id: '/who5'
       path: '/who5'
@@ -421,6 +441,7 @@ const rootRouteChildren: RootRouteChildren = {
   PsycheRoute: PsycheRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
+  WorksRoute: WorksRoute,
   AdminApplicationsRoute: AdminApplicationsRoute,
   LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
   LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
