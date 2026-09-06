@@ -142,3 +142,13 @@ function integral_values_page_lead() {
 		printf( '<p class="iv-lead">%s</p>', esc_html( wp_strip_all_tags( $lead ) ) );
 	}
 }
+
+/**
+ * Permalink for a page slug, with a graceful fallback.
+ */
+if ( ! function_exists( 'iv_page_link' ) ) {
+	function iv_page_link( $slug ) {
+		$page = get_page_by_path( $slug );
+		return $page ? get_permalink( $page ) : home_url( '/' . $slug . '/' );
+	}
+}

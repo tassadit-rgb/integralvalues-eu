@@ -44,10 +44,6 @@ $values = array(
 	'Liveliness' => 'Passion for human beings and for life, kept enthusiastic and accountable.',
 );
 
-function iv_page_link( $slug ) {
-	$page = get_page_by_path( $slug );
-	return $page ? get_permalink( $page ) : home_url( '/' . $slug . '/' );
-}
 ?>
 
 <section class="iv-hero">
