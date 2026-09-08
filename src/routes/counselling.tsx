@@ -147,13 +147,10 @@ function CounsellingPage() {
           </div>
         </div>
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Counselling from €65 for 45 minutes (individual), €120 for couples,
-          €55 per participant in group (maximum eight). Teenagers under 18 are
-          seen free of charge. This site is not an emergency service; in a
-          crisis, contact your local emergency number.
+          Session fees are shown securely during booking before payment. Teenagers under 18 are seen free of charge. This site is not an emergency service; in a crisis, contact your local emergency number.
         </p>
         <Link
-          to="/contact"
+          to="/booking"
           className="mt-8 inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
           Book a first session
