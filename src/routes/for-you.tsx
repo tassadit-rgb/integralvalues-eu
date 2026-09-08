@@ -294,21 +294,55 @@ function ForYouPage() {
 
       <Section muted eyebrow="Resources" title="A quieter kind of belonging">
         <div className="grid gap-8 md:grid-cols-3">
-          <CardTile
-            meta="Free"
-            title="Resources"
-            body="Reflection sheets, breathing and grounding practices, and the WHO-5 and Wheel of Life self-checks — open to everyone."
-          />
-          <CardTile
-            meta="Member"
-            title="Integral Circle"
-            body="Monthly written reflections, a live group session, and priority access to seasonal workshops and retreats."
-          />
-          <CardTile
-            meta="Store"
-            title="Rise Above"
-            body="The book — a companion for those rebuilding after change, written from clinical and executive practice."
-          />
+          <article className="flex h-full flex-col rounded-[2rem] border border-[#75E8D5]/45 bg-card p-8 shadow-[0_14px_45px_rgba(16,8,80,.05)]">
+            <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#2d8f7d]">Free</p>
+            <h3 className="mt-4 font-serif text-2xl text-ink">Resources</h3>
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+              Reflection, grounding and self-observation tools designed to help you check in with yourself between sessions.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-2">
+              <Link
+                to="/who5"
+                className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15"
+              >
+                WHO-5
+              </Link>
+              <Link
+                to="/wheel"
+                className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15"
+              >
+                Wheel of Life
+              </Link>
+            </div>
+          </article>
+
+          <article className="flex h-full flex-col rounded-[2rem] border border-[#E5279A]/35 bg-card p-8 shadow-[0_14px_45px_rgba(16,8,80,.05)]">
+            <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#c41f83]">Member</p>
+            <h3 className="mt-4 font-serif text-2xl text-ink">Integral Circle</h3>
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+              Monthly written reflections, a live group session and priority access to selected workshops, retreats and new resources.
+            </p>
+            <a
+              href={`mailto:invoice@integralvalues.eu?subject=${encodeURIComponent("Integral Values — Integral Circle membership")}&body=${encodeURIComponent("Hello Integral Values,\n\nI would like to join the Integral Circle.\n\nName:\nCountry:\nPhone:\n\nPlease send me the membership details and next steps.")}`}
+              className="mt-7 inline-flex items-center justify-center rounded-full bg-[#E5279A] px-5 py-3 text-[0.68rem] uppercase tracking-[0.15em] text-white transition-opacity hover:opacity-90"
+            >
+              Join the Circle <span className="ml-2" aria-hidden>→</span>
+            </a>
+          </article>
+
+          <article className="flex h-full flex-col rounded-[2rem] border border-[#9C78D5]/45 bg-card p-8 shadow-[0_14px_45px_rgba(16,8,80,.05)]">
+            <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#7e5bb7]">Store</p>
+            <h3 className="mt-4 font-serif text-2xl text-ink">Rise Above</h3>
+            <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
+              A companion for those rebuilding after change — reflections and practices shaped by clinical, coaching and executive experience.
+            </p>
+            <a
+              href={`mailto:invoice@integralvalues.eu?subject=${encodeURIComponent("Integral Values — Rise Above")}&body=${encodeURIComponent("Hello Integral Values,\n\nI would like information about Rise Above.\n\nName:\nCountry:\nPreferred format (print / digital):\n\nPlease send me availability and ordering information.")}`}
+              className="mt-7 inline-flex items-center justify-center rounded-full bg-[#9C78D5] px-5 py-3 text-[0.68rem] uppercase tracking-[0.15em] text-white transition-opacity hover:opacity-90"
+            >
+              Ask about the book <span className="ml-2" aria-hidden>→</span>
+            </a>
+          </article>
         </div>
       </Section>
 
