@@ -34,12 +34,25 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-3 lg:px-10 lg:py-4">
-        <Link to="/" className="flex shrink-0 items-center" aria-label="Integral Values home">
+        <Link
+          to="/"
+          className="flex shrink-0 items-center gap-3 sm:gap-4"
+          aria-label="Integral Values home"
+        >
           <img
-            src="/logo-horizontal-light.png"
-            alt="Integral Values — You're not Alone;"
-            className="h-14 w-auto max-w-[280px] sm:h-16 sm:max-w-[320px] lg:h-20 lg:max-w-[390px]"
+            src="/Logo-icon.png"
+            alt=""
+            aria-hidden="true"
+            className="h-12 w-12 shrink-0 object-contain sm:h-14 sm:w-14 lg:h-16 lg:w-16"
           />
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="whitespace-nowrap text-lg font-semibold tracking-[-0.03em] text-ink sm:text-xl lg:text-2xl">
+              Integral Values
+            </span>
+            <span className="mt-1 whitespace-nowrap font-serif text-[0.78rem] italic leading-none text-primary sm:text-sm lg:text-base">
+              You&apos;re Not Alone;
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
