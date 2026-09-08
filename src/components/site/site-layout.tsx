@@ -33,12 +33,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-4 lg:px-10">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-3 lg:px-10 lg:py-4">
         <Link to="/" className="flex shrink-0 items-center" aria-label="Integral Values home">
           <img
             src="/logo-horizontal-light.png"
             alt="Integral Values — You're not Alone;"
-            className="h-10 w-auto max-w-[220px] sm:h-11 sm:max-w-none"
+            className="h-14 w-auto max-w-[280px] sm:h-16 sm:max-w-[320px] lg:h-20 lg:max-w-[390px]"
           />
         </Link>
 
@@ -96,7 +96,7 @@ export function SiteFooter() {
           <img
             src="/logo-horizontal-dark.png"
             alt="Integral Values — You're not Alone;"
-            className="h-12 w-auto max-w-[260px]"
+            className="h-16 w-auto max-w-[320px] sm:h-18 sm:max-w-[360px] lg:h-20 lg:max-w-[420px]"
           />
           <p className="mt-6 font-serif text-2xl leading-snug text-background">
             Helping Humanity Flourish.
