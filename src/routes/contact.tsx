@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -52,7 +52,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Stay with us"
         title="Feel free to drop a line."
-        lead="A first fifteen-minute call costs nothing. Tell us briefly where you are and what you are looking for, and we will propose the form of support that fits."
+        lead="A complimentary first fifteen-minute call is available. Tell us briefly where you are and what you are looking for, and we will propose the form of support that fits."
       />
 
       <EmotiveImage
@@ -132,19 +132,19 @@ function ContactPage() {
               </p>
             </div>
             <div>
-              <p className="eyebrow">Pricing</p>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li>First 15-minute call — free</li>
-                <li>Individual coaching — €75 / 30 min</li>
-                <li>Corporate coaching — €350 / 60 min</li>
-                <li>Individual counselling — €75 / 45 min</li>
-                <li>Couples — €160 / 60 min</li>
-                <li>Group — €70 per participant / 90 min</li>
-              </ul>
+              <p className="eyebrow">Appointments</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Choose the format that fits your needs. Session fees are shown securely during the booking process before payment.
+              </p>
+              <Link
+                to="/booking"
+                className="mt-6 inline-flex border border-primary px-6 py-3 text-[0.72rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                Book a session
+              </Link>
             </div>
             <p className="border-l border-gold pl-5 text-sm leading-relaxed text-muted-foreground">
-              Money should not prevent you from getting help. We can find a
-              payment solution tailored to your situation.
+              Money should not prevent you from getting help. We can find a payment solution tailored to your situation.
             </p>
           </aside>
         </div>
