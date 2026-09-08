@@ -56,6 +56,9 @@ const PARTS = [
   },
 ] as const;
 
+const journeyLinkClass =
+  "group block rounded-[1.5rem] transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+
 function MethodPage() {
   return (
     <SiteLayout>
@@ -115,32 +118,46 @@ function MethodPage() {
         title="Five movements, one human journey"
       >
         <div className="grid gap-8 md:grid-cols-2">
-          <CardTile
-            meta="Discover yourself"
-            title="Psyché®"
-            body="Evidence-based psychological and leadership assessment. Self-awareness is the first step toward meaningful change."
-          />
-          <CardTile
-            meta="Heal yourself"
-            title="Care & Therapy"
-            body="Restore emotional balance and reconnect with your authentic self. Healing begins where judgment ends."
-          />
-          <CardTile
-            meta="Unlock your potential"
-            title="Coaching"
-            body="Turn vision into action and develop conscious leadership. Growth starts from within."
-          />
-          <CardTile
-            meta="Thrive together"
-            title="Cross-Culture"
-            body="Build bridges across cultures and teams. Diversity becomes strength when people truly connect."
-          />
-          <div className="md:col-span-2">
+          <Link to="/psyche" className={journeyLinkClass} aria-label="Discover Psyché">
             <CardTile
-              meta="Become whole"
-              title="CORE"
-              body="Our signature integrative pathway, designed to align Body, Brain, Heart and Consciousness. Beyond achievement lies fulfilment."
+              meta="Discover yourself"
+              title="Psyché®"
+              body="Evidence-based psychological and leadership assessment. Self-awareness is the first step toward meaningful change."
             />
+          </Link>
+
+          <Link to="/counselling" className={journeyLinkClass} aria-label="Discover Care & Therapy">
+            <CardTile
+              meta="Heal yourself"
+              title="Care & Therapy"
+              body="Restore emotional balance and reconnect with your authentic self. Healing begins where judgment ends."
+            />
+          </Link>
+
+          <Link to="/coaching" className={journeyLinkClass} aria-label="Discover Coaching">
+            <CardTile
+              meta="Unlock your potential"
+              title="Coaching"
+              body="Turn vision into action and develop conscious leadership. Growth starts from within."
+            />
+          </Link>
+
+          <Link to="/cross-culture" className={journeyLinkClass} aria-label="Discover Cross-Culture">
+            <CardTile
+              meta="Thrive together"
+              title="Cross-Culture"
+              body="Build bridges across cultures and teams. Diversity becomes strength when people truly connect."
+            />
+          </Link>
+
+          <div className="md:col-span-2">
+            <Link to="/core" className={journeyLinkClass} aria-label="Discover CORE">
+              <CardTile
+                meta="Become whole"
+                title="CORE"
+                body="Our signature integrative pathway, designed to align Body, Brain, Heart and Consciousness. Beyond achievement lies fulfilment."
+              />
+            </Link>
           </div>
         </div>
         <div className="mt-12">
