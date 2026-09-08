@@ -79,22 +79,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Integral Values Psy & Co" },
+      { name: "theme-color", content: "#100850" },
+      { title: "Integral Values — You're Not Alone;" },
       {
         name: "description",
         content:
-          "Counselling, coaching, cross-culture and core — an integrative practice for optimal human functioning.",
+          "Integrative psychology, coaching, cross-cultural intelligence and leadership for people and organisations.",
       },
-      { name: "author", content: "Integral Values Psy & Co" },
-      { property: "og:title", content: "Integral Values Psy & Co" },
+      { name: "author", content: "Integral Values" },
+      { property: "og:title", content: "Integral Values — You're Not Alone;" },
       {
         property: "og:description",
         content:
-          "An integrative approach to the development of optimal human functioning.",
+          "Human First. Purpose Driven. Transformation Inspired. Integrative psychology, coaching, culture and leadership.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { property: "og:image", content: "/logo-horizontal-light.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/logo-horizontal-light.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -107,7 +109,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Mrs+Saint+Delafield&display=swap",
       },
-
       { rel: "icon", href: "/favicon.ico", sizes: "any" },
       { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
       {
@@ -136,7 +137,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
     ],
   }),
-
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
