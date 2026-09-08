@@ -135,11 +135,11 @@ function ContactPage() {
               <p className="eyebrow">Pricing</p>
               <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                 <li>First 15-minute call — free</li>
-                <li>Coaching — from €75 / 30 min individual</li>
-                <li>Coaching — €250 / hour corporate</li>
-                <li>Counselling — €65 / 45 min individual</li>
-                <li>Couples — €120 · Group — €55 per participant</li>
-                <li>Teens under 18 — free</li>
+                <li>Individual coaching — €75 / 30 min</li>
+                <li>Corporate coaching — €350 / 60 min</li>
+                <li>Individual counselling — €75 / 45 min</li>
+                <li>Couples — €160 / 60 min</li>
+                <li>Group — €70 per participant / 90 min</li>
               </ul>
             </div>
             <p className="border-l border-gold pl-5 text-sm leading-relaxed text-muted-foreground">
