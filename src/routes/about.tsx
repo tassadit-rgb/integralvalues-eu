@@ -59,33 +59,6 @@ const VALUES = [
   },
 ];
 
-const DIMENSIONS = [
-  {
-    name: "Body",
-    color: "text-cyan",
-    body:
-      "The first witness. Breath, posture, tension and fatigue carry what has not yet been said — we listen to the somatic signal before we interpret it.",
-  },
-  {
-    name: "Brain",
-    color: "text-purple",
-    body:
-      "The organiser. Thoughts, beliefs and learned patterns shape how a situation is read — we make those patterns visible so they can be chosen rather than repeated.",
-  },
-  {
-    name: "Emotion",
-    color: "text-pink",
-    body:
-      "The compass. Affect, attachment and relationship give every decision its weight — we welcome emotion as information, never as a weakness.",
-  },
-  {
-    name: "Consciousness",
-    color: "text-ink",
-    body:
-      "The integrating dimension. Values, meaning and wider awareness bring the others into relationship — this is where change becomes a direction rather than a technique.",
-  },
-] as const;
-
 function AboutPage() {
   return (
     <SiteLayout>
@@ -152,18 +125,6 @@ function AboutPage() {
       <Section muted eyebrow="Four dimensions" title="Body, Brain, Emotion, Consciousness">
         <div className="mx-auto max-w-5xl">
           <DimensionIcons />
-          <dl className="mt-14 grid gap-x-12 gap-y-8 md:grid-cols-2">
-            {DIMENSIONS.map((dimension) => (
-              <div key={dimension.name} className="border-t border-border pt-5">
-                <dt className={`font-serif text-xl ${dimension.color}`}>
-                  {dimension.name}
-                </dt>
-                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {dimension.body}
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </Section>
 
