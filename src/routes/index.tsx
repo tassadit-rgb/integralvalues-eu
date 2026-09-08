@@ -3,7 +3,6 @@ import { SiteLayout, Section, BookButton } from "@/components/site/site-layout";
 import { FourCFramework } from "@/components/site/four-c";
 import { IntegralValues } from "@/components/site/integral-values";
 import { FounderSignature } from "@/components/site/founder-signature";
-import heroVideo from "@/assets/hero-lavender.mp4.asset.json";
 import heroBrand from "@/assets/hero-brand.jpg";
 import humanLeader from "@/assets/human-leader.jpg";
 import humanHealing from "@/assets/human-healing.jpg";
@@ -107,7 +106,7 @@ function HomePage() {
       <section className="relative overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
-          src={heroVideo.url}
+          src="/Hero-You%E2%80%99re%20not%20Alone%3B.mp4"
           poster={heroBrand}
           autoPlay
           muted
