@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
-import integralPyramid from "@/assets/integral-pyramid.jpg";
-import founderPortrait from "@/assets/founder-portrait.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -60,6 +59,33 @@ const VALUES = [
   },
 ];
 
+const DIMENSIONS = [
+  {
+    name: "Body",
+    color: "text-cyan",
+    body:
+      "The first witness. Breath, posture, tension and fatigue carry what has not yet been said — we listen to the somatic signal before we interpret it.",
+  },
+  {
+    name: "Brain",
+    color: "text-purple",
+    body:
+      "The organiser. Thoughts, beliefs and learned patterns shape how a situation is read — we make those patterns visible so they can be chosen rather than repeated.",
+  },
+  {
+    name: "Emotion",
+    color: "text-pink",
+    body:
+      "The compass. Affect, attachment and relationship give every decision its weight — we welcome emotion as information, never as a weakness.",
+  },
+  {
+    name: "Consciousness",
+    color: "text-ink",
+    body:
+      "The integrating dimension. Values, meaning and wider awareness bring the others into relationship — this is where change becomes a direction rather than a technique.",
+  },
+] as const;
+
 function AboutPage() {
   return (
     <SiteLayout>
@@ -71,8 +97,24 @@ function AboutPage() {
       />
 
       <Section eyebrow="Who we are" title="The founder">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div className="space-y-5 text-sm leading-relaxed text-muted-foreground">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <figure className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+            <div className="overflow-hidden rounded-[2rem] bg-secondary/30">
+              <img
+                src="/About-founder.jpeg"
+                alt="Portrait of Tassadit Cherfaoui, founder of Integral Values Psy & Co"
+                width={1200}
+                height={1500}
+                loading="lazy"
+                className="aspect-[4/5] w-full object-cover object-center"
+              />
+            </div>
+            <figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Tassadit — founder, clinical psychologist and Master Certified Coach.
+            </figcaption>
+          </figure>
+
+          <div className="max-w-2xl space-y-6 text-[0.95rem] leading-[1.8] text-muted-foreground">
             <p>
               Tassadit was born in Algiers and has lived sixteen years in the
               largest desert on earth. She studied clinical psychology,
@@ -104,78 +146,25 @@ function AboutPage() {
               and has shared it with an international network ever since.
             </p>
           </div>
-          <div className="space-y-8">
-            <figure className="space-y-3">
-              <img
-                src={founderPortrait}
-                alt="Portrait of the founder of Integral Values Psy & Co, in a dark blazer in a softly lit office"
-                width={1024}
-                height={1280}
-                loading="lazy"
-                className="w-full border border-border object-cover"
-              />
-              <figcaption className="text-xs leading-relaxed text-muted-foreground">
-                Tassadit — founder, clinical psychologist and Master Certified
-                Coach.
-              </figcaption>
-            </figure>
-            <img
-              src={integralPyramid}
-              alt="Integral pyramidal form: Body, Brain and Emotion at the base, Consciousness radiating at the apex"
-              width={1200}
-              height={1200}
-              loading="lazy"
-              className="w-full border border-border object-cover"
-            />
-            <div className="space-y-4">
-              <p className="text-xs leading-relaxed text-muted-foreground">
-                3C + 1 — Body, Brain and Emotion form the base; Consciousness
-                rises at the apex and holds them together.
-              </p>
-              <dl className="space-y-4 border-t border-border pt-5 text-sm leading-relaxed">
-                <div>
-                  <dt className="font-serif text-base text-cyan">Body</dt>
-                  <dd className="text-muted-foreground">
-                    The first witness. Breath, posture, tension and fatigue
-                    carry what has not yet been said — we listen to the
-                    somatic signal before we interpret it.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-purple">Brain</dt>
-                  <dd className="text-muted-foreground">
-                    The organiser. Thoughts, beliefs and learned patterns
-                    shape how a situation is read — we make those patterns
-                    visible so they can be chosen rather than repeated.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-pink">Emotion</dt>
-                  <dd className="text-muted-foreground">
-                    The compass. Affect, attachment and relationship give
-                    every decision its weight — we welcome emotion as
-                    information, never as a weakness.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-ink">
-                    Consciousness
-                  </dt>
-                  <dd className="text-muted-foreground">
-                    The apex. Values, meaning and wider awareness integrate
-                    the three others — this is where change stops being a
-                    technique and becomes a direction.
-                  </dd>
-                </div>
-              </dl>
-            </div>
-
-          </div>
         </div>
       </Section>
 
       <Section muted eyebrow="Four dimensions" title="Body, Brain, Emotion, Consciousness">
-        <DimensionIcons />
+        <div className="mx-auto max-w-5xl">
+          <DimensionIcons />
+          <dl className="mt-14 grid gap-x-12 gap-y-8 md:grid-cols-2">
+            {DIMENSIONS.map((dimension) => (
+              <div key={dimension.name} className="border-t border-border pt-5">
+                <dt className={`font-serif text-xl ${dimension.color}`}>
+                  {dimension.name}
+                </dt>
+                <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {dimension.body}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </Section>
 
       <Section muted eyebrow="Why" title="Our core values">
