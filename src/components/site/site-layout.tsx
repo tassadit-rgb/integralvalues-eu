@@ -1,6 +1,5 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import logo from "@/assets/integral-values-logo.png.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -34,14 +33,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-5 lg:px-10">
-        <Link to="/" className="flex items-center">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-4 lg:px-10">
+        <Link to="/" className="flex shrink-0 items-center" aria-label="Integral Values home">
           <img
-            src={logo.url}
-            alt="Integral Values — You're not alone"
-            width={1800}
-            height={880}
-            className="h-11 w-auto"
+            src="/logo-horizontal-light.png"
+            alt="Integral Values — You're not Alone;"
+            className="h-10 w-auto max-w-[220px] sm:h-11 sm:max-w-none"
           />
         </Link>
 
@@ -64,6 +61,7 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           className="text-[0.72rem] uppercase tracking-[0.2em] text-muted-foreground lg:hidden"
           aria-expanded={open}
+          aria-label={open ? "Close navigation" : "Open navigation"}
         >
           {open ? "Close" : "Menu"}
         </button>
@@ -96,11 +94,9 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
         <div>
           <img
-            src={logo.url}
-            alt="Integral Values"
-            width={1800}
-            height={880}
-            className="h-11 w-auto brightness-0 invert"
+            src="/logo-horizontal-dark.png"
+            alt="Integral Values — You're not Alone;"
+            className="h-12 w-auto max-w-[260px]"
           />
           <p className="mt-6 font-serif text-2xl leading-snug text-background">
             Helping Humanity Flourish.
