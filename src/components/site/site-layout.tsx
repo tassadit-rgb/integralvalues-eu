@@ -93,11 +93,17 @@ export function SiteFooter() {
     <footer className="mt-28 bg-navy text-background/80">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
         <div>
-          <img
-            src="/logo-horizontal-dark.png"
-            alt="Integral Values — You're not Alone;"
-            className="h-16 w-auto max-w-[320px] sm:h-18 sm:max-w-[360px] lg:h-20 lg:max-w-[420px]"
-          />
+          <Link to="/" className="inline-flex items-center gap-4" aria-label="Integral Values home">
+            <img
+              src="/Logo-icon.png"
+              alt=""
+              aria-hidden="true"
+              className="h-16 w-16 shrink-0 object-contain sm:h-20 sm:w-20"
+            />
+            <span className="font-serif text-2xl leading-tight text-background sm:text-3xl">
+              Integral Values Psy &amp; Co
+            </span>
+          </Link>
           <p className="mt-6 font-serif text-2xl leading-snug text-background">
             Helping Humanity Flourish.
           </p>
