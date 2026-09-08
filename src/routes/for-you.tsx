@@ -33,7 +33,6 @@ type Plan = {
   intro: string;
   points: string[];
   cue: string;
-  href: "/booking" | "/contact" | "/apply";
   cta: string;
   visual: string;
   accent: string;
@@ -60,15 +59,14 @@ const PLANS: Plan[] = [
       "One resource personalized to your goal",
       "The ‘Jade-Box’",
     ],
-    cue: "Explore · Reflect · Begin",
-    href: "/booking",
+    cue: "Know yourself · Live more fully",
     cta: "Begin with Jade",
     visual:
-      "bg-[radial-gradient(circle_at_70%_28%,rgba(255,255,255,.9),transparent_18%),linear-gradient(135deg,#e8fffb_0%,#75E8D5_52%,#bdf5e9_100%)]",
+      "bg-[radial-gradient(circle_at_50%_42%,rgba(255,255,255,.96)_0_5%,transparent_6%),radial-gradient(circle_at_50%_55%,rgba(255,255,255,.42)_0_2%,transparent_3%),linear-gradient(180deg,#dffff8_0%,#8fe8df_46%,#6bcfca_100%)]",
     accent: "text-[#2d8f7d]",
     bullet: "bg-[#75E8D5] text-[#104e45]",
-    button: "bg-[#75E8D5] text-[#104e45] hover:bg-[#63ddc9]",
-    border: "border-[#75E8D5]/60",
+    button: "bg-[#59cdbd] text-white hover:bg-[#49bcae]",
+    border: "border-[#75E8D5]/55",
   },
   {
     name: "Friendly Plan",
@@ -86,14 +84,13 @@ const PLANS: Plan[] = [
       "The ‘Turquoise-Box’",
     ],
     cue: "Grow · Align · Flow",
-    href: "/contact",
     cta: "Choose Turquoise",
     visual:
-      "bg-[radial-gradient(circle_at_26%_22%,rgba(255,255,255,.78),transparent_20%),linear-gradient(150deg,#b8fbf8_0%,#00CEE5_52%,#138da7_100%)]",
+      "bg-[radial-gradient(ellipse_at_25%_72%,rgba(255,255,255,.45),transparent_24%),radial-gradient(ellipse_at_78%_35%,rgba(255,255,255,.3),transparent_20%),linear-gradient(160deg,#d9ffff_0%,#61dce8_38%,#0ea9bd_66%,#08778e_100%)]",
     accent: "text-[#069bb1]",
     bullet: "bg-[#00CEE5] text-[#063d46]",
-    button: "bg-[#00CEE5] text-[#063d46] hover:bg-[#00bad0]",
-    border: "border-[#00CEE5]/60",
+    button: "bg-[#00b7cd] text-white hover:bg-[#009eb1]",
+    border: "border-[#00CEE5]/55",
   },
   {
     name: "Premium Plan",
@@ -111,14 +108,13 @@ const PLANS: Plan[] = [
       "The ‘Rubi-Box’",
     ],
     cue: "Transform · Lead · Thrive",
-    href: "/contact",
     cta: "Choose Rubi",
     visual:
-      "bg-[radial-gradient(circle_at_25%_20%,rgba(255,255,255,.62),transparent_20%),linear-gradient(145deg,#ffd9ef_0%,#E5279A_55%,#9e1c75_100%)]",
+      "bg-[radial-gradient(ellipse_at_20%_75%,rgba(255,255,255,.58),transparent_24%),radial-gradient(ellipse_at_72%_35%,rgba(255,242,249,.5),transparent_28%),linear-gradient(160deg,#ffdff0_0%,#f5a6d6_34%,#E5279A_72%,#b01c78_100%)]",
     accent: "text-[#c41f83]",
     bullet: "bg-[#E5279A] text-white",
     button: "bg-[#E5279A] text-white hover:bg-[#cc2088]",
-    border: "border-[#E5279A]",
+    border: "border-[#E5279A]/65",
     featured: true,
   },
   {
@@ -137,13 +133,12 @@ const PLANS: Plan[] = [
       "The ‘Diamond-Box’",
     ],
     cue: "Integrate · Balance · Expand",
-    href: "/contact",
     cta: "Choose Diamant",
     visual:
-      "bg-[radial-gradient(circle_at_74%_20%,rgba(255,255,255,.98),transparent_22%),linear-gradient(145deg,#f9fdff_0%,#dceff8_36%,#AEB5E8_72%,#e5e9ff_100%)]",
+      "bg-[linear-gradient(135deg,rgba(255,255,255,.92)_0_18%,transparent_19%),linear-gradient(42deg,transparent_0_38%,rgba(255,255,255,.5)_39_52%,transparent_53%),linear-gradient(155deg,#f8fdff_0%,#dff4ff_32%,#b9d9ef_58%,#AEB5E8_100%)]",
     accent: "text-[#6485b8]",
     bullet: "bg-[#AEB5E8] text-[#28345d]",
-    button: "bg-[#AEB5E8] text-[#28345d] hover:bg-[#9fa8de]",
+    button: "bg-[#8da9d7] text-white hover:bg-[#7a98cb]",
     border: "border-[#AEB5E8]/70",
   },
   {
@@ -163,45 +158,62 @@ const PLANS: Plan[] = [
       "Referral and Integral Values Badge ID",
       "Coaching toolkits + the ‘Purple-Box’",
     ],
-    cue: "Collaborate · Certify · Create Impact",
-    href: "/apply",
+    cue: "Collaborate · Certify · Create impact",
     cta: "Apply for Amethyst",
     visual:
-      "bg-[radial-gradient(circle_at_74%_24%,rgba(255,255,255,.36),transparent_18%),linear-gradient(145deg,#dcb9f4_0%,#A5199B_45%,#572062_100%)]",
+      "bg-[linear-gradient(135deg,rgba(255,255,255,.22)_0_16%,transparent_17%),linear-gradient(42deg,transparent_0_38%,rgba(255,255,255,.18)_39_50%,transparent_51%),radial-gradient(circle_at_70%_30%,#d5a9ef_0%,#A5199B_42%,#572062_78%,#33143d_100%)]",
     accent: "text-[#7e258f]",
     bullet: "bg-[#9C78D5] text-white",
-    button: "bg-[#9C78D5] text-white hover:bg-[#8c67cb]",
+    button: "bg-[#8e5cc2] text-white hover:bg-[#7b4db0]",
     border: "border-[#9C78D5]/75",
     audience: "For coaches & counsellors",
   },
 ];
 
+function mailtoFor(plan: Plan) {
+  const subject = `Integral Values — ${plan.name} “${plan.stone}”`;
+  const body = [
+    "Hello Integral Values,",
+    "",
+    `I would like to validate my interest in the ${plan.name} “${plan.stone}” — ${plan.subtitle}.`,
+    `Pack: ${plan.price}`,
+    "",
+    "Name:",
+    "Country:",
+    "Phone:",
+    plan.stone === "Jade" ? "Preferred contribution amount:" : "Preferred start date:",
+    "",
+    "Please send me the next steps and payment/invoice information.",
+  ].join("\n");
+
+  return `mailto:invoice@integralvalues.eu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
 function PlanCard({ plan }: { plan: Plan }) {
   return (
     <article
-      className={`relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-card shadow-[0_18px_60px_rgba(16,8,80,.07)] ${plan.border}`}
+      className={`relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-card shadow-[0_18px_60px_rgba(16,8,80,.08)] ${plan.border}`}
     >
       {plan.featured && (
-        <span className="absolute right-6 top-5 z-10 rounded-full bg-primary px-4 py-2 text-[0.62rem] uppercase tracking-[0.2em] text-primary-foreground shadow-lg">
+        <span className="absolute right-6 top-5 z-20 rounded-full bg-primary px-4 py-2 text-[0.62rem] uppercase tracking-[0.2em] text-primary-foreground shadow-lg">
           Most popular
         </span>
       )}
       {plan.audience && (
-        <span className="absolute right-6 top-5 z-10 rounded-full bg-[#9C78D5] px-4 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-white shadow-lg">
+        <span className="absolute right-6 top-5 z-20 rounded-full bg-[#8e5cc2] px-4 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-white shadow-lg">
           {plan.audience}
         </span>
       )}
 
-      <div className={`relative h-44 overflow-hidden ${plan.visual}`}>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-navy/10" />
-        <p className="absolute bottom-6 left-7 max-w-[70%] text-[0.64rem] uppercase tracking-[0.24em] text-navy/75">
+      <div className={`relative h-52 overflow-hidden ${plan.visual}`}>
+        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-navy/12" />
+        <p className="absolute left-7 top-7 max-w-[72%] text-[0.62rem] uppercase tracking-[0.24em] text-navy/70">
           {plan.cue}
         </p>
-        <div className="absolute -right-8 -top-8 h-28 w-28 rotate-45 border border-white/45 bg-white/10" />
-        <div className="absolute right-12 top-14 h-10 w-10 rotate-45 border border-white/60 bg-white/20" />
+        <div className="absolute bottom-[-1px] left-0 right-0 h-12 rounded-t-[2rem] bg-card" />
       </div>
 
-      <div className="flex flex-1 flex-col p-7 sm:p-8">
+      <div className="relative -mt-10 flex flex-1 flex-col rounded-t-[2rem] bg-card p-7 pt-8 sm:p-8 sm:pt-9">
         <p className={`text-[0.68rem] uppercase tracking-[0.22em] ${plan.accent}`}>
           {plan.name}
         </p>
@@ -226,12 +238,12 @@ function PlanCard({ plan }: { plan: Plan }) {
           ))}
         </ul>
 
-        <Link
-          to={plan.href}
+        <a
+          href={mailtoFor(plan)}
           className={`mt-8 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-[0.7rem] uppercase tracking-[0.16em] transition-colors ${plan.button}`}
         >
           {plan.cta} <span className="ml-2" aria-hidden>→</span>
-        </Link>
+        </a>
       </div>
     </article>
   );
@@ -273,6 +285,9 @@ function ForYouPage() {
         </div>
 
         <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-muted-foreground">
+          Each selection opens a pre-filled email to invoice@integralvalues.eu so the team can validate your chosen path and send the appropriate invoice or next steps.
+        </p>
+        <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-muted-foreground">
           *Certification pathways are subject to eligibility, specific criteria and the requirements of the relevant certification body. Membership does not itself guarantee certification.
         </p>
       </Section>
