@@ -36,23 +36,14 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-3 lg:px-10 lg:py-4">
         <Link
           to="/"
-          className="flex shrink-0 items-center gap-3 sm:gap-4"
+          className="flex shrink-0 items-center"
           aria-label="Integral Values home"
         >
           <img
             src="/Logo-icon.png"
-            alt=""
-            aria-hidden="true"
-            className="h-12 w-12 shrink-0 object-contain sm:h-14 sm:w-14 lg:h-16 lg:w-16"
+            alt="Integral Values"
+            className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem]"
           />
-          <span className="flex min-w-0 flex-col leading-none">
-            <span className="whitespace-nowrap text-lg font-semibold tracking-[-0.03em] text-ink sm:text-xl lg:text-2xl">
-              Integral Values
-            </span>
-            <span className="mt-1 whitespace-nowrap font-serif text-[0.78rem] italic leading-none text-primary sm:text-sm lg:text-base">
-              You&apos;re Not Alone;
-            </span>
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
