@@ -45,38 +45,34 @@ const AREAS = [
 const PLANS = [
   {
     name: "Jade — Discovery",
-    price: "Pay as you wish",
     points: [
-      "15-minute chemistry session",
-      "Values ranking, first read",
-      "One resource personalised to your goal",
+      "Values ranking and meaningful goal-setting",
+      "Core Quadrant and communication insight",
+      "A personalised resource and the Jade Box",
     ],
   },
   {
     name: "Turquoise — First step",
-    price: "€300 / month",
     points: [
       "Two coaching sessions per month",
       "Personalised coaching plan",
-      "Access to the online library",
+      "Online library and purpose discovery",
     ],
   },
   {
     name: "Rubi — Transformational",
-    price: "€500 / month",
     points: [
-      "Four sessions per month",
-      "Personal assessment and coaching map",
-      "Open chat, 24-hour response",
+      "Four coaching sessions per month",
+      "Assessment and coaching plan",
+      "Internal resources and support chat",
     ],
   },
   {
     name: "Diamant — Integral harmony",
-    price: "On request",
     points: [
-      "Unlimited sessions",
-      "Advanced materials and resources",
-      "Priority support, 6-hour response",
+      "Six coaching sessions across six months",
+      "Personal assessment and coaching map",
+      "Advanced resources and priority support",
     ],
   },
 ];
@@ -142,7 +138,7 @@ function CoachingPage() {
           <CardTile
             meta="Mentoring"
             title="Coaches’ coaching"
-            body="Supervision and mentoring for practising coaches: refine your methodology, review your recordings and follow a certification path."
+            body="Supervision and mentoring for practising coaches: refine your methodology, review your practice and develop your professional path."
           />
         </div>
       </Section>
@@ -152,7 +148,6 @@ function CoachingPage() {
           {PLANS.map((p) => (
             <div key={p.name} className="bg-card p-8">
               <h3 className="text-lg text-ink">{p.name}</h3>
-              <p className="mt-2 text-sm text-gold">{p.price}</p>
               <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
                 {p.points.map((pt) => (
                   <li key={pt}>{pt}</li>
@@ -162,15 +157,22 @@ function CoachingPage() {
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          Money should not prevent you from getting help. We can find a payment
-          arrangement suited to your situation.
+          Session fees are handled in the booking and payment journey. Membership details are available in For You.
         </p>
-        <Link
-          to="/contact"
-          className="mt-8 inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-        >
-          Request a chemistry session
-        </Link>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link
+            to="/booking"
+            className="inline-block border border-primary bg-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
+          >
+            Book a consultation
+          </Link>
+          <Link
+            to="/for-you"
+            className="inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            Explore membership
+          </Link>
+        </div>
       </Section>
     </SiteLayout>
   );
