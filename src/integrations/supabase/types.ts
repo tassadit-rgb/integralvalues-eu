@@ -169,6 +169,48 @@ export type Database = {
           },
         ]
       }
+      contact_requests: {
+        Row: {
+          country: string | null
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          interest: string
+          last_name: string
+          message: string
+          phone: string | null
+          role: string | null
+          status: string
+        }
+        Insert: {
+          country?: string | null
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          interest: string
+          last_name: string
+          message: string
+          phone?: string | null
+          role?: string | null
+          status?: string
+        }
+        Update: {
+          country?: string | null
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          interest?: string
+          last_name?: string
+          message?: string
+          phone?: string | null
+          role?: string | null
+          status?: string
+        }
+        Relationships: []
+      }
       journal_entries: {
         Row: {
           body: string
