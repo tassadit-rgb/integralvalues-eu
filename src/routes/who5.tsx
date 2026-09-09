@@ -15,7 +15,7 @@ export const Route = createFileRoute("/who5")({
       { property: "og:title", content: "WHO-5 Well-Being Index" },
       {
         property: "og:description",
-        content: "A short, science-backed check-in on your well-being over the past two weeks.",
+        content: "A short, validated check-in on mental well-being over the past two weeks.",
       },
     ],
   }),
@@ -40,34 +40,15 @@ const SCALE = [
 ];
 
 function interpret(score: number) {
-  // WHO-5 raw 0-25; percentage = raw * 4 (0-100). <= 50 suggests low well-being; <= 28 screen for depression.
   const pct = score * 4;
-  if (pct <= 28)
-    return {
-      pct,
-      title: "Low well-being",
-      body: "Your score suggests you may be going through a hard time. Consider reaching out to a therapist, coach, or trusted person. This is a screening tool, not a diagnosis.",
-      tone: "bg-gold",
-    };
-  if (pct <= 50)
-    return {
-      pct,
-      title: "Reduced well-being",
-      body: "Your well-being feels below your usual baseline. Small daily habits — sleep, movement, connection — can help. A check-in with a professional may also be valuable.",
-      tone: "bg-gold",
-    };
-  if (pct <= 75)
-    return {
-      pct,
-      title: "Good well-being",
-      body: "You're doing okay. Keep noticing what supports you and lean into the routines that help you feel grounded.",
-      tone: "bg-gold",
-    };
+  const belowCutoff = pct < 50;
+
   return {
     pct,
-    title: "Thriving",
-    body: "You're feeling great right now. Notice what's working — sleep, people, purpose — so you can return to it later.",
-    tone: "bg-gold",
+    title: belowCutoff ? "Further assessment may be useful" : "Well-being score",
+    body: belowCutoff
+      ? "The WHO-5 guidance notes that a percentage score below 50 (raw score below 13) has been suggested as a cut-off for poor mental well-being and as an indication for further assessment. This result is not a diagnosis."
+      : "Your score is at or above the commonly suggested WHO-5 cut-off of 50. The score is a snapshot of mental well-being over the last two weeks, not a diagnosis or a guarantee that no difficulty is present.",
   };
 }
 
@@ -86,8 +67,8 @@ function Who5Page() {
     <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-2xl px-5 py-12">
         <div className="mb-8">
-          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80">Check-in</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80">Psyché™ Lab · self-check</p>
+          <h1 className="mt-2 font-serif text-3xl tracking-tight text-ink sm:text-4xl">
             WHO-5 Well-Being Index
           </h1>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
@@ -105,15 +86,12 @@ function Who5Page() {
             className="space-y-4"
           >
             {QUESTIONS.map((q, i) => (
-              <Card
-                key={i}
-                className="border-border bg-card p-5 text-ink backdrop-blur-sm"
-              >
+              <Card key={i} className="border-border bg-card p-5 text-ink">
                 <div className="mb-3 flex items-start gap-3">
                   <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
                     {i + 1}
                   </span>
-                  <p className="text-sm font-medium leading-snug">Over the last two weeks, {q.toLowerCase()}.</p>
+                  <p className="text-sm font-medium leading-snug">{q}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                   {SCALE.map((opt) => {
@@ -150,11 +128,7 @@ function Who5Page() {
               <p className="text-xs text-muted-foreground">
                 {answers.filter((a) => a !== null).length} / 5 answered
               </p>
-              <Button
-                type="submit"
-                disabled={!complete}
-                className="bg-primary text-primary-foreground hover:opacity-90 disabled:opacity-40"
-              >
+              <Button type="submit" disabled={!complete}>
                 See my result
               </Button>
             </div>
@@ -162,27 +136,19 @@ function Who5Page() {
         )}
 
         {submitted && result && (
-          <Card className="border-border bg-card p-6 text-ink backdrop-blur-sm">
+          <Card className="border-border bg-card p-6 text-ink">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80">Your result</p>
             <div className="mt-4 flex items-end gap-3">
-              <span
-                className={`bg-gradient-to-r ${result.tone} bg-clip-text text-6xl font-semibold tracking-tight text-transparent`}
-              >
-                {result.pct}
-              </span>
+              <span className="font-serif text-6xl text-ink">{result.pct}</span>
               <span className="pb-2 text-sm text-muted-foreground">/ 100</span>
             </div>
             <div className="mt-4 h-2 w-full overflow-hidden rounded-full bg-accent">
-              <div
-                className={`h-full bg-gradient-to-r ${result.tone}`}
-                style={{ width: `${result.pct}%` }}
-              />
+              <div className="h-full bg-primary" style={{ width: `${result.pct}%` }} />
             </div>
-            <h2 className="mt-6 text-xl font-semibold">{result.title}</h2>
+            <h2 className="mt-6 font-serif text-2xl text-ink">{result.title}</h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{result.body}</p>
-            <p className="mt-4 text-xs text-muted-foreground">
-              Raw score: {score} / 25. The WHO-5 is a screening tool, not a diagnosis. If you're in
-              crisis, please contact local emergency services or a crisis line.
+            <p className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Raw score: {score} / 25. Percentage score: {result.pct} / 100. The WHO-5 measures mental well-being over the previous two weeks. If you are in immediate danger or crisis, contact your local emergency service.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button
@@ -191,7 +157,6 @@ function Who5Page() {
                   setSubmitted(false);
                 }}
                 variant="outline"
-                className="border-gold bg-transparent text-ink hover:bg-accent"
               >
                 Retake
               </Button>
