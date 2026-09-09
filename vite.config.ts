@@ -1,26 +1,26 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import path from "node:path";
 import process from "node:process";
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
-import { loadEnv } from "vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import tailwindcss from "@tailwindcss/vite";
+import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
+import { defineConfig, loadEnv } from "vite";
+import tsConfigPaths from "vite-tsconfig-paths";
 
-// Load all env vars (including non-VITE_ server secrets) into process.env for
-// server routes only. These are NOT injected into the client bundle.
-const serverEnv = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
-Object.assign(process.env, serverEnv);
+export default defineConfig(({ mode }) => {
+  // Load server-only values into process.env. Vite still exposes only VITE_*
+  // values to browser code.
+  const serverEnv = loadEnv(mode, process.cwd(), "");
+  Object.assign(process.env, serverEnv);
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-  },
-  vite: {
+  return {
+    plugins: [
+      tanstackStart(),
+      nitro(),
+      viteReact(),
+      tailwindcss(),
+      tsConfigPaths(),
+    ],
     resolve: {
       alias: {
         "entities/lib/decode.js": path.resolve(
@@ -34,5 +34,5 @@ export default defineConfig({
         entities: path.resolve(import.meta.dirname, "node_modules/entities"),
       },
     },
-  },
+  };
 });
