@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { submitContactRequest } from "@/lib/contact.functions";
 import { useState } from "react";
@@ -78,7 +78,7 @@ function ContactPage() {
       <PageHero
         eyebrow="Stay with us"
         title="Feel free to drop a line."
-        lead="A first fifteen-minute call costs nothing. Tell us briefly where you are and what you are looking for, and we will propose the form of support that fits."
+        lead="A complimentary first fifteen-minute call is available. Tell us briefly where you are and what you are looking for, and we will propose the form of support that fits."
       />
 
       <EmotiveImage
@@ -163,19 +163,19 @@ function ContactPage() {
               </p>
             </div>
             <div>
-              <p className="eyebrow">Pricing</p>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                <li>First 15-minute call — free</li>
-                <li>Coaching — from €75 / 30 min individual</li>
-                <li>Coaching — €250 / hour corporate</li>
-                <li>Counselling — €65 / 45 min individual</li>
-                <li>Couples — €120 · Group — €55 per participant</li>
-                <li>Teens under 18 — free</li>
-              </ul>
+              <p className="eyebrow">Appointments</p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Choose the format that fits your needs. Session fees are shown securely during the booking process before payment.
+              </p>
+              <Link
+                to="/booking"
+                className="mt-6 inline-flex border border-primary px-6 py-3 text-[0.72rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+              >
+                Book a session
+              </Link>
             </div>
             <p className="border-l border-gold pl-5 text-sm leading-relaxed text-muted-foreground">
-              Money should not prevent you from getting help. We can find a
-              payment solution tailored to your situation.
+              Money should not prevent you from getting help. We can find a payment solution tailored to your situation.
             </p>
           </aside>
         </div>
