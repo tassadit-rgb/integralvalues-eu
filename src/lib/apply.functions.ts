@@ -30,6 +30,8 @@ const submitSchema = z.object({
   referees: z.array(refereeSchema).length(3),
 });
 
+const APPLICATION_LINK_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
 function randomToken() {
   const bytes = new Uint8Array(24);
   crypto.getRandomValues(bytes);
@@ -45,6 +47,10 @@ function makeReference() {
   return `IV-${rand}`;
 }
 
+function linkExpired(createdAt: string) {
+  return Date.now() - new Date(createdAt).getTime() > APPLICATION_LINK_TTL_MS;
+}
+
 /** Step 1 — capture the email and issue a short-lived application token. */
 export const startApplication = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => emailSchema.parse(input))
@@ -53,10 +59,9 @@ export const startApplication = createServerFn({ method: "POST" })
       "@/integrations/supabase/client.server"
     );
     const token = randomToken();
-    const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
     const { error } = await supabaseAdmin
       .from("affiliate_apply_sessions")
-      .insert({ email: data.email, token, expires_at: expiresAt });
+      .insert({ email: data.email, token });
     if (error) throw new Error("Could not start the application");
     return { token };
   });
@@ -73,11 +78,11 @@ export const confirmApplication = createServerFn({ method: "POST" })
       );
       const { data: row, error } = await supabaseAdmin
         .from("affiliate_apply_sessions")
-        .select("id, email, submitted_at, expires_at")
+        .select("id, email, submitted_at, created_at")
         .eq("token", data.token)
         .maybeSingle();
       if (error) throw new Error("Confirmation failed");
-      if (!row || new Date(row.expires_at).getTime() <= Date.now()) return null;
+      if (!row || linkExpired(row.created_at)) return null;
       await supabaseAdmin
         .from("affiliate_apply_sessions")
         .update({ confirmed_at: new Date().toISOString() })
@@ -96,11 +101,11 @@ export const submitApplication = createServerFn({ method: "POST" })
 
     const { data: session, error: sessionError } = await supabaseAdmin
       .from("affiliate_apply_sessions")
-      .select("id, email, confirmed_at, submitted_at, expires_at")
+      .select("id, email, confirmed_at, submitted_at, created_at")
       .eq("token", data.token)
       .maybeSingle();
     if (sessionError) throw new Error("Submission failed");
-    if (!session || new Date(session.expires_at).getTime() <= Date.now()) {
+    if (!session || linkExpired(session.created_at)) {
       throw new Error("This application link has expired. Please start again.");
     }
     if (!session.confirmed_at) {
