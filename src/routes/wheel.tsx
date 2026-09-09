@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -212,7 +212,9 @@ function WheelTracker({ userId }: { userId: string }) {
   const [entries, setEntries] = useState<Entry[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [downloading, setDownloading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const chartRef = useRef<HTMLDivElement | null>(null);
 
   async function loadEntries() {
     setLoading(true);
@@ -233,10 +235,14 @@ function WheelTracker({ userId }: { userId: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
-  const average = useMemo(() => {
+  const averageNumber = useMemo(() => {
     const sum = AREAS.reduce((s, a) => s + scores[a.key], 0);
-    return (sum / AREAS.length).toFixed(1);
+    return sum / AREAS.length;
   }, [scores]);
+
+  const average = averageNumber.toFixed(1);
+  const averageColor =
+    averageNumber <= 4 ? "#E5279A" : averageNumber <= 7 ? "#9C78D5" : "#75E8D5";
 
   const chartData = useMemo(
     () =>
@@ -268,6 +274,49 @@ function WheelTracker({ userId }: { userId: string }) {
     setSaving(false);
   }
 
+  function downloadChart() {
+    const svg = chartRef.current?.querySelector("svg");
+    if (!svg) {
+      setError("The chart is not available for download yet.");
+      return;
+    }
+
+    setDownloading(true);
+    setError(null);
+
+    try {
+      const clone = svg.cloneNode(true) as SVGSVGElement;
+      clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      clone.setAttribute("version", "1.1");
+
+      const style = document.createElementNS("http://www.w3.org/2000/svg", "style");
+      style.textContent = `text { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }`;
+      clone.insertBefore(style, clone.firstChild);
+
+      const serializer = new XMLSerializer();
+      const source = serializer
+        .serializeToString(clone)
+        .replaceAll("var(--border)", "#DDE1EC")
+        .replaceAll("var(--muted-foreground)", "#6B6F82")
+        .replaceAll("var(--chart-1)", "#100850");
+
+      const blob = new Blob([source], { type: "image/svg+xml;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      const stamp = new Date().toISOString().slice(0, 10);
+      link.href = url;
+      link.download = `integral-values-wheel-${stamp}.svg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Download failed. Please try again.");
+    } finally {
+      setDownloading(false);
+    }
+  }
+
   async function signOut() {
     await supabase.auth.signOut();
   }
@@ -279,7 +328,11 @@ function WheelTracker({ userId }: { userId: string }) {
           <div>
             <h2 className="text-lg font-semibold">Today's wheel</h2>
             <p className="mt-1 text-xs text-muted-foreground">
-              Average <span className="text-ink">{average}</span> / 10
+              Average{" "}
+              <span className="font-semibold" style={{ color: averageColor }}>
+                {average}
+              </span>{" "}
+              / 10
             </p>
             <div className="mt-5 space-y-4">
               {AREAS.map((a) => (
@@ -310,7 +363,7 @@ function WheelTracker({ userId }: { userId: string }) {
           </div>
 
           <div className="flex flex-col">
-            <div className="h-64 w-full">
+            <div ref={chartRef} className="h-64 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart data={chartData} outerRadius="75%">
                   <PolarGrid stroke="var(--border)" />
@@ -395,13 +448,24 @@ function WheelTracker({ userId }: { userId: string }) {
 
         {error && <p className="mt-4 text-xs text-destructive">{error}</p>}
 
-        <div className="mt-6 flex items-center justify-between gap-3">
-          <button
-            onClick={signOut}
-            className="text-xs text-muted-foreground hover:text-ink"
-          >
-            Sign out
-          </button>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              onClick={signOut}
+              className="text-xs text-muted-foreground hover:text-ink"
+            >
+              Sign out
+            </button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={downloadChart}
+              disabled={downloading}
+              className="border-border bg-card text-ink hover:bg-muted"
+            >
+              {downloading ? "Preparing…" : "Download chart"}
+            </Button>
+          </div>
           <Button
             onClick={save}
             disabled={saving}
