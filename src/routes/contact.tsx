@@ -142,8 +142,13 @@ function ContactPage() {
               <Textarea id="message" name="message" rows={6} required />
             </div>
 
-            <Button type="submit" size="lg" className="uppercase tracking-[0.18em]">
-              Send
+            <Button
+              type="submit"
+              size="lg"
+              disabled={sending}
+              className="uppercase tracking-[0.18em]"
+            >
+              {sending ? "Sending…" : "Send"}
             </Button>
             <p className="text-xs text-muted-foreground">
               Your message is treated confidentially and stored in line with GDPR.
