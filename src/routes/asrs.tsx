@@ -10,13 +10,13 @@ export const Route = createFileRoute("/asrs")({
       {
         name: "description",
         content:
-          "Grille d'autoévaluation des symptômes du TDAH chez l'adulte (ASRS-v1.1, OMS) : 18 questions, résultat immédiat, à discuter avec un psychologue.",
+          "Grille d'autoévaluation des symptômes du TDAH chez l'adulte (ASRS-v1.1) : 18 questions, résultat de dépistage de la partie A, à discuter avec un professionnel qualifié.",
       },
       { property: "og:title", content: "ASRS-v1.1 — autoévaluation TDAH adulte" },
       {
         property: "og:description",
         content:
-          "18 questions validées par l'OMS pour repérer les symptômes du TDAH chez l'adulte. Repérage, jamais un diagnostic.",
+          "18 questions pour repérer des symptômes compatibles avec un TDAH chez l'adulte. Repérage, jamais un diagnostic.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -33,7 +33,6 @@ const SCALE = [
   { value: 4, label: "Très souvent" },
 ] as const;
 
-/** Partie A — les 6 questions de dépistage. threshold = score à partir duquel la réponse est significative. */
 const PART_A: { q: string; threshold: number }[] = [
   {
     q: "À quelle fréquence avez-vous des difficultés à finaliser les derniers détails d'un projet une fois que le plus intéressant a été fait ?",
@@ -142,11 +141,7 @@ function AsrsPage() {
       (n, item, i) => n + ((answers[i] ?? -1) >= item.threshold ? 1 : 0),
       0,
     );
-    const totalScore = answers.reduce<number>((s, v) => s + (v ?? 0), 0);
-    const partBScore = answers
-      .slice(PART_A.length)
-      .reduce<number>((s, v) => s + (v ?? 0), 0);
-    return { flagsA, totalScore, partBScore, positive: flagsA >= 4 };
+    return { flagsA, positive: flagsA >= 4 };
   }, [answers]);
 
   return (
@@ -159,11 +154,9 @@ function AsrsPage() {
           Échelle d'autoévaluation du TDAH chez l'adulte (ASRS-v1.1)
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          Évaluez-vous sur chacun des critères ci-dessous en choisissant la
-          réponse qui décrit le mieux ce que vous avez ressenti et comment vous
-          vous êtes comporté <strong>au cours des 6 derniers mois</strong>. Les
-          six premières questions (partie A) constituent le dépistage ; les
-          douze suivantes (partie B) enrichissent l'échange clinique.
+          Répondez en pensant à votre fonctionnement <strong>au cours des six derniers mois</strong>.
+          Les six premières questions constituent la partie de dépistage ; les douze suivantes
+          complètent l'observation clinique. Cette autoévaluation ne pose pas de diagnostic.
         </p>
 
         {!submitted && (
@@ -214,44 +207,31 @@ function AsrsPage() {
         {submitted && (
           <Card className="mt-10 border-border bg-card p-6 text-ink">
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground/80">
-              Votre résultat
+              Résultat de dépistage — Partie A
             </p>
             <div className="mt-4 flex items-end gap-3">
               <span className="font-serif text-6xl text-ink">{result.flagsA}</span>
-              <span className="pb-2 text-sm text-muted-foreground">/ 6 réponses significatives (partie A)</span>
+              <span className="pb-2 text-sm text-muted-foreground">/ 6 réponses dans la zone de dépistage</span>
             </div>
 
             <h2 className="mt-6 font-serif text-2xl text-ink">
-              {result.positive
-                ? "Symptômes fortement compatibles avec un TDAH de l'adulte"
-                : "Peu de symptômes de dépistage relevés"}
+              {result.positive ? "Seuil de dépistage atteint" : "Seuil de dépistage non atteint"}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               {result.positive
-                ? "Quatre réponses significatives ou plus en partie A indiquent des symptômes très compatibles avec un TDAH chez l'adulte. Une évaluation clinique approfondie est recommandée : entretien, histoire développementale et échelles complémentaires."
-                : "Vos réponses en partie A n'atteignent pas le seuil habituel de dépistage. Cela n'exclut pas une difficulté attentionnelle : si votre quotidien reste difficile, parlons-en."}
+                ? "Quatre réponses ou plus dans la zone de dépistage de la partie A justifient d'envisager une évaluation clinique plus complète. Le résultat ne permet pas, à lui seul, de conclure à un TDAH."
+                : "Le seuil de dépistage de la partie A n'est pas atteint. Cela n'exclut pas un TDAH ni une autre difficulté attentionnelle ; l'histoire développementale, le retentissement quotidien et le contexte restent essentiels."}
             </p>
 
-            <dl className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div className="border-l border-gold pl-4">
-                <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Partie A</dt>
-                <dd className="mt-1 text-lg text-ink">{result.flagsA} / 6</dd>
-              </div>
-              <div className="border-l border-gold pl-4">
-                <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Partie B (score)</dt>
-                <dd className="mt-1 text-lg text-ink">{result.partBScore} / 48</dd>
-              </div>
-              <div className="border-l border-gold pl-4">
-                <dt className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Score total</dt>
-                <dd className="mt-1 text-lg text-ink">{result.totalScore} / 72</dd>
-              </div>
-            </dl>
+            <div className="mt-6 border-l border-gold pl-4">
+              <p className="text-xs uppercase tracking-[0.14em] text-muted-foreground">Partie B</p>
+              <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                Les réponses de la partie B apportent un contexte clinique complémentaire. Aucun score total diagnostique n'est affiché ici afin d'éviter une interprétation excessive de l'outil.
+              </p>
+            </div>
 
             <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-              L'ASRS-v1.1 est un outil de repérage, pas un diagnostic. Seul un
-              professionnel habilité peut poser un diagnostic de TDAH. Source :
-              Kessler RC et al., The World Health Organization Adult ADHD
-              Self-Report Scale (ASRS), Psychol Med 2005;35(2):245-56.
+              L'ASRS-v1.1 est un outil de repérage. Un diagnostic de TDAH nécessite une évaluation clinique qualifiée, incluant notamment l'histoire développementale, le retentissement fonctionnel et les diagnostics différentiels.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
@@ -265,7 +245,7 @@ function AsrsPage() {
                 Refaire le test
               </Button>
               <Button asChild>
-                <Link to="/contact">En parler avec un psychologue</Link>
+                <Link to="/contact">En parler avec un professionnel</Link>
               </Button>
             </div>
           </Card>
