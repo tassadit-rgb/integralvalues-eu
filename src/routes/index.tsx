@@ -5,7 +5,6 @@ import { FourCFramework } from "@/components/site/four-c";
 import { IntegralValues } from "@/components/site/integral-values";
 import { FounderSignature } from "@/components/site/founder-signature";
 import heroBrand from "@/assets/hero-brand.jpg";
-import founderHome from "@/assets/founder-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -272,12 +271,12 @@ function HomePage() {
         <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <figure className="overflow-hidden rounded-[2rem] bg-background">
             <img
-              src={founderHome}
+              src="/Home-Founder.png"
               alt="Tassadit Cherfaoui, founder of Integral Values"
               width={1200}
               height={1500}
               loading="lazy"
-              className="aspect-[4/5] w-full object-cover object-top"
+              className="aspect-[4/5] w-full object-cover object-center"
             />
           </figure>
           <div>
