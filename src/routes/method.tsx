@@ -1,7 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-layout";
-import { EmotiveImage } from "@/components/site/emotive-image";
-import humanMethod from "@/assets/human-method.jpg";
+import { SiteLayout, Section, CardTile } from "@/components/site/site-layout";
 
 export const Route = createFileRoute("/method")({
   head: () => ({
@@ -58,21 +56,47 @@ const PARTS = [
   },
 ] as const;
 
+const journeyLinkClass =
+  "group block rounded-[1.5rem] transition-transform duration-200 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40";
+
 function MethodPage() {
   return (
     <SiteLayout>
-      <PageHero
-        eyebrow="The Integral Method™"
-        title="The Integral Method™ — our DNA."
-        lead="Not a technique borrowed for the occasion, but a coherent architecture: a philosophy, a map, a mindset, and a journey that carries a person from self-knowledge to wholeness."
-        quote="Beyond coping. Towards wholeness."
-      />
+      <section className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="halo pointer-events-none absolute -left-48 -top-48 h-[36rem] w-[36rem]"
+        />
+        <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-6 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:py-24">
+          <div>
+            <p className="eyebrow">The Integral Method™</p>
+            <h1 className="mt-6 max-w-3xl text-4xl leading-[1.06] text-ink sm:text-5xl lg:text-6xl">
+              The Integral Method™ — our DNA.
+            </h1>
+            <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
+              Not a technique borrowed for the occasion, but a coherent architecture:
+              a philosophy, a map, a mindset, and a journey that carries a person
+              from self-knowledge to wholeness.
+            </p>
+            <p className="mt-10 max-w-xl font-serif text-xl italic text-ink/70">
+              Beyond coping. Towards wholeness.
+            </p>
+          </div>
 
-      <EmotiveImage
-        src={humanMethod}
-        alt="A person ascending a luminous staircase of light through layered planes"
-        caption="One architecture, six elements, a single coherence."
-      />
+          <figure className="mx-auto w-full max-w-[30rem] overflow-hidden rounded-[2rem] bg-navy shadow-sm">
+            <video
+              src="/Hero-Our-method-web.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label="Integral Method visual"
+              className="aspect-[3/4] w-full object-cover object-center"
+            />
+          </figure>
+        </div>
+      </section>
 
       <Section eyebrow="Architecture" title="Six elements, one coherence">
         <div className="grid gap-px border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
@@ -94,32 +118,46 @@ function MethodPage() {
         title="Five movements, one human journey"
       >
         <div className="grid gap-8 md:grid-cols-2">
-          <CardTile
-            meta="Discover yourself"
-            title="Psyché®"
-            body="Evidence-based psychological and leadership assessment. Self-awareness is the first step toward meaningful change."
-          />
-          <CardTile
-            meta="Heal yourself"
-            title="Care & Therapy"
-            body="Restore emotional balance and reconnect with your authentic self. Healing begins where judgment ends."
-          />
-          <CardTile
-            meta="Unlock your potential"
-            title="Coaching"
-            body="Turn vision into action and develop conscious leadership. Growth starts from within."
-          />
-          <CardTile
-            meta="Thrive together"
-            title="Cross-Culture"
-            body="Build bridges across cultures and teams. Diversity becomes strength when people truly connect."
-          />
-          <div className="md:col-span-2">
+          <Link to="/psyche" className={journeyLinkClass} aria-label="Discover Psyché">
             <CardTile
-              meta="Become whole"
-              title="CORE"
-              body="Our signature integrative pathway, designed to align Body, Brain, Heart and Consciousness. Beyond achievement lies fulfilment."
+              meta="Discover yourself"
+              title="Psyché®"
+              body="Evidence-based psychological and leadership assessment. Self-awareness is the first step toward meaningful change."
             />
+          </Link>
+
+          <Link to="/counselling" className={journeyLinkClass} aria-label="Discover Care & Therapy">
+            <CardTile
+              meta="Heal yourself"
+              title="Care & Therapy"
+              body="Restore emotional balance and reconnect with your authentic self. Healing begins where judgment ends."
+            />
+          </Link>
+
+          <Link to="/coaching" className={journeyLinkClass} aria-label="Discover Coaching">
+            <CardTile
+              meta="Unlock your potential"
+              title="Coaching"
+              body="Turn vision into action and develop conscious leadership. Growth starts from within."
+            />
+          </Link>
+
+          <Link to="/cross-culture" className={journeyLinkClass} aria-label="Discover Cross-Culture">
+            <CardTile
+              meta="Thrive together"
+              title="Cross-Culture"
+              body="Build bridges across cultures and teams. Diversity becomes strength when people truly connect."
+            />
+          </Link>
+
+          <div className="md:col-span-2">
+            <Link to="/core" className={journeyLinkClass} aria-label="Discover CORE">
+              <CardTile
+                meta="Become whole"
+                title="CORE"
+                body="Our signature integrative pathway, designed to align Body, Brain, Heart and Consciousness. Beyond achievement lies fulfilment."
+              />
+            </Link>
           </div>
         </div>
         <div className="mt-12">
