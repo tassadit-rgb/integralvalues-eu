@@ -12,13 +12,13 @@ export const Route = createFileRoute("/works")({
       {
         name: "description",
         content:
-          "The four ways we work with people: coaching, care and therapy, cross-cultural intelligence and the CORE™ integrative pathway.",
+          "The four ways we work with people: coaching, care and therapy, cross-cultural intelligence and the CORE™ organisational pathway.",
       },
-      { property: "og:title", content: "Works — Integral Values®" },
+      { property: "og:title", content: "Works — Integral Values" },
       {
         property: "og:description",
         content:
-          "Four editorial pathways: unlock your potential, heal deeply, thrive across borders, become whole.",
+          "Four pathways: unlock your potential, heal deeply, thrive across borders and transform organisations consciously.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -52,7 +52,7 @@ const PILLARS = [
   {
     to: "/core",
     title: "CORE™",
-    line: "Become Whole.",
+    line: "Transform Organisations Consciously.",
     img: humanCore,
     alt: "A single figure in deep blue light",
   },
@@ -63,8 +63,8 @@ function WorksPage() {
     <SiteLayout>
       <PageHero
         eyebrow="Works"
-        title="Four pathways. One human journey."
-        lead="Each pathway stands on its own, and each one leads back to the same intention: helping you become whole."
+        title="Four pathways. One integral direction."
+        lead="Each pathway stands on its own, and each is guided by the same intention: understanding people in context and supporting responsible, sustainable transformation."
       />
 
       {PILLARS.map((p, i) => (
