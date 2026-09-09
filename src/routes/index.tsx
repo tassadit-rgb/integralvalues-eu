@@ -52,7 +52,7 @@ const JOURNEY = [
     step: "Unlock Your Potential",
     name: "Coaching",
     to: "/coaching",
-    body: "Executive and organisational coaching for leadership, decision-making and sustainable performance.",
+    body: "Executive, leadership, career and life coaching for people who want to lead consciously.",
   },
   {
     step: "Thrive Together",
