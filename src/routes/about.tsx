@@ -1,8 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
-import integralPyramid from "@/assets/integral-pyramid.jpg";
-import founderPortrait from "@/assets/founder-portrait.jpg";
 import { DimensionIcons } from "@/components/site/dimension-icons";
+
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
@@ -10,7 +9,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "Who we are, our core values and the integral philosophy behind Integral Values Psy & Co — 25 years of clinical psychology, coaching and cross-cultural leadership.",
+          "Who we are, our core values and the integral philosophy behind Integral Values Psy & Co.",
       },
       { property: "og:title", content: "About — Integral Values Psy & Co" },
       {
@@ -39,24 +38,24 @@ const VALUES = [
     v: "A positive psychological state combining vitality with a genuine sense of learning.",
   },
   {
-    k: "Effective",
-    v: "Using all your energy, skill and motivation to reach the goals you set for yourself.",
+    k: "Effectiveness",
+    v: "Using energy, skill and motivation with clarity so that intended goals can be pursued responsibly.",
   },
   {
     k: "Go-Getter",
-    v: "Moving ahead until goals are reached and surpassed, becoming a model for others.",
+    v: "Moving ahead with initiative and perseverance while staying accountable to the impact of our actions.",
   },
   {
-    k: "Resilient",
-    v: "Adapting successfully to difficult experiences through mental, emotional and behavioural flexibility.",
+    k: "Resilience",
+    v: "Adapting to difficult experiences through mental, emotional and behavioural flexibility.",
   },
   {
-    k: "Assertive",
-    v: "Standing up for your interests and expressing your thoughts because respect runs both ways.",
+    k: "Assertiveness",
+    v: "Expressing needs, boundaries and viewpoints clearly while respecting the dignity of others.",
   },
   {
-    k: "Liveliness",
-    v: "Passion for human beings and for life, kept enthusiastic and accountable.",
+    k: "Lively",
+    v: "Bringing vitality, curiosity and engagement to human relationships and to life.",
   },
 ];
 
@@ -71,8 +70,24 @@ function AboutPage() {
       />
 
       <Section eyebrow="Who we are" title="The founder">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr]">
-          <div className="space-y-5 text-sm leading-relaxed text-muted-foreground">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <figure className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-none">
+            <div className="overflow-hidden rounded-[2rem] bg-secondary/30">
+              <img
+                src="/About-founder.jpeg"
+                alt="Portrait of Tassadit Cherfaoui, founder of Integral Values Psy & Co"
+                width={1200}
+                height={1500}
+                loading="lazy"
+                className="aspect-[4/5] w-full object-cover object-center"
+              />
+            </div>
+            <figcaption className="mt-4 text-xs leading-relaxed text-muted-foreground">
+              Tassadit — founder, clinical psychologist and coach.
+            </figcaption>
+          </figure>
+
+          <div className="max-w-2xl space-y-6 text-[0.95rem] leading-[1.8] text-muted-foreground">
             <p>
               Tassadit was born in Algiers and has lived sixteen years in the
               largest desert on earth. She studied clinical psychology,
@@ -89,93 +104,24 @@ function AboutPage() {
               psychologist she became.
             </p>
             <p>
-              A licensed clinical psychologist in practice for almost twenty-five
-              years, a Master Certified Coach and mentor with the International
-              Coaching Federation, certified in neuro-linguistic programming,
-              Ericksonian hypnosis, and gender and sexology practice. Before
-              that, a career across Hilton, Veon, Qtel, Pfizer, Knauf,
-              Saint-Gobain, Heineken and BMW &amp; Mini.
+              Her path has moved across clinical practice, coaching, leadership,
+              cross-cultural work and organisational life, with one continuous
+              concern: how to accompany the whole person without reducing them
+              to a label, a role or a symptom.
             </p>
             <p>
-              At the end of 2012, burnout. A rebirth followed: she returned to
-              the classroom, joined the European School of Psycho-somato-analysis
-              therapy, and since then well-being and mental health at work have
-              become her primary vocation. In 2013 she founded her own practice
-              and has shared it with an international network ever since.
+              Integral Values grew from that crossing of disciplines and lived
+              experience, and is now being developed as an international care,
+              education and leadership ecosystem.
             </p>
-          </div>
-          <div className="space-y-8">
-            <figure className="space-y-3">
-              <img
-                src={founderPortrait}
-                alt="Portrait of the founder of Integral Values Psy & Co, in a dark blazer in a softly lit office"
-                width={1024}
-                height={1280}
-                loading="lazy"
-                className="w-full border border-border object-cover"
-              />
-              <figcaption className="text-xs leading-relaxed text-muted-foreground">
-                Tassadit — founder, clinical psychologist and Master Certified
-                Coach.
-              </figcaption>
-            </figure>
-            <img
-              src={integralPyramid}
-              alt="Integral pyramidal form: Body, Brain and Emotion at the base, Consciousness radiating at the apex"
-              width={1200}
-              height={1200}
-              loading="lazy"
-              className="w-full border border-border object-cover"
-            />
-            <div className="space-y-4">
-              <p className="text-xs leading-relaxed text-muted-foreground">
-                3C + 1 — Body, Brain and Emotion form the base; Consciousness
-                rises at the apex and holds them together.
-              </p>
-              <dl className="space-y-4 border-t border-border pt-5 text-sm leading-relaxed">
-                <div>
-                  <dt className="font-serif text-base text-cyan">Body</dt>
-                  <dd className="text-muted-foreground">
-                    The first witness. Breath, posture, tension and fatigue
-                    carry what has not yet been said — we listen to the
-                    somatic signal before we interpret it.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-purple">Brain</dt>
-                  <dd className="text-muted-foreground">
-                    The organiser. Thoughts, beliefs and learned patterns
-                    shape how a situation is read — we make those patterns
-                    visible so they can be chosen rather than repeated.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-pink">Emotion</dt>
-                  <dd className="text-muted-foreground">
-                    The compass. Affect, attachment and relationship give
-                    every decision its weight — we welcome emotion as
-                    information, never as a weakness.
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-serif text-base text-ink">
-                    Consciousness
-                  </dt>
-                  <dd className="text-muted-foreground">
-                    The apex. Values, meaning and wider awareness integrate
-                    the three others — this is where change stops being a
-                    technique and becomes a direction.
-                  </dd>
-                </div>
-              </dl>
-            </div>
-
           </div>
         </div>
       </Section>
 
       <Section muted eyebrow="Four dimensions" title="Body, Brain, Emotion, Consciousness">
-        <DimensionIcons />
+        <div className="mx-auto max-w-5xl">
+          <DimensionIcons />
+        </div>
       </Section>
 
       <Section muted eyebrow="Why" title="Our core values">
@@ -195,17 +141,14 @@ function AboutPage() {
         <div className="grid gap-10 md:grid-cols-2">
           <p className="text-sm leading-relaxed text-muted-foreground">
             The integral approach refuses to divide a person into parts to be
-            treated separately. Emotions, thought, body and spirit are read
-            together, in relation to the self, to the couple, to the team and
-            to the world. Coaching, therapy and training are not three
-            professions here; they are three angles on one movement.
+            treated separately. Emotions, thought, body and consciousness are
+            read together, in relation to the self, to others, to culture and
+            to the wider world.
           </p>
           <p className="text-sm leading-relaxed text-muted-foreground">
-            In practice this means slowness where slowness is needed and
-            directness where it is useful. It means assessment that informs
-            rather than labels, and confidentiality that is never negotiable.
-            It means that the work belongs to you, and that we are only
-            accompanying it.
+            In practice this means assessment that informs rather than labels,
+            confidentiality that is never negotiable, and an intercultural lens
+            that recognises context, history, trauma, belonging and meaning.
           </p>
         </div>
         <Link
