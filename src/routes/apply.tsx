@@ -31,13 +31,13 @@ export const Route = createFileRoute("/apply")({
       {
         name: "description",
         content:
-          "Apply to the Integral Values Associate Network: confirm your email, answer the screening questions and submit your application with three referees.",
+          "Apply to the Integral Values Associate Network: create a secure application link, answer the screening questions and submit your application with three referees.",
       },
       { property: "og:title", content: "Apply — Integral Values" },
       {
         property: "og:description",
         content:
-          "Confirm your email, answer the screening questions and submit your application with three referees.",
+          "Create a secure application link, answer the screening questions and submit your application with three referees.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -118,7 +118,7 @@ function Field({
 }
 
 function Steps({ current }: { current: number }) {
-  const labels = ["Your email", "Confirm link", "Questions", "Referees"];
+  const labels = ["Your email", "Secure link", "Questions", "Referees"];
   return (
     <ol className="mb-10 flex flex-wrap gap-3 text-xs uppercase tracking-[0.14em]">
       {labels.map((l, i) => (
@@ -161,14 +161,14 @@ function PrivacyNotice() {
           to be named.
         </li>
         <li>
-          <span className="text-ink">Retention.</span> Applications are kept for
-          24 months, then deleted. We never sell or share your data for
-          marketing.
+          <span className="text-ink">Retention.</span> Application data is kept
+          only as long as necessary for review, follow-up and applicable legal
+          or accountability requirements. We do not sell it for marketing.
         </li>
         <li>
-          <span className="text-ink">Your rights.</span> Under GDPR you may
-          access, correct, export or erase your data, and withdraw consent at
-          any time by writing to us via the{" "}
+          <span className="text-ink">Your rights.</span> Depending on applicable
+          law, you may request access, correction, deletion or restriction of
+          your personal data by writing to us via the{" "}
           <Link to="/contact" className="text-primary underline">
             contact page
           </Link>
@@ -266,7 +266,7 @@ function ApplyPage() {
     confirm({ data: { token: urlToken } })
       .then((res) => {
         if (!res) {
-          toast.error("This confirmation link is not valid.");
+          toast.error("This secure link is invalid or has expired.");
           return;
         }
         if (res.submitted) {
@@ -276,9 +276,9 @@ function ApplyPage() {
         setEmail(res.email);
         setToken(urlToken);
         setStep(2);
-        toast.success("Email confirmed — you can answer the questions now.");
+        toast.success("Secure link verified — you can answer the questions now.");
       })
-      .catch(() => toast.error("We could not confirm this link."))
+      .catch(() => toast.error("We could not verify this secure link."))
       .finally(() => setBusy(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -360,7 +360,7 @@ function ApplyPage() {
       });
       setReference(res.reference_code);
       setStep(4);
-      toast.success("Application received — we reply within ten working days.");
+      toast.success("Application received — our team will review it individually.");
     } catch {
       toast.error("We could not send your application. Please try again.");
     } finally {
@@ -381,7 +381,7 @@ function ApplyPage() {
       <PageHero
         eyebrow="Associate Network"
         title="Apply"
-        lead="Four steps: confirm your email, answer the screening questions, complete your profile and name three referees for review."
+        lead="Four steps: create your secure application link, answer the screening questions, complete your profile and name three referees for review."
       />
 
       <Section muted eyebrow="Application" title="Your application">
@@ -390,8 +390,9 @@ function ApplyPage() {
         {step === 0 && (
           <form onSubmit={onStart} noValidate className="max-w-xl space-y-6">
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Start with your email ID. We create a private confirmation link so
-              only you can complete this application.
+              Start with a valid email address we can use to contact you if your
+              application moves forward. We create a private application link
+              that expires after seven days.
             </p>
             <Field id="apply_email" label="Email ID" error={emailError ?? undefined}>
               <Input
@@ -417,7 +418,7 @@ function ApplyPage() {
               application.
             </ConsentBox>
             <Button type="submit" size="lg" disabled={busy}>
-              {busy ? "Preparing…" : "Get my confirmation link"}
+              {busy ? "Preparing…" : "Create my secure link"}
             </Button>
           </form>
         )}
@@ -425,12 +426,12 @@ function ApplyPage() {
         {step === 1 && confirmLink && (
           <div className="max-w-2xl border border-border bg-card p-8">
             <h3 className="font-serif text-2xl text-ink">
-              Confirm your email
+              Open your secure application link
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              A confirmation link has been created for{" "}
+              A private link has been created for{" "}
               <span className="text-primary">{email}</span>. Open it to unlock
-              the questionnaire — keep it private, it is unique to you.
+              the questionnaire. Keep it private; it expires after seven days.
             </p>
             <p className="mt-4 break-all rounded-sm bg-background p-4 text-sm text-muted-foreground">
               {confirmLink}
@@ -439,7 +440,7 @@ function ApplyPage() {
               <Button
                 onClick={() => {
                   navigator.clipboard?.writeText(confirmLink);
-                  toast.success("Confirmation link copied.");
+                  toast.success("Secure link copied.");
                 }}
               >
                 Copy link
@@ -447,11 +448,10 @@ function ApplyPage() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  setStep(2);
-                  toast.success("Email confirmed — continue your application.");
+                  window.location.href = confirmLink;
                 }}
               >
-                Continue now
+                Open secure link
               </Button>
             </div>
           </div>
@@ -653,13 +653,51 @@ function ApplyPage() {
               ))}
             </div>
 
+            <div className="space-y-5 border-t border-border pt-8">
+              <ConsentBox
+                id="consent_processing"
+                checked={consent.processing}
+                onChange={(v) =>
+                  setConsent((prev) => ({ ...prev, processing: v }))
+                }
+                error={errors["consent_processing"]}
+              >
+                I agree that Integral Values Psy &amp; Co may process the
+                information in this application for the purpose of assessing my
+                eligibility for the Associate Network.
+              </ConsentBox>
+              <ConsentBox
+                id="consent_referees"
+                checked={consent.referees}
+                onChange={(v) =>
+                  setConsent((prev) => ({ ...prev, referees: v }))
+                }
+                error={errors["consent_referees"]}
+              >
+                I confirm that the three referees named above have agreed to be
+                listed and may be contacted by Integral Values if my application
+                moves to review.
+              </ConsentBox>
+              <ConsentBox
+                id="consent_accuracy"
+                checked={consent.accuracy}
+                onChange={(v) =>
+                  setConsent((prev) => ({ ...prev, accuracy: v }))
+                }
+                error={errors["consent_accuracy"]}
+              >
+                I confirm that the information I have provided is accurate to
+                the best of my knowledge.
+              </ConsentBox>
+            </div>
+
             <div className="flex flex-wrap items-center gap-4">
               <Button type="submit" size="lg" disabled={busy}>
                 {busy ? "Sending…" : "Submit application"}
               </Button>
               <p className="text-xs leading-relaxed text-muted-foreground">
-                Your data is processed under GDPR solely to review your
-                application.
+                Your data is processed solely to review your application and
+                manage the affiliation process.
               </p>
             </div>
           </form>
@@ -669,8 +707,9 @@ function ApplyPage() {
           <div className="max-w-2xl border border-border bg-card p-8">
             <h3 className="font-serif text-2xl text-ink">Thank you.</h3>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Your application and three referees have been received. We review
-              each profile individually and reply within ten working days.
+              Your application and three referees have been received. Each
+              profile is reviewed individually and our team will contact you
+              with the next step.
             </p>
             {reference && (
               <div className="mt-6 border border-border bg-background p-6">
