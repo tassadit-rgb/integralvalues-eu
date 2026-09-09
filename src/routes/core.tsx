@@ -11,17 +11,17 @@ import humanCore from "@/assets/human-core.jpg";
 export const Route = createFileRoute("/core")({
   head: () => ({
     meta: [
-      { title: "Core — Integral Values Psy & Co" },
+      { title: "CORE — Integral Values Psy & Co" },
       {
         name: "description",
         content:
-          "The Integrative Leadership Experience, C-level executive search and Care & Wellbeing at Work (CW2) — the organisational core of Integral Values.",
+          "Leadership, organisational care and people strategy through an integral, cross-cultural approach.",
       },
-      { property: "og:title", content: "Core — Integral Values Psy & Co" },
+      { property: "og:title", content: "CORE — Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
-          "Leadership immersion, executive search and workplace well-being programmes for organisations.",
+          "Leadership development, organisational care and people strategy for international organisations.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -34,10 +34,10 @@ function CorePage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="4C Framework — Core"
+        eyebrow="CORE — Organisations"
         title="The organisational centre: leadership, people and care at work."
-        lead="Core gathers the work we do inside organisations — an immersive leadership experience, executive search for general and C-suite roles, and a well-being programme designed with the people it serves."
-        quote="“Becoming a leader is the same as becoming a fully integrated human being.” — Ken Wilber"
+        lead="CORE brings together leadership development, people strategy and mental-health-informed organisational care. The approach reads performance and wellbeing together rather than treating them as separate agendas."
+        quote="Human First. Purpose Driven. Transformation Inspired."
       />
 
       <EmotiveImage
@@ -49,34 +49,34 @@ function CorePage() {
       <Section eyebrow="Programmes" title="Three pillars">
         <div className="grid gap-8 md:grid-cols-3">
           <CardTile
-            meta="ILE"
+            meta="Leadership"
             title="Integrative Leadership Experience"
-            body="A fully integrative simulation condensing years of leadership practice into a few days. Participants turn management theory into practice immediately; available fully in person or 50% blended."
+            body="Immersive leadership development combining reflection, simulation, feedback and practice across decision-making, relationships, culture and personal responsibility."
           />
           <CardTile
-            meta="Search"
-            title="C-level executive search"
-            body="General management and C-suite search built on a deep reading of people against culture: assessment, investigation, package negotiation, outplacement and onboarding coaching."
+            meta="People"
+            title="Executive & people strategy"
+            body="Support around leadership profiles, succession, onboarding, assessment, role transitions and the fit between people, culture and organisational context."
           />
           <CardTile
-            meta="CW2"
+            meta="Care"
             title="Care & Wellbeing at Work"
-            body="Assessment (#Psyché), a well-being barometer, activity and incentive trackers and change-management tools, assembled into a plan for your organisation."
+            body="A structured approach to psychosocial wellbeing, prevention, team climate and change — informed by assessment, dialogue and organisational reality."
           />
         </div>
       </Section>
 
-      <Section muted eyebrow="Method" title="Techniques we draw from">
+      <Section muted eyebrow="Method" title="What informs the work">
         <ul className="grid gap-3 text-sm text-muted-foreground sm:grid-cols-2 lg:grid-cols-3">
           {[
             "The AQAL framework",
             "Positive psychology",
             "Transactional analysis",
             "Spiral dynamics",
-            "Ericksonian hypnosis",
-            "Neuro-linguistic programming",
-            "The dramatic triangle",
-            "Bio-dynamic relaxation",
+            "Systems thinking",
+            "Intercultural intelligence",
+            "Psychological safety",
+            "Change management",
             "Ofman’s core quadrant",
           ].map((t) => (
             <li key={t} className="border-b border-border/60 pb-3">
@@ -86,26 +86,24 @@ function CorePage() {
         </ul>
       </Section>
 
-      <Section eyebrow="Why partner" title="What clients rely on">
+      <Section eyebrow="Why CORE" title="Three operating principles">
         <div className="grid gap-8 md:grid-cols-3">
           <div className="border-l border-gold pl-6">
-            <h3 className="text-lg text-ink">Certified and ethical</h3>
+            <h3 className="text-lg text-ink">Ethics & confidentiality</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Our coaches are certified and practise strictly within the ICF
-              code of ethics.
+              Sensitive people and organisational information is handled with clear boundaries, confidentiality and role clarity.
             </p>
           </div>
           <div className="border-l border-gold pl-6">
-            <h3 className="text-lg text-ink">98%+ satisfaction</h3>
+            <h3 className="text-lg text-ink">Human + systemic</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Most of our work arrives through referral from people we have
-              already accompanied.
+              We look at the individual, the team, the structure and the wider context instead of locating every difficulty inside one person.
             </p>
           </div>
           <div className="border-l border-gold pl-6">
-            <h3 className="text-lg text-ink">Global reach</h3>
+            <h3 className="text-lg text-ink">International by design</h3>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Individuals coached from 42 nationalities across five continents.
+              Cross-cultural dynamics, language, mobility and different leadership norms are considered from the start rather than added later.
             </p>
           </div>
         </div>
