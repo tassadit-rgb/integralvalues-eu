@@ -10,7 +10,7 @@ export const Route = createFileRoute("/for-you")({
       {
         name: "description",
         content:
-          "Integral Development membership plans, free resources, articles and the book Rise Above — ways to stay close to the Integral Values practice between sessions.",
+          "Integral Development membership plans, free resources, articles and ways to stay close to the Integral Values practice between sessions.",
       },
       { property: "og:title", content: "For You — membership, resources, store" },
       {
@@ -92,7 +92,7 @@ const INDIVIDUAL_PLANS: IndividualPlan[] = [
       "Assessment + coaching plan",
       "Access to internal resources",
       "One-to-one video sessions",
-      "Open chat access — 24h response",
+      "Message support during agreed service hours",
       "The Rubi Box",
     ],
     cta: "Choose Rubi",
@@ -107,12 +107,12 @@ const INDIVIDUAL_PLANS: IndividualPlan[] = [
     stone: "Diamant",
     subtitle: "Integral Harmony",
     price: "€3,500",
-    bestFor: "Life transitions, burnout recovery, purpose, wellbeing and long-term alignment.",
+    bestFor: "Major life transitions, burnout-related change, purpose, wellbeing and long-term alignment.",
     points: [
       "Six coaching sessions across six months",
       "Personal assessment + coaching map",
       "Advanced internal resources",
-      "Priority support chat — 6h response",
+      "Priority message support during agreed service hours",
       "Long-term transition support",
       "The Diamond Box",
     ],
@@ -128,8 +128,8 @@ const AMETHYST_POINTS = [
   "Full access to Library, Lab and blog editing",
   "Group of Practice",
   "Integral Practice onboarding training",
-  "ICF Certification Path*",
-  "Values Ranking Facilitator Certification",
+  "ICF-aligned professional development pathway*",
+  "Values Ranking facilitator pathway*",
   "Associate Partner Board access",
   "Referral + Integral Values Badge ID",
   "Coaching toolkits + the Purple Box",
@@ -238,7 +238,7 @@ function ProfessionalPlan() {
           </div>
 
           <p className="mt-6 max-w-md text-sm leading-relaxed text-muted-foreground">
-            For coaches and counsellors ready to deepen their expertise, strengthen their practice and enter the Integral Values professional ecosystem.
+            For coaches and counsellors ready to deepen their expertise, strengthen their practice and enter the Integral Values professional ecosystem. Admission is reviewed before payment.
           </p>
 
           <a
@@ -271,7 +271,7 @@ function ForYouPage() {
       <PageHero
         eyebrow="For You"
         title="Stay with us, between sessions."
-        lead="The work does not only happen in the room. Resources, reflections and an Integral Development membership designed to keep the practice present in ordinary weeks."
+        lead="The work does not only happen in the room. Resources, reflections and Integral Development plans designed to keep the practice present in ordinary weeks."
         quote="You're not alone."
       />
 
@@ -284,7 +284,7 @@ function ForYouPage() {
       <Section eyebrow="Membership" title="Choose the level of support that fits your journey">
         <div className="mb-14 max-w-2xl">
           <p className="text-base leading-relaxed text-muted-foreground">
-            From first exploration to deep transformation, each plan offers a different level of presence, structure and support — while keeping the same human, integral approach.
+            From first exploration to deeper development, each plan offers a different level of presence, structure and support while keeping the same human, integral approach.
           </p>
         </div>
 
@@ -306,12 +306,14 @@ function ForYouPage() {
 
         <ProfessionalPlan />
 
-        <p className="mx-auto mt-10 max-w-3xl text-center text-xs leading-relaxed text-muted-foreground">
-          Each selection opens a pre-filled email to invoice@integralvalues.eu so the team can validate your chosen path and send the appropriate invoice or next steps.
-        </p>
-        <p className="mx-auto mt-4 max-w-3xl text-center text-xs leading-relaxed text-muted-foreground">
-          *Certification pathways are subject to eligibility, specific criteria and the requirements of the relevant certification body. Membership does not itself guarantee certification.
-        </p>
+        <div className="mx-auto mt-10 grid max-w-3xl gap-3 text-center text-xs leading-relaxed text-muted-foreground">
+          <p>
+            Individual plans are validated before payment or invoicing. Amethyst requires a professional eligibility review before any payment is requested.
+          </p>
+          <p>
+            *Professional development and certification-related pathways remain subject to eligibility and the requirements of the relevant external bodies. Membership does not itself confer or guarantee certification, accreditation or professional registration.
+          </p>
+        </div>
       </Section>
 
       <Section muted eyebrow="Resources" title="A quieter kind of belonging">
@@ -323,18 +325,9 @@ function ForYouPage() {
               Reflection, grounding and self-observation tools designed to help you check in with yourself between sessions.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
-              <Link
-                to="/who5"
-                className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15"
-              >
-                WHO-5
-              </Link>
-              <Link
-                to="/wheel"
-                className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15"
-              >
-                Wheel of Life
-              </Link>
+              <Link to="/asrs" className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15">ASRS</Link>
+              <Link to="/who5" className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15">WHO-5</Link>
+              <Link to="/wheel" className="rounded-full border border-[#75E8D5]/70 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#2d8f7d] transition-colors hover:bg-[#75E8D5]/15">Wheel of Life</Link>
             </div>
           </article>
 
@@ -342,7 +335,7 @@ function ForYouPage() {
             <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#c91f84]">Member</p>
             <h3 className="mt-4 font-serif text-2xl text-ink">Integral Circle</h3>
             <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-              Monthly written reflections, a live group session, and priority access to seasonal workshops and retreats.
+              Written reflections, facilitated group practice and priority access to selected workshops and seasonal experiences.
             </p>
             <a
               href={`mailto:invoice@integralvalues.eu?subject=${encodeURIComponent("Integral Values — Join the Integral Circle")}&body=${encodeURIComponent("Hello Integral Values,\n\nI would like to join the Integral Circle.\n\nName:\nCountry:\nPhone:\n\nPlease send me the next steps.")}`}
@@ -354,15 +347,15 @@ function ForYouPage() {
 
           <article className="flex h-full flex-col rounded-[2rem] border border-[#9C78D5]/35 bg-card p-8 shadow-[0_14px_45px_rgba(16,8,80,.045)]">
             <p className="text-[0.68rem] uppercase tracking-[0.24em] text-[#7d53ad]">Store</p>
-            <h3 className="mt-4 font-serif text-2xl text-ink">Rise Above</h3>
+            <h3 className="mt-4 font-serif text-2xl text-ink">Books & Editions</h3>
             <p className="mt-4 flex-1 text-sm leading-relaxed text-muted-foreground">
-              The book — a companion for those rebuilding after change, written from clinical and executive practice.
+              Publications and reflective materials from the Integral Values ecosystem. Availability is shared on request.
             </p>
             <a
-              href={`mailto:invoice@integralvalues.eu?subject=${encodeURIComponent("Integral Values — Rise Above book")}&body=${encodeURIComponent("Hello Integral Values,\n\nI would like more information about the Rise Above book.\n\nName:\nCountry:\n\nPlease send me availability and ordering information.")}`}
+              href={`mailto:invoice@integralvalues.eu?subject=${encodeURIComponent("Integral Values — Books & Editions")}&body=${encodeURIComponent("Hello Integral Values,\n\nI would like information about available books and editions.\n\nName:\nCountry:\n\nPlease send me availability and ordering information.")}`}
               className="mt-7 inline-flex w-fit rounded-full border border-[#9C78D5]/60 px-4 py-2 text-[0.68rem] uppercase tracking-[0.15em] text-[#7d53ad] transition-colors hover:bg-[#9C78D5]/10"
             >
-              Ask about the book
+              Ask about editions
             </a>
           </article>
         </div>
@@ -373,7 +366,7 @@ function ForYouPage() {
           {[
             {
               t: "Healing begins where judgment ends",
-              d: "On why self-criticism slows recovery, and what replaces it.",
+              d: "On why self-criticism can slow change, and what can replace it.",
             },
             {
               t: "The quiet signals of burnout",
@@ -381,7 +374,7 @@ function ForYouPage() {
             },
             {
               t: "Belonging across cultures",
-              d: "Why relocation is an identity task before it is a logistical one.",
+              d: "Why relocation can become an identity task before it is only a logistical one.",
             },
           ].map((a) => (
             <CardTile key={a.t} title={a.t} body={a.d} meta="Article" />
