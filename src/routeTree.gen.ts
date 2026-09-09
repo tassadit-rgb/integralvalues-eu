@@ -20,6 +20,7 @@ import { Route as CounsellingRouteImport } from './routes/counselling'
 import { Route as CoreRouteImport } from './routes/core'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoachingRouteImport } from './routes/coaching'
+import { Route as AsrsRouteImport } from './routes/asrs'
 import { Route as ApplyRouteImport } from './routes/apply'
 import { Route as AffiliateRouteImport } from './routes/affiliate'
 import { Route as AboutRouteImport } from './routes/about'
@@ -84,6 +85,11 @@ const CoachingRoute = CoachingRouteImport.update({
   path: '/coaching',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AsrsRoute = AsrsRouteImport.update({
+  id: '/asrs',
+  path: '/asrs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApplyRoute = ApplyRouteImport.update({
   id: '/apply',
   path: '/apply',
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
+  '/asrs': typeof AsrsRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
+  '/asrs': typeof AsrsRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -173,6 +181,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
+  '/asrs': typeof AsrsRoute
   '/coaching': typeof CoachingRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/affiliate'
     | '/apply'
+    | '/asrs'
     | '/coaching'
     | '/contact'
     | '/core'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/affiliate'
     | '/apply'
+    | '/asrs'
     | '/coaching'
     | '/contact'
     | '/core'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/affiliate'
     | '/apply'
+    | '/asrs'
     | '/coaching'
     | '/contact'
     | '/core'
@@ -260,6 +272,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AffiliateRoute: typeof AffiliateRouteWithChildren
   ApplyRoute: typeof ApplyRoute
+  AsrsRoute: typeof AsrsRoute
   CoachingRoute: typeof CoachingRoute
   ContactRoute: typeof ContactRoute
   CoreRoute: typeof CoreRoute
@@ -355,6 +368,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CoachingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/asrs': {
+      id: '/asrs'
+      path: '/asrs'
+      fullPath: '/asrs'
+      preLoaderRoute: typeof AsrsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/apply': {
       id: '/apply'
       path: '/apply'
@@ -431,6 +451,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AffiliateRoute: AffiliateRouteWithChildren,
   ApplyRoute: ApplyRoute,
+  AsrsRoute: AsrsRoute,
   CoachingRoute: CoachingRoute,
   ContactRoute: ContactRoute,
   CoreRoute: CoreRoute,
