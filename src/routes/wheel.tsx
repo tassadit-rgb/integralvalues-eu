@@ -239,7 +239,14 @@ function WheelTracker({ userId }: { userId: string }) {
   }, [scores]);
 
   const chartData = useMemo(
-    () => AREAS.map((a) => ({ area: a.label, value: scores[a.key] })),
+    () =>
+      AREAS.map((a) => ({
+        area: a.label,
+        value: scores[a.key],
+        outerBand: 10,
+        middleBand: 7,
+        innerBand: 4,
+      })),
     [scores],
   );
 
@@ -314,18 +321,62 @@ function WheelTracker({ userId }: { userId: string }) {
                   <PolarRadiusAxis
                     angle={90}
                     domain={[0, 10]}
-                    tick={false}
+                    ticks={[2, 4, 6, 8, 10]}
+                    tick={{ fill: "var(--muted-foreground)", fontSize: 9 }}
                     axisLine={false}
+                  />
+                  <Radar
+                    dataKey="outerBand"
+                    stroke="none"
+                    fill="rgba(117, 232, 213, 0.10)"
+                    fillOpacity={1}
+                  />
+                  <Radar
+                    dataKey="middleBand"
+                    stroke="none"
+                    fill="rgba(156, 120, 213, 0.13)"
+                    fillOpacity={1}
+                  />
+                  <Radar
+                    dataKey="innerBand"
+                    stroke="none"
+                    fill="rgba(229, 39, 154, 0.12)"
+                    fillOpacity={1}
                   />
                   <Radar
                     dataKey="value"
                     stroke="var(--chart-1)"
                     fill="var(--chart-1)"
-                    fillOpacity={0.35}
+                    fillOpacity={0.42}
                   />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
+
+            <div className="mt-3 grid grid-cols-3 gap-2 text-[11px] text-muted-foreground">
+              <div className="rounded-lg border border-border/70 bg-card px-2 py-2">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#E5279A]" />
+                  <span className="font-medium text-ink">1–4</span>
+                </div>
+                <p>Foundation / attention</p>
+              </div>
+              <div className="rounded-lg border border-border/70 bg-card px-2 py-2">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#9C78D5]" />
+                  <span className="font-medium text-ink">5–7</span>
+                </div>
+                <p>Growth / stabilising</p>
+              </div>
+              <div className="rounded-lg border border-border/70 bg-card px-2 py-2">
+                <div className="mb-1 flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-[#75E8D5]" />
+                  <span className="font-medium text-ink">8–10</span>
+                </div>
+                <p>Expansion / aligned</p>
+              </div>
+            </div>
+
             <div className="mt-4 space-y-2">
               <Label htmlFor="note" className="text-xs text-muted-foreground">
                 Note (optional)
