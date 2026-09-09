@@ -63,6 +63,18 @@ function PsychePage() {
       <Section muted eyebrow="Free self-checks" title="Begin quietly, on your own">
         <div className="grid gap-8 md:grid-cols-2">
           <Link
+            to="/asrs"
+            className="border border-border bg-card p-8 transition-colors hover:bg-accent/40 md:col-span-2"
+          >
+            <h3 className="text-xl text-ink">ASRS-v1.1 — Adult ADHD Self-Report Scale</h3>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              La grille d'autoévaluation du TDAH chez l'adulte validée par
+              l'OMS : 18 questions sur les six derniers mois, avec le résultat
+              de dépistage de la partie A immédiatement lisible et prêt à être
+              discuté en consultation.
+            </p>
+          </Link>
+          <Link
             to="/who5"
             className="border border-border bg-card p-8 transition-colors hover:bg-accent/40"
           >
