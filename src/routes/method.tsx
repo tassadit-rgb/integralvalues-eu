@@ -121,7 +121,7 @@ function MethodPage() {
           <Link to="/psyche" className={journeyLinkClass} aria-label="Discover Psyché">
             <CardTile
               meta="Discover yourself"
-              title="Psyché®"
+              title="Psyché™"
               body="Evidence-based psychological and leadership assessment. Self-awareness is the first step toward meaningful change."
             />
           </Link>
