@@ -21,7 +21,7 @@ export function BookButton({
 }) {
   return (
     <Link
-      to="/contact"
+      to="/booking"
       className={`inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90 ${className}`}
     >
       {label}
