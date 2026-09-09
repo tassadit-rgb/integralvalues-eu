@@ -1,13 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { SiteLayout, Section, BookButton } from "@/components/site/site-layout";
 import { FourCFramework } from "@/components/site/four-c";
 import { IntegralValues } from "@/components/site/integral-values";
 import { FounderSignature } from "@/components/site/founder-signature";
 import heroBrand from "@/assets/hero-brand.jpg";
-import humanLeader from "@/assets/human-leader.jpg";
-import humanHealing from "@/assets/human-healing.jpg";
-import humanTogether from "@/assets/human-together.jpg";
-import humanCore from "@/assets/human-core.jpg";
+import founderHome from "@/assets/founder-portrait.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -60,43 +58,113 @@ const JOURNEY = [
     body: "Intercultural intelligence for individuals, families and international organisations.",
   },
   {
-    step: "Become Whole",
+    step: "Lead & Work Consciously",
     name: "CORE™",
     to: "/core",
-    body: "Our integrative pathway, aligning Body, Brain, Emotion and Consciousness.",
+    body: "Organisational care, leadership and people advisory for healthier, more responsible systems.",
   },
 ] as const;
 
-const PILLARS = [
+const WORKS_TABS = [
   {
-    to: "/coaching",
     title: "Coaching",
     line: "Unlock Your Potential.",
-    img: humanLeader,
-    alt: "A person facing an open horizon at sunrise",
+    body: "Executive, leadership, career and life coaching for people navigating responsibility, transition and conscious growth.",
   },
   {
-    to: "/counselling",
     title: "Care & Therapy",
     line: "Heal. Reconnect. Flourish.",
-    img: humanHealing,
-    alt: "Soft daylight falling through a quiet forest",
+    body: "Psychological care for anxiety, burnout, trauma, attachment and relationships, with attention to the whole person and their context.",
   },
   {
-    to: "/cross-culture",
     title: "Cross-Culture",
     line: "Thrive Across Borders.",
-    img: humanTogether,
-    alt: "People of different cultures walking side by side",
+    body: "Support for migrants, expatriates, returning nationals, mobile families and global teams navigating identity, belonging and cultural transition.",
   },
   {
-    to: "/core",
     title: "CORE™",
-    line: "Become Whole.",
-    img: humanCore,
-    alt: "A solitary figure in deep blue light",
+    line: "Transform Organisations Consciously.",
+    body: "Organisational care, leadership and people advisory bringing wellbeing, culture and responsible performance into the same conversation.",
   },
 ] as const;
+
+function WorksTabs() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % WORKS_TABS.length);
+    }, 5200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const current = WORKS_TABS[active];
+
+  return (
+    <section className="overflow-hidden bg-background">
+      <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-28">
+        <p className="eyebrow">Works</p>
+        <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-4xl">
+          Four fields. One integral direction.
+        </h2>
+
+        <div className="mt-10 overflow-x-auto border-b border-border/70 pb-px">
+          <div
+            className="flex min-w-max gap-8"
+            role="tablist"
+            aria-label="Integral Values Works"
+          >
+            {WORKS_TABS.map((item, index) => (
+              <button
+                key={item.title}
+                type="button"
+                role="tab"
+                aria-selected={active === index}
+                aria-controls="works-panel"
+                onClick={() => setActive(index)}
+                className={`relative pb-4 text-left text-[0.72rem] uppercase tracking-[0.16em] transition-colors ${
+                  active === index
+                    ? "text-ink after:absolute after:inset-x-0 after:bottom-0 after:h-px after:bg-primary"
+                    : "text-muted-foreground hover:text-ink"
+                }`}
+              >
+                {item.title}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div
+          id="works-panel"
+          role="tabpanel"
+          className="mt-12 grid min-h-52 gap-8 rounded-[2rem] border border-border/60 bg-secondary/25 p-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center"
+        >
+          <div>
+            <p className="font-serif text-3xl text-ink sm:text-4xl">{current.title}</p>
+            <p className="mt-4 font-serif text-xl italic text-ink/65 sm:text-2xl">
+              {current.line}
+            </p>
+          </div>
+          <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+            {current.body}
+          </p>
+        </div>
+
+        <div className="mt-5 flex items-center gap-2" aria-hidden>
+          {WORKS_TABS.map((item, index) => (
+            <span
+              key={item.title}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                active === index ? "w-10 bg-primary" : "w-4 bg-border"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 function HomePage() {
   return (
@@ -186,38 +254,7 @@ function HomePage() {
         </ol>
       </Section>
 
-      {PILLARS.map((p, i) => (
-        <section key={p.to}>
-          <div
-            className={`mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:px-10 ${
-              i % 2 === 1 ? "lg:[&>figure]:order-2" : ""
-            }`}
-          >
-            <figure className="overflow-hidden rounded-[2rem]">
-              <img
-                src={p.img}
-                alt={p.alt}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-[1200ms] hover:scale-[1.03]"
-              />
-            </figure>
-            <div>
-              <h2 className="font-serif text-3xl text-ink sm:text-4xl">
-                {p.title}
-              </h2>
-              <p className="mt-4 font-serif text-2xl italic text-ink/70">
-                {p.line}
-              </p>
-              <Link
-                to={p.to}
-                className="mt-8 inline-flex items-center gap-2 text-[0.72rem] uppercase tracking-[0.18em] text-primary"
-              >
-                Learn more <span aria-hidden>→</span>
-              </Link>
-            </div>
-          </div>
-        </section>
-      ))}
+      <WorksTabs />
 
       <Section
         muted
@@ -233,14 +270,14 @@ function HomePage() {
 
       <Section muted>
         <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-          <figure>
+          <figure className="overflow-hidden rounded-[2rem] bg-background">
             <img
-              src="/About-founder.jpeg"
+              src={founderHome}
               alt="Tassadit Cherfaoui, founder of Integral Values"
               width={1200}
               height={1500}
               loading="lazy"
-              className="w-full rounded-[2rem] object-cover"
+              className="aspect-[4/5] w-full object-cover object-top"
             />
           </figure>
           <div>
