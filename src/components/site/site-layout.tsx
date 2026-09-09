@@ -140,37 +140,56 @@ export function SiteFooter() {
 
         <div>
           <p className="text-[0.68rem] uppercase tracking-[0.28em] text-background/50">
-            Stay close
+            Trust
           </p>
-          <form
-            className="mt-5 flex items-center gap-2 border-b border-background/25 pb-2"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <label htmlFor="footer-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="footer-email"
-              type="email"
-              placeholder="Your email"
-              className="w-full bg-transparent text-sm text-background placeholder:text-background/40 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="text-[0.68rem] uppercase tracking-[0.18em] text-background/70 hover:text-background"
-            >
-              Join
-            </button>
-          </form>
-          <p className="mt-4 text-xs leading-relaxed text-background/60">
-            Your data is never sold. Your trust is never compromised.
-          </p>
+          <ul className="mt-5 space-y-3 text-sm text-background/75">
+            <li>
+              <Link to="/security" className="hover:text-background">
+                Security
+              </Link>
+            </li>
+            <li>
+              <Link to="/code-of-conduct" className="hover:text-background">
+                Code of Conduct
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacy" className="hover:text-background">
+                Privacy
+              </Link>
+            </li>
+          </ul>
+
+          <div className="mt-8 border-t border-background/15 pt-6">
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-background/50">
+                Newsletter
+              </p>
+              <span className="rounded-full border border-background/20 px-3 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-background/60">
+                Coming soon
+              </span>
+            </div>
+            <p className="mt-3 text-xs leading-relaxed text-background/60">
+              The Integral Values newsletter is not active yet. No email address is collected here.
+            </p>
+          </div>
         </div>
       </div>
 
       <div className="border-t border-background/12">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-6 py-6 text-xs text-background/55 lg:px-10">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-6 text-xs text-background/55 lg:px-10">
           <span>© {new Date().getFullYear()} Integral Values</span>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link to="/security" className="hover:text-background">
+              Security
+            </Link>
+            <Link to="/code-of-conduct" className="hover:text-background">
+              Code of Conduct
+            </Link>
+            <Link to="/privacy" className="hover:text-background">
+              Privacy
+            </Link>
+          </div>
           <span>Human First. Purpose Driven. Transformation Inspired.</span>
         </div>
       </div>
