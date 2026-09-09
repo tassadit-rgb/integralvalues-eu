@@ -15,13 +15,13 @@ export const Route = createFileRoute("/cross-culture")({
       {
         name: "description",
         content:
-          "Expatriation and relocation support, DEIB programmes and values ranking — coaching people and organisations across 42 nationalities and five continents.",
+          "Intercultural support for expatriation, migration, return, identity, belonging and international organisations.",
       },
       { property: "og:title", content: "Cross-Culture — Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
-          "Relocation support, DEIB and values ranking for people living between cultures.",
+          "Intercultural care, mobility support and organisational inclusion for people living and working across cultures.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -36,8 +36,8 @@ function CrossCulturePage() {
       <PageHero
         eyebrow="4C Framework — Cross-Culture"
         title="Belonging is learned twice: once at home, once elsewhere."
-        lead="We accompany expatriates, returning nationals and international teams through the invisible work of adapting — decoding cultural difference, holding identity steady and rebuilding a sense of place."
-        quote="“Once we accept our limits, we go beyond them.” — Albert Einstein"
+        lead="We work with people and organisations navigating cultural transition, migration, expatriation, return and life between identities. The aim is not to erase difference, but to make it livable, intelligible and connected."
+        quote="Across borders, the person remains whole."
       />
 
       <EmotiveImage
@@ -49,55 +49,43 @@ function CrossCulturePage() {
       <Section eyebrow="Programmes" title="Three ways we work across cultures">
         <div className="grid gap-8 md:grid-cols-3">
           <CardTile
-            meta="Mobility"
-            title="Expat & relocation support"
-            body="Preparation, arrival and the long middle: culture shock, family adjustment, partner careers, schooling and the slow return home."
+            meta="Mobility & migration"
+            title="Transitions across borders"
+            body="Preparation, arrival, return and the long middle: culture shock, family adjustment, language, schooling, administration and the rebuilding of a sense of place."
+          />
+          <CardTile
+            meta="Identity & belonging"
+            title="The invisible side of migration"
+            body="Space to work with loss, divided loyalties, discrimination, uprooting, intergenerational stories and the tension between adapting and remaining oneself."
           />
           <CardTile
             meta="Organisations"
-            title="DEIB"
-            body="Diversity, equity, inclusion and belonging built as a way of thinking and acting, so that every person feels accepted, valued and safe at work."
-          />
-          <CardTile
-            meta="Instrument"
-            title="Values ranking"
-            body="A facilitated reading of what an individual, a couple or a team truly values — and where those values quietly disagree with each other."
+            title="DEIB & intercultural intelligence"
+            body="Diversity, equity, inclusion and belonging translated into everyday leadership, communication and team practice across languages and cultural norms."
           />
         </div>
       </Section>
 
-      <Section muted eyebrow="Reach" title="A practice built between continents">
-        <div className="grid gap-10 sm:grid-cols-3">
-          {[
-            { n: "42", l: "Nationalities accompanied" },
-            { n: "5", l: "Continents" },
-            { n: "23+", l: "Years of practice" },
-          ].map((s) => (
-            <div key={s.l} className="border-l border-gold pl-6">
-              <p className="font-serif text-5xl text-ink">{s.n}</p>
-              <p className="eyebrow mt-3">{s.l}</p>
-            </div>
-          ))}
+      <Section muted eyebrow="Perspective" title="Culture is part of the clinical and human context">
+        <div className="grid gap-10 md:grid-cols-2">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Intercultural difficulty rarely announces itself as such. It may appear as fatigue, conflict, isolation, shame, a family under strain or a person who no longer knows where they belong. We read the situation without separating the individual from history, language, culture and social context.
+          </p>
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            This perspective also informs the research dimension of Integral Values: how mental-health support can become more inclusive, ethically responsive and culturally intelligent for migrants, immigrants, internationally mobile people and communities living through collective or transgenerational trauma.
+          </p>
         </div>
-        <p className="mt-12 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Intercultural difficulty rarely announces itself as such. It arrives
-          as fatigue, irritability, a marriage under strain, a team that cannot
-          agree on what respect looks like. We work with the culture and the
-          person at the same time.
-        </p>
       </Section>
 
       <Section eyebrow="Next" title="Start with a conversation">
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Tell us where you are moving from, where you are going and who is
-          coming with you. We will propose a form of support that fits the
-          season you are in.
+          Tell us where you are, what transition you are navigating and who is affected. We will propose a form of support that fits the context.
         </p>
         <Link
-          to="/contact"
+          to="/booking"
           className="mt-8 inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
-          Talk to us
+          Book a consultation
         </Link>
       </Section>
     </SiteLayout>
