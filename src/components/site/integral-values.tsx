@@ -1,29 +1,29 @@
 import { useState } from "react";
 
 const VALUES = [
-  { letter: "I", name: "Inclusive", body: "We create belonging." },
-  { letter: "N", name: "Nurturing", body: "We cultivate human potential." },
-  { letter: "T", name: "Thriving", body: "We help people flourish." },
+  { letter: "I", name: "Inclusive", body: "We create belonging and make room for difference." },
+  { letter: "N", name: "Nurturing", body: "We cultivate safety, care and human potential." },
+  { letter: "T", name: "Thriving", body: "We support vitality, learning and sustainable flourishing." },
   {
     letter: "E",
-    name: "Excellence",
-    body: "We pursue quality, ethics and continuous learning.",
+    name: "Effectiveness",
+    body: "We turn intention into purposeful, responsible action.",
   },
-  { letter: "G", name: "Growth", body: "We embrace lifelong development." },
+  { letter: "G", name: "Go-Getter", body: "We value initiative, perseverance and accountable momentum." },
   {
     letter: "R",
     name: "Resilience",
-    body: "We transform adversity into strength.",
+    body: "We strengthen the capacity to adapt, recover and continue with meaning.",
   },
   {
     letter: "A",
-    name: "Authenticity",
-    body: "We encourage people to live and lead authentically.",
+    name: "Assertiveness",
+    body: "We encourage clear expression, healthy boundaries and mutual respect.",
   },
   {
     letter: "L",
-    name: "Leadership",
-    body: "We inspire conscious and responsible leadership.",
+    name: "Lively",
+    body: "We bring curiosity, vitality and engaged presence to life and relationships.",
   },
 ] as const;
 
