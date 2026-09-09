@@ -83,18 +83,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Counselling, coaching, cross-culture and core — an integrative practice for optimal human functioning.",
+          "International integrative psychology, coaching, cross-cultural work and organisational care.",
       },
       { name: "author", content: "Integral Values Psy & Co" },
       { property: "og:title", content: "Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
-          "An integrative approach to the development of optimal human functioning.",
+          "Helping people heal, grow and flourish through an integral and cross-cultural approach.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -162,7 +161,6 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster />
     </QueryClientProvider>
