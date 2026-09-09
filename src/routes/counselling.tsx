@@ -11,13 +11,13 @@ import humanHealing from "@/assets/human-healing.jpg";
 export const Route = createFileRoute("/counselling")({
   head: () => ({
     meta: [
-      { title: "Counselling — Integral Values Psy & Co" },
+      { title: "Care & Therapy — Integral Values Psy & Co" },
       {
         name: "description",
         content:
-          "Individual, couple, family and group counselling with licensed psychologists, plus #Psyché well-being assessments in a confidential, non-judgemental space.",
+          "Individual, couple, family and group psychological support, plus Psyché well-being assessments in a confidential, non-judgemental space.",
       },
-      { property: "og:title", content: "Counselling — Integral Values Psy & Co" },
+      { property: "og:title", content: "Care & Therapy — Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
@@ -34,33 +34,33 @@ const APPROACHES = [
   "Attentive and active listening",
   "Humanistic and existential perspectives",
   "Jungian analytical methods",
-  "Gestalt therapy",
-  "Schema-focused therapy",
+  "Gestalt-informed work",
+  "Schema-focused perspectives",
   "Transactional analysis",
-  "Psychodynamic and psychodrama",
+  "Psychodynamic perspectives and psychodrama",
   "Narrative and mythic storytelling",
-  "Family therapy and constellation",
+  "Family and systemic perspectives",
   "Intercultural awareness",
 ];
 
 const THEMES = [
   "Anxiety, stress and burnout",
   "Depression and low mood",
-  "Trauma and CPTSD",
+  "Trauma-related difficulties",
   "Attachment difficulties",
   "Self-esteem and confidence",
   "Grief and life transitions",
   "Relationship struggles",
-  "Addiction recovery",
+  "Addiction recovery support",
 ];
 
 function CounsellingPage() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="4C Framework — Counselling"
+        eyebrow="4C Framework — Care & Therapy"
         title="A space where what was too painful to feel can finally be felt."
-        lead="Our registered psychologists and counsellors offer psychological support and therapy — short-term and focused, or longer, depending on what you need. Understanding your emotions and learning to express them improves relationships, self-esteem and well-being."
+        lead="Psychological support can be short-term and focused, or longer depending on what you need. The work stays attentive to emotions, relationships, context, body and meaning."
         quote="“Knowing your own darkness is the best method for dealing with the darkness of other people.” — Carl Gustav Jung"
       />
 
@@ -75,22 +75,22 @@ function CounsellingPage() {
           <CardTile
             meta="Individual"
             title="Adults"
-            body="A private, judgement-free space to speak openly about difficult feelings, patterns and life events, and to make positive change at your own pace."
+            body="A private, judgement-free space to speak openly about difficult feelings, patterns and life events, and to work toward meaningful change at your own pace."
           />
           <CardTile
             meta="Individual"
             title="Teens & preteens"
-            body="Support through the physical and emotional turbulence of adolescence, in dialogue with parents, teachers and health professionals. Free for under-18s."
+            body="Support through the physical and emotional turbulence of adolescence, with attention to family, school and the wider environment when appropriate."
           />
           <CardTile
             meta="Relationship"
             title="Couples & families"
-            body="Not about blame — about being understood. Communication, trust, intimacy, co-parenting and the unconscious scripts each of us carries."
+            body="Not about blame — about being understood. Communication, trust, intimacy, co-parenting and the patterns each person carries into the relationship."
           />
           <CardTile
             meta="Collective"
             title="Group dynamics"
-            body="Therapy and practice-analysis groups where conflict becomes a learning opportunity and shared experience makes people feel less alone."
+            body="Facilitated group and practice-analysis spaces where shared experience can support reflection, learning and connection."
           />
         </div>
       </Section>
@@ -147,13 +147,10 @@ function CounsellingPage() {
           </div>
         </div>
         <p className="mt-10 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Counselling from €65 for 45 minutes (individual), €120 for couples,
-          €55 per participant in group (maximum eight). Teenagers under 18 are
-          seen free of charge. This site is not an emergency service; in a
-          crisis, contact your local emergency number.
+          Session fees are handled in the booking and payment journey rather than displayed on this public page. This site is not an emergency service; in a crisis, contact your local emergency number.
         </p>
         <Link
-          to="/contact"
+          to="/booking"
           className="mt-8 inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
           Book a first session
