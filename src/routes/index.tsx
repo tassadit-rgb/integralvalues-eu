@@ -8,12 +8,11 @@ import humanLeader from "@/assets/human-leader.jpg";
 import humanHealing from "@/assets/human-healing.jpg";
 import humanTogether from "@/assets/human-together.jpg";
 import humanCore from "@/assets/human-core.jpg";
-import founderReal from "@/assets/founder-real.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Integral Values® — Helping You Heal. Grow. Flourish." },
+      { title: "Integral Values — Helping You Heal. Grow. Flourish." },
       {
         name: "description",
         content:
@@ -21,7 +20,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:title",
-        content: "Integral Values® — Helping You Heal. Grow. Flourish.",
+        content: "Integral Values — Helping You Heal. Grow. Flourish.",
       },
       {
         property: "og:description",
@@ -40,7 +39,7 @@ const JOURNEY = [
     step: "Discover Yourself",
     name: "Psyché™",
     to: "/psyche",
-    body: "Evidence-based psychological and leadership assessment, read with you rather than about you.",
+    body: "Psychological and leadership assessment, read with you rather than about you.",
   },
   {
     step: "Heal Deeply",
@@ -64,7 +63,7 @@ const JOURNEY = [
     step: "Become Whole",
     name: "CORE™",
     to: "/core",
-    body: "Our signature integrative pathway, aligning Body, Brain, Heart and Consciousness.",
+    body: "Our integrative pathway, aligning Body, Brain, Emotion and Consciousness.",
   },
 ] as const;
 
@@ -102,7 +101,6 @@ const PILLARS = [
 function HomePage() {
   return (
     <SiteLayout>
-      {/* Hero */}
       <section className="relative overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -123,8 +121,7 @@ function HomePage() {
             Helping You Heal. Grow. Flourish.
           </h1>
           <p className="reveal mt-8 max-w-xl text-sm uppercase tracking-[0.14em] text-background/75">
-            Integrative Psychology • Coaching • Cross-Cultural Intelligence •
-            Leadership
+            Integrative Psychology • Coaching • Cross-Cultural Intelligence • Leadership
           </p>
           <div className="reveal mt-12 flex flex-wrap items-center gap-4">
             <BookButton />
@@ -138,7 +135,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Introduction */}
       <section className="relative overflow-hidden">
         <div
           aria-hidden
@@ -151,7 +147,7 @@ function HomePage() {
             We help people become whole.
           </h2>
           <p className="mx-auto mt-10 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Integral Values® brings together psychology, therapy, coaching,
+            Integral Values brings together psychology, therapy, coaching,
             leadership and cross-cultural intelligence in one coherent approach.
             We work internationally, in strict confidence, with people who are
             ready to look at their life as a whole.
@@ -159,7 +155,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* The Integral Journey */}
       <Section muted eyebrow="The Integral Journey" title="Five movements, one direction">
         <ol className="relative space-y-4 pl-10">
           <span
@@ -191,7 +186,6 @@ function HomePage() {
         </ol>
       </Section>
 
-      {/* Four pillars — editorial */}
       {PILLARS.map((p, i) => (
         <section key={p.to}>
           <div
@@ -225,29 +219,26 @@ function HomePage() {
         </section>
       ))}
 
-      {/* 4C framework */}
       <Section
         muted
         eyebrow="The 4C Framework"
-        title="Body. Brain. Heart. Consciousness."
+        title="Body. Brain. Emotion. Consciousness."
       >
         <FourCFramework />
       </Section>
 
-      {/* INTEGRAL values */}
       <Section eyebrow="Our Values" title="I.N.T.E.G.R.A.L.">
         <IntegralValues />
       </Section>
 
-      {/* Founder */}
       <Section muted>
         <div className="grid items-center gap-14 lg:grid-cols-[0.8fr_1.2fr]">
           <figure>
             <img
-              src={founderReal.url}
-              alt="Dr Tassadit Cherfaoui, founder of Integral Values"
-              width={900}
-              height={1200}
+              src="/About-founder.jpeg"
+              alt="Tassadit Cherfaoui, founder of Integral Values"
+              width={1200}
+              height={1500}
               loading="lazy"
               className="w-full rounded-[2rem] object-cover"
             />
@@ -258,16 +249,15 @@ function HomePage() {
               themselves — thriving, flourishing, and at home in who they are.
             </p>
             <p className="mt-8 max-w-lg text-sm leading-relaxed text-muted-foreground">
-              Twenty-five years of clinical practice and more than two decades
-              accompanying leaders and organisations across cultures and
-              continents. We never divide a person into parts.
+              Clinical practice, coaching, leadership and cross-cultural work
+              brought together through one principle: never reduce a person to
+              a single role, symptom or story.
             </p>
             <FounderSignature className="mt-10" />
           </div>
         </div>
       </Section>
 
-      {/* Trust */}
       <section className="mx-auto max-w-3xl px-6 py-24 text-center lg:px-10">
         <p className="font-serif text-2xl italic leading-relaxed text-ink/80 sm:text-3xl">
           Your privacy matters. Your trust is our greatest responsibility.
