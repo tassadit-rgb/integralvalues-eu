@@ -15,13 +15,13 @@ export const Route = createFileRoute("/cross-culture")({
       {
         name: "description",
         content:
-          "Expatriation and relocation support, DEIB programmes and values ranking — coaching people and organisations across 42 nationalities and five continents.",
+          "Cross-cultural care, mobility support and international organisational work for people living, working or rebuilding belonging across cultures.",
       },
       { property: "og:title", content: "Cross-Culture — Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
-          "Relocation support, DEIB and values ranking for people living between cultures.",
+          "Relocation, identity, belonging and intercultural work for people and organisations across borders.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -36,7 +36,7 @@ function CrossCulturePage() {
       <PageHero
         eyebrow="4C Framework — Cross-Culture"
         title="Belonging is learned twice: once at home, once elsewhere."
-        lead="We accompany expatriates, returning nationals and international teams through the invisible work of adapting — decoding cultural difference, holding identity steady and rebuilding a sense of place."
+        lead="We accompany expatriates, migrants, returning nationals, internationally mobile families and global teams through the invisible work of adapting — decoding difference, holding identity steady and rebuilding a sense of place."
         quote="“Once we accept our limits, we go beyond them.” — Albert Einstein"
       />
 
@@ -50,48 +50,54 @@ function CrossCulturePage() {
         <div className="grid gap-8 md:grid-cols-3">
           <CardTile
             meta="Mobility"
-            title="Expat & relocation support"
-            body="Preparation, arrival and the long middle: culture shock, family adjustment, partner careers, schooling and the slow return home."
+            title="Migration, expat & relocation support"
+            body="Preparation, arrival and the long middle: culture shock, family adjustment, partner careers, schooling, administrative stress, return and the rebuilding of belonging."
           />
           <CardTile
             meta="Organisations"
-            title="DEIB"
-            body="Diversity, equity, inclusion and belonging built as a way of thinking and acting, so that every person feels accepted, valued and safe at work."
+            title="Inclusion & intercultural intelligence"
+            body="Support for international teams and organisations seeking to turn cultural difference into trust, clarity, belonging and responsible collaboration."
           />
           <CardTile
-            meta="Instrument"
-            title="Values ranking"
-            body="A facilitated reading of what an individual, a couple or a team truly values — and where those values quietly disagree with each other."
+            meta="Identity"
+            title="Values, trauma & belonging"
+            body="A careful reading of identity, values, migration history, collective or transgenerational trauma and the tensions that can appear when several cultural worlds meet in one life."
           />
         </div>
       </Section>
 
-      <Section muted eyebrow="Reach" title="A practice built between continents">
-        <div className="grid gap-10 sm:grid-cols-3">
-          {[
-            { n: "42", l: "Nationalities accompanied" },
-            { n: "5", l: "Continents" },
-            { n: "23+", l: "Years of practice" },
-          ].map((s) => (
-            <div key={s.l} className="border-l border-gold pl-6">
-              <p className="font-serif text-5xl text-ink">{s.n}</p>
-              <p className="eyebrow mt-3">{s.l}</p>
-            </div>
-          ))}
+      <Section muted eyebrow="International lens" title="The person and the context, together">
+        <div className="grid gap-8 md:grid-cols-3">
+          <CardTile
+            meta="Individual"
+            title="Identity across borders"
+            body="Living between cultures can reshape language, family roles, attachment, self-image and the meaning of home."
+          />
+          <CardTile
+            meta="Collective"
+            title="History and inherited trauma"
+            body="Where relevant, we consider how war, displacement, discrimination, collective violence and family history may continue to influence present experience."
+          />
+          <CardTile
+            meta="Systems"
+            title="Access and institutions"
+            body="Mental-health, educational, social and organisational systems are part of the environment. We pay attention to how people actually encounter them across countries and cultures."
+          />
         </div>
         <p className="mt-12 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Intercultural difficulty rarely announces itself as such. It arrives
-          as fatigue, irritability, a marriage under strain, a team that cannot
-          agree on what respect looks like. We work with the culture and the
-          person at the same time.
+          Intercultural difficulty rarely announces itself as such. It can arrive
+          as fatigue, isolation, distress, conflict, loss of meaning or the
+          feeling of no longer knowing where one belongs. We work with the
+          person, the relationships and the cultural context at the same time.
         </p>
       </Section>
 
       <Section eyebrow="Next" title="Start with a conversation">
         <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
-          Tell us where you are moving from, where you are going and who is
-          coming with you. We will propose a form of support that fits the
-          season you are in.
+          Tell us where you are, where you come from, what has changed and who
+          is involved. We will propose a form of support that fits your context,
+          whether you are moving, settling, returning or simply trying to make
+          sense of life between cultures.
         </p>
         <Link
           to="/contact"
