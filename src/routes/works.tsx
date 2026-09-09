@@ -14,7 +14,7 @@ export const Route = createFileRoute("/works")({
         content:
           "The four ways we work with people: coaching, care and therapy, cross-cultural intelligence and the CORE™ integrative pathway.",
       },
-      { property: "og:title", content: "Works — Integral Values®" },
+      { property: "og:title", content: "Works — Integral Values" },
       {
         property: "og:description",
         content:
