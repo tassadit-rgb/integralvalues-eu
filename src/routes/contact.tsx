@@ -40,11 +40,35 @@ const INTERESTS = [
 
 function ContactPage() {
   const [interest, setInterest] = useState(INTERESTS[0]);
+  const [sending, setSending] = useState(false);
+  const send = useServerFn(submitContactRequest);
 
-  function submit(e: React.FormEvent<HTMLFormElement>) {
+  async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    toast.success("Thank you — we will come back to you within two working days.");
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    setSending(true);
+    try {
+      await send({
+        data: {
+          first: String(fd.get("first") ?? ""),
+          last: String(fd.get("last") ?? ""),
+          email: String(fd.get("email") ?? ""),
+          phone: String(fd.get("phone") ?? ""),
+          country: String(fd.get("country") ?? ""),
+          role: String(fd.get("role") ?? ""),
+          interest,
+          message: String(fd.get("message") ?? ""),
+        },
+      });
+      toast.success("Thank you — we will come back to you within two working days.");
+      form.reset();
+      setInterest(INTERESTS[0]);
+    } catch {
+      toast.error("Sorry, your request could not be sent. Please try again or email hello@integralvalues.eu.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
