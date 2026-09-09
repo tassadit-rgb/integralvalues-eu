@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import logo from "@/assets/integral-values-logo.png.asset.json";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -20,7 +21,7 @@ export function BookButton({
 }) {
   return (
     <Link
-      to="/booking"
+      to="/contact"
       className={`inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90 ${className}`}
     >
       {label}
@@ -33,16 +34,14 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-3 lg:px-10 lg:py-4">
-        <Link
-          to="/"
-          className="flex shrink-0 items-center"
-          aria-label="Integral Values home"
-        >
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-5 lg:px-10">
+        <Link to="/" className="flex items-center">
           <img
-            src="/Logo-icon.png"
-            alt="Integral Values"
-            className="h-14 w-14 shrink-0 object-contain sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem]"
+            src={logo.url}
+            alt="Integral Values — You're not alone"
+            width={1800}
+            height={880}
+            className="h-11 w-auto"
           />
         </Link>
 
@@ -65,7 +64,6 @@ export function SiteHeader() {
           onClick={() => setOpen((v) => !v)}
           className="text-[0.72rem] uppercase tracking-[0.2em] text-muted-foreground lg:hidden"
           aria-expanded={open}
-          aria-label={open ? "Close navigation" : "Open navigation"}
         >
           {open ? "Close" : "Menu"}
         </button>
@@ -97,17 +95,13 @@ export function SiteFooter() {
     <footer className="mt-28 bg-navy text-background/80">
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-20 md:grid-cols-[1.4fr_1fr_1fr] lg:px-10">
         <div>
-          <Link to="/" className="inline-flex items-center gap-4" aria-label="Integral Values home">
-            <img
-              src="/Logo-icon.png"
-              alt=""
-              aria-hidden="true"
-              className="h-16 w-16 shrink-0 object-contain sm:h-20 sm:w-20"
-            />
-            <span className="font-serif text-2xl leading-tight text-background sm:text-3xl">
-              Integral Values Psy &amp; Co
-            </span>
-          </Link>
+          <img
+            src={logo.url}
+            alt="Integral Values"
+            width={1800}
+            height={880}
+            className="h-11 w-auto brightness-0 invert"
+          />
           <p className="mt-6 font-serif text-2xl leading-snug text-background">
             Helping Humanity Flourish.
           </p>

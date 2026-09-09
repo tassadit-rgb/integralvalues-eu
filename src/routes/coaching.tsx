@@ -45,6 +45,7 @@ const AREAS = [
 const PLANS = [
   {
     name: "Jade — Discovery",
+    price: "Pay as you wish",
     points: [
       "15-minute chemistry session",
       "Values ranking, first read",
@@ -53,6 +54,7 @@ const PLANS = [
   },
   {
     name: "Turquoise — First step",
+    price: "€300 / month",
     points: [
       "Two coaching sessions per month",
       "Personalised coaching plan",
@@ -61,6 +63,7 @@ const PLANS = [
   },
   {
     name: "Rubi — Transformational",
+    price: "€500 / month",
     points: [
       "Four sessions per month",
       "Personal assessment and coaching map",
@@ -69,6 +72,7 @@ const PLANS = [
   },
   {
     name: "Diamant — Integral harmony",
+    price: "On request",
     points: [
       "Unlimited sessions",
       "Advanced materials and resources",
@@ -148,6 +152,7 @@ function CoachingPage() {
           {PLANS.map((p) => (
             <div key={p.name} className="bg-card p-8">
               <h3 className="text-lg text-ink">{p.name}</h3>
+              <p className="mt-2 text-sm text-gold">{p.price}</p>
               <ul className="mt-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
                 {p.points.map((pt) => (
                   <li key={pt}>{pt}</li>
@@ -157,13 +162,14 @@ function CoachingPage() {
           ))}
         </div>
         <p className="mt-8 text-sm text-muted-foreground">
-          Session fees are presented during booking. Flexible arrangements can be discussed when needed.
+          Money should not prevent you from getting help. We can find a payment
+          arrangement suited to your situation.
         </p>
         <Link
-          to="/booking"
+          to="/contact"
           className="mt-8 inline-block border border-primary px-6 py-3 text-[0.75rem] uppercase tracking-[0.18em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
         >
-          Book a consultation
+          Request a chemistry session
         </Link>
       </Section>
     </SiteLayout>
