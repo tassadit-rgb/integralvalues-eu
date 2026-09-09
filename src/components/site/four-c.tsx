@@ -16,8 +16,8 @@ const DIMENSIONS = [
     pos: "right-0 top-1/2 -translate-y-1/2",
   },
   {
-    key: "Heart",
-    words: "Emotion • Relationships • Connection",
+    key: "Emotion",
+    words: "Feeling • Relationships • Connection",
     body: "Emotion is a compass, not an obstacle. We restore the capacity to feel, to bond, and to remain yourself inside relationships.",
     color: "var(--pink)",
     pos: "bottom-0 left-1/2 -translate-x-1/2",
