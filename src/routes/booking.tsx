@@ -1,11 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { PageHero, Section, SiteLayout } from "@/components/site/site-layout";
-import {
-  BOOKING_PROVIDER,
-  BOOKING_SERVICES,
-  getBookingEntryUrl,
-} from "@/lib/booking/provider";
+import { BOOKING_SERVICES } from "@/lib/booking/provider";
 
 export const Route = createFileRoute("/booking")({
   head: () => ({
@@ -26,6 +22,9 @@ export const Route = createFileRoute("/booking")({
   }),
   component: BookingPage,
 });
+
+const AMELIA_TEST_URL =
+  "https://tassaditcherfaoui-oawpe.wpcomstaging.com/booking-integral-values/";
 
 const COPY: Record<(typeof BOOKING_SERVICES)[number]["key"], string> = {
   "initial-consultation":
@@ -48,40 +47,38 @@ function BookingPage() {
       <PageHero
         eyebrow="Booking"
         title="Choose the support that fits."
-        lead="Select a service below. Integral Values keeps the public experience here while scheduling is handled by our dedicated booking engine."
+        lead="Select a service below. During this pilot, scheduling is handled through our Amelia test environment while the Integral Values website remains unchanged."
         quote="One clear path. One protected space."
       />
 
       <Section>
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {BOOKING_SERVICES.map((service) => {
-            const href = getBookingEntryUrl(service.key) ?? "/contact";
+        <div className="mx-auto mb-10 max-w-2xl rounded-[1.5rem] border border-[#75E8D5]/45 bg-[#75E8D5]/10 px-5 py-4 text-center text-xs leading-relaxed text-muted-foreground">
+          Amelia pilot — booking only. Existing Stripe payment links and Calendly remain unchanged during this test.
+        </div>
 
-            return (
-              <article
-                key={service.key}
-                className="soft-card flex h-full flex-col p-7 sm:p-8"
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {BOOKING_SERVICES.map((service) => (
+            <article
+              key={service.key}
+              className="soft-card flex h-full flex-col p-7 sm:p-8"
+            >
+              <p className="eyebrow">{service.durationMinutes} min</p>
+              <h2 className="mt-3 text-2xl leading-tight text-ink">{service.title}</h2>
+              <p className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
+                {COPY[service.key]}
+              </p>
+              <a
+                href={AMELIA_TEST_URL}
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
               >
-                <p className="eyebrow">{service.durationMinutes} min</p>
-                <h2 className="mt-3 text-2xl leading-tight text-ink">{service.title}</h2>
-                <p className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
-                  {COPY[service.key]}
-                </p>
-                <a
-                  href={href}
-                  className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
-                >
-                  Continue
-                </a>
-              </article>
-            );
-          })}
+                Test booking
+              </a>
+            </article>
+          ))}
         </div>
 
         <p className="mx-auto mt-12 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
-          {BOOKING_PROVIDER === "amelia"
-            ? "Scheduling is securely handled through the Integral Values booking service."
-            : "Scheduling is currently routed through our contact team while the dedicated booking service is being configured."}
+          No payment is collected by Amelia during this pilot. We are validating service selection, availability and the booking experience first.
         </p>
       </Section>
     </SiteLayout>
