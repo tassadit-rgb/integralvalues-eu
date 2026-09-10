@@ -17,7 +17,7 @@ export const Route = createFileRoute("/psyche")({
       {
         name: "description",
         content:
-          "Psyché™ Lab: evidence-based assessment — IQ, ADHD, HPI, personality, burnout, WHO-5, career, couple and Values Ranking, read in context.",
+          "Psyché™ Lab: structured psychological and leadership assessment — IQ, ADHD, HPI, personality, burnout, WHO-5, career, couple and Values Ranking, read in context.",
       },
       { property: "og:title", content: "Psyché™ Lab — assessment with meaning" },
       {
