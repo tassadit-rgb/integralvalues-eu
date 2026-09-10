@@ -143,6 +143,13 @@ function CrossCulturePage() {
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
         </p>
+
+        <Link
+          to="/values-map"
+          className="mt-7 inline-flex items-center rounded-full bg-[#9C78D5] px-6 py-3 text-[0.68rem] uppercase tracking-[0.18em] text-white transition hover:opacity-90"
+        >
+          Open the Cross-Cultural Values Map
+        </Link>
       </Section>
 
       <Section eyebrow="Cultural context" title="Hofstede as a contextual lens — not a label">
