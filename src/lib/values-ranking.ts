@@ -101,7 +101,7 @@ export const HOFSTEDE_LENSES = [
     tension: "Freedom / Autonomy ↔ Family / Loyalty / Belonging",
   },
   {
-    dimension: "Achievement orientation",
+    dimension: "Masculinity",
     tension: "Achievement / Competition ↔ Care / Cooperation / Quality of life",
   },
   {
