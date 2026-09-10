@@ -8,6 +8,7 @@ const NAV = [
   { to: "/works", label: "Works" },
   { to: "/psyche", label: "Psyché" },
   { to: "/for-you", label: "For You" },
+  { to: "/circle", label: "Circle" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -46,12 +47,12 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-[0.74rem] uppercase tracking-[0.13em] text-muted-foreground transition-colors hover:text-ink"
+              className="text-[0.72rem] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-ink xl:text-[0.74rem] xl:tracking-[0.13em]"
               activeProps={{ className: "text-ink" }}
             >
               {n.label}
@@ -127,6 +128,7 @@ export function SiteFooter() {
               { to: "/works", label: "Works" },
               { to: "/psyche", label: "Psyché" },
               { to: "/for-you", label: "Resources" },
+              { to: "/circle", label: "Integral Circle™" },
               { to: "/contact", label: "Contact" },
             ].map((l) => (
               <li key={l.to}>
