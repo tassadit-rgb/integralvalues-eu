@@ -66,24 +66,29 @@ const JOURNEY = [
 
 const WORKS_TABS = [
   {
-    title: "Coaching",
-    line: "Unlock Your Potential.",
-    body: "Executive, leadership, career and life coaching for people navigating responsibility, transition and conscious growth.",
+    title: "Psyché™",
+    line: "Discover Yourself.",
+    body: "Assessment and reflective tools that help clarify patterns, strengths, needs and direction before deciding what kind of support or development is most relevant.",
   },
   {
     title: "Care & Therapy",
-    line: "Heal. Reconnect. Flourish.",
-    body: "Psychological care for anxiety, burnout, trauma, attachment and relationships, with attention to the whole person and their context.",
+    line: "Heal Deeply.",
+    body: "Psychological care for anxiety, burnout, trauma, attachment and relationships, with attention to the whole person, their history and their context.",
+  },
+  {
+    title: "Coaching",
+    line: "Unlock Your Potential.",
+    body: "Executive, leadership, career and life coaching for people navigating responsibility, transition, decision-making and conscious growth.",
   },
   {
     title: "Cross-Culture",
-    line: "Thrive Across Borders.",
+    line: "Thrive Together.",
     body: "Support for migrants, expatriates, returning nationals, mobile families and global teams navigating identity, belonging and cultural transition.",
   },
   {
     title: "CORE™",
-    line: "Transform Organisations Consciously.",
-    body: "Organisational care, leadership and people advisory bringing wellbeing, culture and responsible performance into the same conversation.",
+    line: "Lead & Work Consciously.",
+    body: "Organisational care, leadership and people advisory bringing wellbeing, culture, responsibility and sustainable performance into the same system.",
   },
 ] as const;
 
@@ -105,7 +110,7 @@ function WorksTabs() {
       <div className="mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-28">
         <p className="eyebrow">Works</p>
         <h2 className="mt-5 max-w-2xl font-serif text-3xl leading-tight text-ink sm:text-4xl">
-          Four fields. One integral direction.
+          Five stages. One integral trajectory.
         </h2>
 
         <div className="mt-10 overflow-x-auto border-b border-border/70 pb-px">
