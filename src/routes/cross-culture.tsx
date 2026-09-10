@@ -10,8 +10,6 @@ import humanTogether from "@/assets/human-together.jpg";
 import {
   CROSS_CULTURAL_VALUE_TENSIONS,
   HOFSTEDE_LENSES,
-  SCIENTIFIC_FOUNDATIONS,
-  SCIENTIFIC_FOUNDATIONS_NOTE,
   VALUES_LEVELS,
   VALUES_RANKING_NOTE,
   ZONE_OF_BALANCE,
@@ -143,6 +141,9 @@ function CrossCulturePage() {
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
         </p>
+        <p className="mt-3 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          Research-informed framework. Detailed methodology and references are documented separately for academic and research communication.
+        </p>
 
         <Link
           to="/values-map"
@@ -217,26 +218,6 @@ function CrossCulturePage() {
             to force agreement, but to understand the other frame before negotiating difference.
           </p>
         </div>
-      </Section>
-
-      <Section eyebrow="Scientific & theoretical foundations" title="Several lenses. One integral reading.">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {SCIENTIFIC_FOUNDATIONS.map((foundation) => (
-            <div key={foundation.name} className="rounded-[1.45rem] border border-border bg-card p-5">
-              <p className="text-[0.62rem] uppercase tracking-[0.2em] text-primary">
-                {foundation.role}
-              </p>
-              <h3 className="mt-3 font-serif text-2xl text-ink">{foundation.name}</h3>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                {foundation.body}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          {SCIENTIFIC_FOUNDATIONS_NOTE}
-        </p>
       </Section>
 
       <Section muted eyebrow="International lens" title="The person and the context, together">
