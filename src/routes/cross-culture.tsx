@@ -9,8 +9,12 @@ import { EmotiveImage } from "@/components/site/emotive-image";
 import humanTogether from "@/assets/human-together.jpg";
 import {
   CROSS_CULTURAL_VALUE_TENSIONS,
-  VALUES_RANKING_GROUPS,
+  HOFSTEDE_LENSES,
+  SCIENTIFIC_FOUNDATIONS,
+  SCIENTIFIC_FOUNDATIONS_NOTE,
+  VALUES_LEVELS,
   VALUES_RANKING_NOTE,
+  ZONE_OF_BALANCE,
 } from "@/lib/values-ranking";
 
 export const Route = createFileRoute("/cross-culture")({
@@ -20,7 +24,7 @@ export const Route = createFileRoute("/cross-culture")({
       {
         name: "description",
         content:
-          "Cross-cultural care, Values Ranking, mobility support and international organisational work for people living, working or rebuilding belonging across cultures.",
+          "Cross-cultural care, Values Ranking, Hofstede-informed cultural mapping, mobility support and international organisational work across cultures.",
       },
       { property: "og:title", content: "Cross-Culture — Integral Values Psy & Co" },
       {
@@ -71,45 +75,160 @@ function CrossCulturePage() {
         </div>
       </Section>
 
-      <Section muted eyebrow="Values across cultures" title="The same value can mean something different in another context">
+      <Section muted eyebrow="Values across cultures" title="Three levels, several frames of reference">
         <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          The Cross-Culture lens does not rank cultures. It revisits your own Values Ranking
-          across personal, family, cultural and organisational contexts. The aim is to identify
-          where the same priorities feel aligned, where they become difficult to express, and
-          where two legitimate values may pull in different directions.
+          The Cross-Culture lens does not rank cultures. It revisits the person’s own Values
+          Ranking across personal, family, cultural and organisational frames. What matters is
+          not only which value is present, but how central it is and how easy it is to express
+          in each context.
         </p>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {VALUES_RANKING_GROUPS.map((group) => (
-              <div key={group.label} className="rounded-[1.4rem] border border-border bg-card p-5">
-                <p className="eyebrow">{group.label}</p>
-                <p className="mt-4 text-sm leading-relaxed text-ink/75">
-                  {group.values.join(" · ")}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {VALUES_LEVELS.map((level, index) => (
+            <div
+              key={level.label}
+              className="rounded-[1.7rem] border bg-card p-6"
+              style={{
+                borderColor:
+                  index === 0
+                    ? "rgba(229,39,154,0.28)"
+                    : index === 1
+                      ? "rgba(156,120,213,0.28)"
+                      : "rgba(0,206,229,0.28)",
+              }}
+            >
+              <p className="eyebrow">{level.level}</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{level.label}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {level.description}
+              </p>
+              <p className="mt-5 text-xs leading-relaxed text-ink/70">
+                {level.values.join(" · ")}
+              </p>
+            </div>
+          ))}
+        </div>
 
-          <div className="rounded-[1.6rem] border border-[#9C78D5]/35 bg-[#9C78D5]/8 p-6 sm:p-7">
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1fr_1fr]">
+          <div className="rounded-[1.7rem] border border-[#9C78D5]/30 bg-card p-6 sm:p-8">
             <p className="text-[0.64rem] uppercase tracking-[0.22em] text-[#A5199B]">
-              Cross-cultural tensions to explore
+              Value tensions to explore
             </p>
-            <div className="mt-5 space-y-3">
+            <div className="mt-5 flex flex-wrap gap-3">
               {CROSS_CULTURAL_VALUE_TENSIONS.map((tension) => (
-                <div
+                <span
                   key={tension}
-                  className="rounded-full border border-[#9C78D5]/25 bg-background/80 px-4 py-2.5 text-sm text-ink/75"
+                  className="rounded-full border border-[#9C78D5]/25 bg-[#9C78D5]/8 px-4 py-2.5 text-sm text-ink/75"
                 >
                   {tension}
-                </div>
+                </span>
               ))}
             </div>
+          </div>
+
+          <div className="rounded-[1.7rem] border border-[#100850]/15 bg-[#100850]/[0.025] p-6 sm:p-8">
+            <p className="text-[0.64rem] uppercase tracking-[0.22em] text-[#100850]">
+              Contexts we can compare
+            </p>
+            <p className="mt-5 font-serif text-2xl leading-snug text-ink">
+              Self · Family · Culture of origin · Host culture · Organisation
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              The objective is to make alignment, adaptation and friction visible without
+              turning a national average into a description of an individual.
+            </p>
           </div>
         </div>
 
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
+        </p>
+      </Section>
+
+      <Section eyebrow="Cultural context" title="Hofstede as a contextual lens — not a label">
+        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Hofstede’s cultural dimensions can help us formulate questions about the wider
+          environment around a person or team. They are used here at group and contextual
+          level, never to infer an individual personality from nationality.
+        </p>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {HOFSTEDE_LENSES.map((lens) => (
+            <div key={lens.dimension} className="rounded-[1.45rem] border border-[#9C78D5]/25 bg-card p-6">
+              <p className="text-[0.62rem] uppercase tracking-[0.2em] text-[#A5199B]">
+                Hofstede dimension
+              </p>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{lens.dimension}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {lens.tension}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section muted eyebrow="Communication" title="Finding the Zone of Balance">
+        <div className="grid gap-7 lg:grid-cols-[1fr_0.72fr_1fr] lg:items-stretch">
+          <div className="rounded-[1.7rem] border border-[#E5279A]/22 bg-card p-7">
+            <p className="eyebrow">My frame of reference</p>
+            <p className="mt-4 font-serif text-2xl text-ink">Identity, history, values, language</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              What I assume, protect, expect and interpret through my own lived context.
+            </p>
+          </div>
+
+          <div className="rounded-[1.7rem] border border-[#75E8D5]/45 bg-[#75E8D5]/12 p-7 text-center">
+            <p className="text-[0.62rem] uppercase tracking-[0.2em] text-[#008FA0]">
+              {ZONE_OF_BALANCE.title}
+            </p>
+            <p className="mt-4 font-serif text-2xl leading-snug text-ink">
+              {ZONE_OF_BALANCE.principle}
+            </p>
+            <div className="mt-5 space-y-2 text-xs leading-relaxed text-muted-foreground">
+              {ZONE_OF_BALANCE.conditions.map((condition) => (
+                <p key={condition}>{condition}</p>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-[1.7rem] border border-[#9C78D5]/25 bg-card p-7">
+            <p className="eyebrow">The other frame</p>
+            <p className="mt-4 font-serif text-2xl text-ink">Culture, roles, expectations, systems</p>
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+              What the other person, family, institution or organisation may be reading from a different reference frame.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-[1.6rem] border border-border bg-background/75 p-6 sm:p-8">
+          <p className="text-[0.64rem] uppercase tracking-[0.22em] text-[#A5199B]">
+            Porter-informed communication check
+          </p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted-foreground">
+            We pay attention to whether communication is moving toward evaluation,
+            interpretation, support, investigation, solution or understanding. The aim is not
+            to force agreement, but to understand the other frame before negotiating difference.
+          </p>
+        </div>
+      </Section>
+
+      <Section eyebrow="Scientific & theoretical foundations" title="Several lenses. One integral reading.">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {SCIENTIFIC_FOUNDATIONS.map((foundation) => (
+            <div key={foundation.name} className="rounded-[1.45rem] border border-border bg-card p-5">
+              <p className="text-[0.62rem] uppercase tracking-[0.2em] text-primary">
+                {foundation.role}
+              </p>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{foundation.name}</h3>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                {foundation.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {SCIENTIFIC_FOUNDATIONS_NOTE}
         </p>
       </Section>
 
