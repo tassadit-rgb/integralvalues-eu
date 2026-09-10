@@ -26,36 +26,68 @@ export const Route = createFileRoute("/about")({
 
 const VALUES = [
   {
+    letter: "I",
     k: "Inclusive",
     v: "A way of thinking and acting that lets every individual feel accepted, valued and safe.",
+    accent: "#E5279A",
+    tint: "rgba(229,39,154,0.08)",
+    border: "rgba(229,39,154,0.20)",
   },
   {
+    letter: "N",
     k: "Nurturing",
     v: "To care for and protect someone while they are growing. Relationships are at the centre of what we do.",
+    accent: "#00AFC4",
+    tint: "rgba(117,232,213,0.15)",
+    border: "rgba(0,206,229,0.20)",
   },
   {
+    letter: "T",
     k: "Thriving",
     v: "A positive psychological state combining vitality with a genuine sense of learning.",
+    accent: "#8A5FD0",
+    tint: "rgba(156,120,213,0.12)",
+    border: "rgba(156,120,213,0.22)",
   },
   {
+    letter: "E",
     k: "Effectiveness",
     v: "Using energy, skill and motivation with clarity so that intended goals can be pursued responsibly.",
+    accent: "#3D73C9",
+    tint: "rgba(174,181,232,0.16)",
+    border: "rgba(61,115,201,0.18)",
   },
   {
+    letter: "G",
     k: "Go-Getter",
     v: "Moving ahead with initiative and perseverance while staying accountable to the impact of our actions.",
+    accent: "#E56A63",
+    tint: "rgba(229,106,99,0.08)",
+    border: "rgba(229,106,99,0.18)",
   },
   {
+    letter: "R",
     k: "Resilience",
     v: "Adapting to difficult experiences through mental, emotional and behavioural flexibility.",
+    accent: "#A5199B",
+    tint: "rgba(165,25,155,0.08)",
+    border: "rgba(165,25,155,0.18)",
   },
   {
+    letter: "A",
     k: "Assertiveness",
     v: "Expressing needs, boundaries and viewpoints clearly while respecting the dignity of others.",
+    accent: "#00A9BF",
+    tint: "rgba(0,206,229,0.10)",
+    border: "rgba(0,169,191,0.18)",
   },
   {
+    letter: "L",
     k: "Lively",
     v: "Bringing vitality, curiosity and engagement to human relationships and to life.",
+    accent: "#E5279A",
+    tint: "rgba(229,39,154,0.08)",
+    border: "rgba(229,39,154,0.18)",
   },
 ];
 
@@ -124,18 +156,59 @@ function AboutPage() {
         </div>
       </Section>
 
-      <Section muted eyebrow="Why" title="Our core values">
-        <dl className="grid gap-x-12 gap-y-8 sm:grid-cols-2">
-          {VALUES.map((v) => (
-            <div key={v.k} className="border-t border-border pt-5">
-              <dt className="font-serif text-xl text-ink">{v.k}</dt>
-              <dd className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {v.v}
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </Section>
+      <section className="relative overflow-hidden bg-[#FDFCFA] py-20 sm:py-24">
+        <div className="pointer-events-none absolute -left-28 top-8 h-72 w-72 rounded-full bg-[#E5279A]/[0.06] blur-3xl" />
+        <div className="pointer-events-none absolute -right-24 top-0 h-80 w-80 rounded-full bg-[#AEB5E8]/[0.12] blur-3xl" />
+        <div className="pointer-events-none absolute bottom-0 left-1/3 h-56 w-96 rounded-full bg-[#75E8D5]/[0.10] blur-3xl" />
+
+        <div className="container relative">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-[0.65rem] uppercase tracking-[0.30em] text-[#68769A]">
+              People · Growth · Meaningful Change
+            </p>
+            <h2 className="mt-4 font-serif text-4xl text-[#100850] sm:text-5xl">
+              Our core values
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              These values guide how we care, communicate, decide and grow — creating a space that feels safe, empowering and alive.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {VALUES.map((value) => (
+              <article
+                key={value.k}
+                className="group relative overflow-hidden rounded-[1.8rem] border bg-white/85 p-6 text-center shadow-[0_14px_40px_rgba(16,8,80,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(16,8,80,0.09)]"
+                style={{ borderColor: value.border }}
+              >
+                <div
+                  className="mx-auto flex h-14 w-14 items-center justify-center rounded-full font-serif text-2xl"
+                  style={{ backgroundColor: value.tint, color: value.accent }}
+                  aria-hidden="true"
+                >
+                  {value.letter}
+                </div>
+                <h3 className="mt-5 font-serif text-2xl text-[#100850]">{value.k}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  {value.v}
+                </p>
+                <div
+                  className="absolute inset-x-0 bottom-0 h-2 opacity-70 transition-opacity group-hover:opacity-100"
+                  style={{ backgroundColor: value.tint }}
+                />
+              </article>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-12 flex max-w-lg items-center justify-center gap-4 text-center">
+            <span className="h-px w-14 bg-[#AEB5E8]" />
+            <p className="text-[0.62rem] uppercase tracking-[0.24em] text-[#68769A]">
+              Values for a brighter tomorrow
+            </p>
+            <span className="h-px w-14 bg-[#AEB5E8]" />
+          </div>
+        </div>
+      </section>
 
       <Section eyebrow="How" title="Our spirit — the integral philosophy">
         <div className="grid gap-10 md:grid-cols-2">
