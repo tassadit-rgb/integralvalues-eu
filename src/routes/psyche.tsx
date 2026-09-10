@@ -127,6 +127,13 @@ function PsychePage() {
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
         </p>
+
+        <Link
+          to="/values-map"
+          className="mt-7 inline-flex items-center rounded-full bg-[#100850] px-6 py-3 text-[0.68rem] uppercase tracking-[0.18em] text-white transition hover:opacity-90"
+        >
+          Try the Values Map
+        </Link>
       </Section>
 
       <Section eyebrow="Scientific & theoretical foundations" title="Established frameworks, integrated with care">
