@@ -43,7 +43,15 @@ const COPY: Record<(typeof BOOKING_SERVICES)[number]["key"], string> = {
 };
 
 function BookingPage() {
-  const ameliaActive = BOOKING_PROVIDER === "amelia";
+  const providerMessage =
+    BOOKING_PROVIDER === "amelia"
+      ? "Scheduling is currently handled through our Amelia booking environment."
+      : BOOKING_PROVIDER === "calendly"
+        ? "Scheduling is currently handled through our secure Calendly booking pages while Amelia completes final production validation."
+        : "Booking is currently handled through the Integral Values contact pathway.";
+
+  const buttonLabel =
+    BOOKING_PROVIDER === "legacy" ? "Contact us" : "Continue to booking";
 
   return (
     <SiteLayout>
@@ -56,9 +64,7 @@ function BookingPage() {
 
       <Section>
         <div className="mx-auto mb-10 max-w-2xl rounded-[1.5rem] border border-[#75E8D5]/45 bg-[#75E8D5]/10 px-5 py-4 text-center text-xs leading-relaxed text-muted-foreground">
-          {ameliaActive
-            ? "Amelia booking pilot — scheduling only. Payments are not collected through Amelia yet."
-            : "Booking is currently handled through the Integral Values contact pathway."}
+          {providerMessage}
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -76,7 +82,7 @@ function BookingPage() {
                 href={getBookingEntryUrl(service.key)}
                 className="mt-8 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-[0.7rem] uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
               >
-                {ameliaActive ? "Continue to booking" : "Contact us"}
+                {buttonLabel}
               </a>
             </article>
           ))}
