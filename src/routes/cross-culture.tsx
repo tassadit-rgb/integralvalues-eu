@@ -7,6 +7,11 @@ import {
 } from "@/components/site/site-layout";
 import { EmotiveImage } from "@/components/site/emotive-image";
 import humanTogether from "@/assets/human-together.jpg";
+import {
+  CROSS_CULTURAL_VALUE_TENSIONS,
+  VALUES_RANKING_GROUPS,
+  VALUES_RANKING_NOTE,
+} from "@/lib/values-ranking";
 
 export const Route = createFileRoute("/cross-culture")({
   head: () => ({
@@ -15,13 +20,13 @@ export const Route = createFileRoute("/cross-culture")({
       {
         name: "description",
         content:
-          "Cross-cultural care, mobility support and international organisational work for people living, working or rebuilding belonging across cultures.",
+          "Cross-cultural care, Values Ranking, mobility support and international organisational work for people living, working or rebuilding belonging across cultures.",
       },
       { property: "og:title", content: "Cross-Culture — Integral Values Psy & Co" },
       {
         property: "og:description",
         content:
-          "Relocation, identity, belonging and intercultural work for people and organisations across borders.",
+          "Relocation, identity, values, belonging and intercultural work for people and organisations across borders.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
@@ -60,10 +65,52 @@ function CrossCulturePage() {
           />
           <CardTile
             meta="Identity"
-            title="Values, trauma & belonging"
-            body="A careful reading of identity, values, migration history, collective or transgenerational trauma and the tensions that can appear when several cultural worlds meet in one life."
+            title="Values Ranking, trauma & belonging"
+            body="We revisit the Values Ranking introduced in Psyché™ to explore how personal priorities interact with family expectations, cultural norms, migration history, collective or transgenerational trauma and the realities of belonging across several worlds."
           />
         </div>
+      </Section>
+
+      <Section muted eyebrow="Values across cultures" title="The same value can mean something different in another context">
+        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          The Cross-Culture lens does not rank cultures. It revisits your own Values Ranking
+          across personal, family, cultural and organisational contexts. The aim is to identify
+          where the same priorities feel aligned, where they become difficult to express, and
+          where two legitimate values may pull in different directions.
+        </p>
+
+        <div className="mt-10 grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {VALUES_RANKING_GROUPS.map((group) => (
+              <div key={group.label} className="rounded-[1.4rem] border border-border bg-card p-5">
+                <p className="eyebrow">{group.label}</p>
+                <p className="mt-4 text-sm leading-relaxed text-ink/75">
+                  {group.values.join(" · ")}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-[1.6rem] border border-[#9C78D5]/35 bg-[#9C78D5]/8 p-6 sm:p-7">
+            <p className="text-[0.64rem] uppercase tracking-[0.22em] text-[#A5199B]">
+              Cross-cultural tensions to explore
+            </p>
+            <div className="mt-5 space-y-3">
+              {CROSS_CULTURAL_VALUE_TENSIONS.map((tension) => (
+                <div
+                  key={tension}
+                  className="rounded-full border border-[#9C78D5]/25 bg-background/80 px-4 py-2.5 text-sm text-ink/75"
+                >
+                  {tension}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {VALUES_RANKING_NOTE}
+        </p>
       </Section>
 
       <Section muted eyebrow="International lens" title="The person and the context, together">
