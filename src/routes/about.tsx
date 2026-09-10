@@ -189,9 +189,26 @@ function AboutPage() {
                   {value.letter}
                 </div>
                 <h3 className="mt-5 font-serif text-2xl text-[#100850]">{value.k}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {value.v}
-                </p>
+
+                <details className="mt-4 border-t border-[#100850]/10 pt-4 text-left">
+                  <summary
+                    className="flex cursor-pointer list-none items-center justify-between gap-3 text-[0.62rem] uppercase tracking-[0.20em] text-[#68769A] outline-none transition hover:text-[#100850] [&::-webkit-details-marker]:hidden"
+                    aria-label={`Read the meaning of ${value.k}`}
+                  >
+                    <span>Read meaning</span>
+                    <span
+                      className="flex h-7 w-7 items-center justify-center rounded-full text-base leading-none"
+                      style={{ backgroundColor: value.tint, color: value.accent }}
+                      aria-hidden="true"
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {value.v}
+                  </p>
+                </details>
+
                 <div
                   className="absolute inset-x-0 bottom-0 h-2 opacity-70 transition-opacity group-hover:opacity-100"
                   style={{ backgroundColor: value.tint }}
