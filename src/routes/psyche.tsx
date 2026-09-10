@@ -3,8 +3,6 @@ import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-
 import { EmotiveImage } from "@/components/site/emotive-image";
 import humanPsyche from "@/assets/human-psyche.jpg";
 import {
-  SCIENTIFIC_FOUNDATIONS,
-  SCIENTIFIC_FOUNDATIONS_NOTE,
   VALUES_LEVELS,
   VALUES_RANKING_GROUPS,
   VALUES_RANKING_NOTE,
@@ -127,6 +125,9 @@ function PsychePage() {
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
         </p>
+        <p className="mt-3 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          Research-informed framework. Detailed methodology and references are documented separately for academic and research communication.
+        </p>
 
         <Link
           to="/values-map"
@@ -134,32 +135,6 @@ function PsychePage() {
         >
           Try the Values Map
         </Link>
-      </Section>
-
-      <Section eyebrow="Scientific & theoretical foundations" title="Established frameworks, integrated with care">
-        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-          The Integral Values interpretation is informed by established international
-          frameworks in values research, intercultural psychology, communication and
-          integral theory. Each framework contributes a different lens rather than a label.
-        </p>
-
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {SCIENTIFIC_FOUNDATIONS.map((foundation) => (
-            <div key={foundation.name} className="rounded-[1.45rem] border border-border bg-card p-5">
-              <p className="text-[0.62rem] uppercase tracking-[0.2em] text-primary">
-                {foundation.role}
-              </p>
-              <h3 className="mt-3 font-serif text-2xl text-ink">{foundation.name}</h3>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                {foundation.body}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
-          {SCIENTIFIC_FOUNDATIONS_NOTE}
-        </p>
       </Section>
 
       <Section muted eyebrow="Free self-checks" title="Begin quietly, on your own">
