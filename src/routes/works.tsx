@@ -51,7 +51,7 @@ const PILLARS = [
     detail:
       "Care & Therapy focuses on psychological suffering without separating it from personal history, relationships, culture and present circumstances. The work may explore emotional regulation, attachment, trauma-related difficulties, life transitions and relational patterns, at a pace adapted to the person and the situation.",
     typical: "Emotional regulation · trauma-informed work · attachment · relationships · life transitions · psychological support",
-    image: "/works-care.png",
+    image: "https://raw.githubusercontent.com/tassadit-rgb/integralvalues-eu/main/works-care.png",
     accent: "#E5279A",
     soft: "rgba(229,39,154,0.13)",
     fallback:
@@ -67,7 +67,7 @@ const PILLARS = [
     detail:
       "Coaching translates awareness into action. It supports people navigating responsibility, leadership, career transitions, decision-making or personal development, while keeping performance connected to values, relationships, wellbeing and context rather than treating achievement as an isolated goal.",
     typical: "Goal clarification · leadership · career transition · decision-making · strengths · action planning",
-    image: "/works-coaching.png",
+    image: "https://raw.githubusercontent.com/tassadit-rgb/integralvalues-eu/main/works-coaching.png",
     accent: "#00CEE5",
     soft: "rgba(117,232,213,0.16)",
     fallback:
