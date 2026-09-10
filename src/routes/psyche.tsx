@@ -3,6 +3,9 @@ import { SiteLayout, PageHero, Section, CardTile } from "@/components/site/site-
 import { EmotiveImage } from "@/components/site/emotive-image";
 import humanPsyche from "@/assets/human-psyche.jpg";
 import {
+  SCIENTIFIC_FOUNDATIONS,
+  SCIENTIFIC_FOUNDATIONS_NOTE,
+  VALUES_LEVELS,
   VALUES_RANKING_GROUPS,
   VALUES_RANKING_NOTE,
 } from "@/lib/values-ranking";
@@ -65,20 +68,34 @@ function PsychePage() {
         </div>
       </Section>
 
-      <Section muted eyebrow="Values Ranking" title="What matters most — and in which context?">
+      <Section muted eyebrow="Values Ranking" title="What matters most — and how deeply?">
         <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
           Values are rarely isolated. They interact with relationships, family, culture,
-          work, migration and life stage. Psyché™ uses a cross-context values list to help
-          rank what feels most important now, then explore where priorities reinforce one
-          another and where they come into tension.
+          work, migration and life stage. Psyché™ uses a cross-context values palette and
+          then organises the person’s own ranking into three levels of centrality.
         </p>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {VALUES_RANKING_GROUPS.map((group) => (
-            <div key={group.label} className="rounded-[1.4rem] border border-border bg-card p-5">
-              <p className="eyebrow">{group.label}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {group.values.map((value) => (
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {VALUES_LEVELS.map((level, index) => (
+            <div
+              key={level.label}
+              className="rounded-[1.7rem] border bg-card p-6 shadow-[0_12px_30px_rgba(16,8,80,0.04)]"
+              style={{
+                borderColor:
+                  index === 0
+                    ? "rgba(229,39,154,0.28)"
+                    : index === 1
+                      ? "rgba(156,120,213,0.28)"
+                      : "rgba(0,206,229,0.28)",
+              }}
+            >
+              <p className="eyebrow">{level.level}</p>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{level.label}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                {level.description}
+              </p>
+              <div className="mt-5 flex flex-wrap gap-2">
+                {level.values.map((value) => (
                   <span
                     key={value}
                     className="rounded-full border border-border bg-background px-3 py-1.5 text-xs text-ink/75"
@@ -91,8 +108,50 @@ function PsychePage() {
           ))}
         </div>
 
+        <div className="mt-10 rounded-[1.6rem] border border-border bg-background/70 p-6 sm:p-8">
+          <p className="text-[0.64rem] uppercase tracking-[0.22em] text-[#A5199B]">
+            Crossed values palette
+          </p>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {VALUES_RANKING_GROUPS.map((group) => (
+              <div key={group.label}>
+                <p className="text-xs font-medium text-ink">{group.label}</p>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {group.values.join(" · ")}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
           {VALUES_RANKING_NOTE}
+        </p>
+      </Section>
+
+      <Section eyebrow="Scientific & theoretical foundations" title="Established frameworks, integrated with care">
+        <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+          The Integral Values interpretation is informed by established international
+          frameworks in values research, intercultural psychology, communication and
+          integral theory. Each framework contributes a different lens rather than a label.
+        </p>
+
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {SCIENTIFIC_FOUNDATIONS.map((foundation) => (
+            <div key={foundation.name} className="rounded-[1.45rem] border border-border bg-card p-5">
+              <p className="text-[0.62rem] uppercase tracking-[0.2em] text-primary">
+                {foundation.role}
+              </p>
+              <h3 className="mt-3 font-serif text-2xl text-ink">{foundation.name}</h3>
+              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
+                {foundation.body}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-6 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          {SCIENTIFIC_FOUNDATIONS_NOTE}
         </p>
       </Section>
 
