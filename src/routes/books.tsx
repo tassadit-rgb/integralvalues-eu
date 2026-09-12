@@ -8,13 +8,13 @@ export const Route = createFileRoute("/books")({
       {
         name: "description",
         content:
-          "Integral Values Editions™ — guided workbooks and practical reflection kits for personal growth, relationships, leadership and life transitions.",
+          "Integral Values Editions™ — guided workbooks, practical reflection kits and forthcoming books for personal growth, relationships, leadership and life transitions.",
       },
       { property: "og:title", content: "Editions & Books™ — Integral Values" },
       {
         property: "og:description",
         content:
-          "Read. Reflect. Apply. Flourish. Guided tools for the next step of your journey.",
+          "Read. Reflect. Apply. Flourish. Guided tools and forthcoming books for the next step of your journey.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -119,6 +119,34 @@ const EDITIONS: Edition[] = [
   },
 ];
 
+type BookProject = {
+  title: string;
+  kicker: string;
+  body: string;
+  accent: string;
+  soft: string;
+  border: string;
+};
+
+const BOOK_PROJECTS: BookProject[] = [
+  {
+    title: "You're Not Alone;",
+    kicker: "Book project · In development",
+    body: "A deeply personal narrative about rupture, survival, belonging and transformation — where lived experience meets psychology, meaning and the long movement back toward life.",
+    accent: "#A5199B",
+    soft: "rgba(156,120,213,.14)",
+    border: "rgba(165,25,155,.28)",
+  },
+  {
+    title: "Psy or Co — Point Virgule",
+    kicker: "Book project · In development",
+    body: "A reflective project at the frontier of psychology, coaching and lived reality — exploring the moments when a point could have been an ending, but becomes a semicolon instead.",
+    accent: "#00AFC4",
+    soft: "rgba(117,232,213,.16)",
+    border: "rgba(0,206,229,.28)",
+  },
+];
+
 const JOURNEY = [
   {
     stage: "Psyché™",
@@ -163,6 +191,22 @@ function requestHref(edition: Edition) {
     "Country:",
     "",
     "Please let me know when this edition is available and how I can access it.",
+  ].join("\n");
+
+  return `mailto:hello@integralvalues.eu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function bookInterestHref(book: BookProject) {
+  const subject = `Integral Values Books — ${book.title}`;
+  const body = [
+    "Hello Integral Values,",
+    "",
+    `I would like to follow the book project: ${book.title}.`,
+    "",
+    "Name:",
+    "Country:",
+    "",
+    "Please let me know when there is news about publication, excerpts or pre-orders.",
   ].join("\n");
 
   return `mailto:hello@integralvalues.eu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -263,6 +307,50 @@ function EditionCard({ edition }: { edition: Edition }) {
             Get the Kit →
           </a>
         </div>
+      </div>
+    </article>
+  );
+}
+
+function BookProjectCard({ book }: { book: BookProject }) {
+  return (
+    <article
+      className="relative overflow-hidden rounded-[2rem] border bg-white p-8 shadow-[0_18px_55px_rgba(16,8,80,.055)] sm:p-10"
+      style={{ borderColor: book.border }}
+    >
+      <div
+        className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full blur-2xl"
+        style={{ backgroundColor: book.soft }}
+        aria-hidden="true"
+      />
+      <div className="relative">
+        <div className="flex items-center justify-between gap-4">
+          <p className="text-[0.58rem] uppercase tracking-[0.24em] text-[#68769A]">
+            Integral Values Books
+          </p>
+          <span
+            className="rounded-full px-3 py-1.5 text-[0.56rem] uppercase tracking-[0.16em]"
+            style={{ backgroundColor: book.soft, color: book.accent }}
+          >
+            Coming soon
+          </span>
+        </div>
+        <p className="mt-10 text-[0.58rem] uppercase tracking-[0.2em]" style={{ color: book.accent }}>
+          {book.kicker}
+        </p>
+        <h3 className="mt-3 max-w-xl font-serif text-4xl leading-[1.02] text-[#100850] sm:text-5xl">
+          {book.title}
+        </h3>
+        <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground">
+          {book.body}
+        </p>
+        <a
+          href={bookInterestHref(book)}
+          className="mt-8 inline-flex items-center rounded-full border px-5 py-3 text-[0.64rem] uppercase tracking-[0.15em] transition hover:bg-[#FDFCFA]"
+          style={{ borderColor: book.border, color: book.accent }}
+        >
+          Follow the project →
+        </a>
       </div>
     </article>
   );
@@ -371,6 +459,28 @@ function BooksPage() {
           <div className="mt-14 grid gap-7 lg:grid-cols-2">
             {EDITIONS.map((edition) => (
               <EditionCard key={edition.title} edition={edition} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden bg-white">
+        <div className="pointer-events-none absolute left-0 top-1/3 h-72 w-72 rounded-full bg-[#E5279A]/[0.04] blur-3xl" aria-hidden="true" />
+        <div className="pointer-events-none absolute right-0 top-0 h-80 w-80 rounded-full bg-[#75E8D5]/[0.07] blur-3xl" aria-hidden="true" />
+        <div className="relative mx-auto max-w-6xl px-6 py-24 lg:px-10 lg:py-28">
+          <div className="max-w-3xl">
+            <p className="text-[0.64rem] uppercase tracking-[0.28em] text-[#68769A]">Books in development</p>
+            <h2 className="mt-5 font-serif text-4xl leading-tight text-[#100850] sm:text-5xl">
+              Stories and ideas that need more room than a workbook.
+            </h2>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+              Alongside the practical editions, longer-form book projects are being developed within the Integral Values universe. Publication details, excerpts and release dates will be shared as the manuscripts evolve.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-7 lg:grid-cols-2">
+            {BOOK_PROJECTS.map((book) => (
+              <BookProjectCard key={book.title} book={book} />
             ))}
           </div>
         </div>
