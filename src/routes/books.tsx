@@ -137,7 +137,7 @@ const BOOK_PROJECTS: BookProject[] = [
     title: "You're Not Alone;",
     kind: "Biography",
     kicker: "Book project · In development",
-    body: "A deeply personal narrative of rupture, survival, belonging and transformation — where lived experience meets psychology, meaning and the long movement back toward life.",
+    body: "A personal narrative of rupture, survival and transformation.",
     cover: "/youre-not-alone-cover.png",
     accent: "#A5199B",
     soft: "rgba(156,120,213,.14)",
@@ -148,19 +148,19 @@ const BOOK_PROJECTS: BookProject[] = [
     title: "Point Virgule",
     kind: "Roman",
     kicker: "Projet de roman · En développement",
-    body: "Un roman autour de l'interruption, de la survie et de la continuation — ces moments où le point pourrait tout arrêter, mais où le point-virgule laisse encore une phrase possible.",
+    body: "Un roman autour de l’interruption, de la survie et de la continuation.",
     cover: "/point-virgule-cover.png",
-    accent: "#111111",
-    soft: "rgba(16,8,80,.06)",
-    border: "rgba(16,8,80,.18)",
+    accent: "#7A2EBB",
+    soft: "rgba(156,120,213,.10)",
+    border: "rgba(156,120,213,.28)",
     language: "fr",
   },
   {
     title: "Psy & Co",
     kind: "Manuscrit pratique",
     kicker: "Ressources croisées entre psychothérapie et coaching",
-    body: "Un manuscrit en français qui met en dialogue pratique psychothérapeutique et coaching afin d'explorer ce qui relève du soin, de la conscience de soi, de l'action et de la transformation.",
-    note: "Shadow Work constitue un axe de contenu du manuscrit : explorer, accueillir, intégrer et avancer — sans confondre accompagnement thérapeutique et coaching.",
+    body: "Des ressources pour explorer, mieux se connaître et avancer.",
+    note: "Shadow Work : explorer, accueillir, intégrer et avancer.",
     cover: "/psy-co-cover.jpg.png",
     accent: "#008FA0",
     soft: "rgba(117,232,213,.15)",
@@ -350,33 +350,32 @@ function BookProjectCard({ book }: { book: BookProject }) {
           loading="lazy"
           className="aspect-[1410/2250] w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
         />
-        <span
-          className="absolute right-5 top-5 rounded-full border border-white/30 bg-black/35 px-3 py-1.5 text-[0.54rem] uppercase tracking-[0.15em] text-white backdrop-blur-sm"
-        >
+        <span className="absolute right-4 top-4 rounded-full border border-white/30 bg-black/30 px-3 py-1.5 text-[0.5rem] uppercase tracking-[0.14em] text-white backdrop-blur-sm">
           {book.language === "fr" ? "À paraître" : "Coming soon"}
         </span>
       </div>
 
-      <div className="flex h-full flex-col p-8 sm:p-9">
-        <p className="text-[0.56rem] uppercase tracking-[0.22em] text-[#68769A]">Integral Values Books</p>
-        <p className="mt-6 text-[0.56rem] uppercase tracking-[0.2em]" style={{ color: book.accent }}>
+      <div className="flex flex-col p-6 sm:p-7">
+        <p className="text-[0.52rem] uppercase tracking-[0.2em] text-[#68769A]">Integral Values Books</p>
+        <p className="mt-4 text-[0.52rem] uppercase tracking-[0.18em]" style={{ color: book.accent }}>
           {book.kicker}
         </p>
-        <h3 className="mt-3 font-serif text-4xl leading-[1.02] text-[#100850]">{book.title}</h3>
-        <p className="mt-3 font-serif text-lg italic" style={{ color: book.accent }}>
+        <h3 className="mt-2 font-serif text-3xl leading-[1.02] text-[#100850]">{book.title}</h3>
+        <p className="mt-2 font-serif text-base italic" style={{ color: book.accent }}>
           {book.kind}
         </p>
-        <p className="mt-6 text-sm leading-relaxed text-muted-foreground">{book.body}</p>
+        <div className="mt-4 h-px w-10" style={{ backgroundColor: book.accent }} aria-hidden="true" />
+        <p className="mt-4 text-[0.84rem] leading-relaxed text-muted-foreground">{book.body}</p>
         {book.note && (
-          <p className="mt-5 border-l-2 pl-4 text-xs leading-relaxed text-muted-foreground" style={{ borderColor: book.border }}>
+          <p className="mt-3 text-[0.74rem] leading-relaxed text-muted-foreground">
             {book.note}
           </p>
         )}
 
         <a
           href={bookInterestHref(book)}
-          className="mt-auto inline-flex w-fit items-center rounded-full border px-5 py-3 pt-3 text-[0.62rem] uppercase tracking-[0.14em] transition hover:bg-[#FDFCFA]"
-          style={{ borderColor: book.border, color: book.accent, marginTop: "2rem" }}
+          className="mt-6 inline-flex w-full items-center justify-center rounded-full border px-4 py-3 text-[0.58rem] uppercase tracking-[0.13em] transition hover:bg-[#FDFCFA]"
+          style={{ borderColor: book.border, color: book.accent }}
         >
           {book.language === "fr" ? "Suivre le projet →" : "Follow the project →"}
         </a>
@@ -496,7 +495,7 @@ function BooksPage() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-7 lg:grid-cols-3">
+          <div className="mt-12 grid gap-7 lg:grid-cols-3 lg:items-start">
             {BOOK_PROJECTS.map((book) => (
               <BookProjectCard key={book.title} book={book} />
             ))}
@@ -561,10 +560,6 @@ function BooksPage() {
               </Link>
             </div>
           </div>
-
-          <p className="mt-10 max-w-3xl border-t border-white/15 pt-6 text-[0.68rem] leading-relaxed text-white/45">
-            Integral Values Editions™ are educational and reflective resources. They do not replace medical, psychological or emergency care. When a situation involves immediate danger, violence or acute distress, contact the appropriate local emergency or crisis service.
-          </p>
         </div>
       </section>
     </SiteLayout>
