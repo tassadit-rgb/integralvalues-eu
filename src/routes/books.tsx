@@ -125,6 +125,7 @@ type BookProject = {
   kicker: string;
   body: string;
   note?: string;
+  cover: string;
   accent: string;
   soft: string;
   border: string;
@@ -137,6 +138,7 @@ const BOOK_PROJECTS: BookProject[] = [
     kind: "Biography",
     kicker: "Book project · In development",
     body: "A deeply personal narrative of rupture, survival, belonging and transformation — where lived experience meets psychology, meaning and the long movement back toward life.",
+    cover: "/youre-not-alone-cover.png",
     accent: "#A5199B",
     soft: "rgba(156,120,213,.14)",
     border: "rgba(165,25,155,.28)",
@@ -147,6 +149,7 @@ const BOOK_PROJECTS: BookProject[] = [
     kind: "Roman",
     kicker: "Projet de roman · En développement",
     body: "Un roman autour de l'interruption, de la survie et de la continuation — ces moments où le point pourrait tout arrêter, mais où le point-virgule laisse encore une phrase possible.",
+    cover: "/point-virgule-cover.png",
     accent: "#111111",
     soft: "rgba(16,8,80,.06)",
     border: "rgba(16,8,80,.18)",
@@ -158,6 +161,7 @@ const BOOK_PROJECTS: BookProject[] = [
     kicker: "Ressources croisées entre psychothérapie et coaching",
     body: "Un manuscrit en français qui met en dialogue pratique psychothérapeutique et coaching afin d'explorer ce qui relève du soin, de la conscience de soi, de l'action et de la transformation.",
     note: "Shadow Work constitue un axe de contenu du manuscrit : explorer, accueillir, intégrer et avancer — sans confondre accompagnement thérapeutique et coaching.",
+    cover: "/psy-co-cover.jpg.png",
     accent: "#008FA0",
     soft: "rgba(117,232,213,.15)",
     border: "rgba(0,206,229,.28)",
@@ -334,40 +338,31 @@ function EditionCard({ edition }: { edition: Edition }) {
 }
 
 function BookProjectCard({ book }: { book: BookProject }) {
-  const isPointVirgule = book.title === "Point Virgule";
-
   return (
     <article
-      className="relative flex h-full flex-col overflow-hidden rounded-[2rem] border bg-white p-8 shadow-[0_18px_55px_rgba(16,8,80,.055)] sm:p-9"
+      className="group flex h-full flex-col overflow-hidden rounded-[2rem] border bg-white shadow-[0_18px_55px_rgba(16,8,80,.055)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(16,8,80,.09)]"
       style={{ borderColor: book.border }}
     >
-      <div
-        className="pointer-events-none absolute -right-12 -top-12 h-44 w-44 rounded-full blur-2xl"
-        style={{ backgroundColor: book.soft }}
-        aria-hidden="true"
-      />
+      <div className="relative overflow-hidden bg-[#FDFCFA]">
+        <img
+          src={book.cover}
+          alt={`${book.title} book cover`}
+          loading="lazy"
+          className="aspect-[1410/2250] w-full object-cover transition-transform duration-700 group-hover:scale-[1.015]"
+        />
+        <span
+          className="absolute right-5 top-5 rounded-full border border-white/30 bg-black/35 px-3 py-1.5 text-[0.54rem] uppercase tracking-[0.15em] text-white backdrop-blur-sm"
+        >
+          {book.language === "fr" ? "À paraître" : "Coming soon"}
+        </span>
+      </div>
 
-      {isPointVirgule && (
-        <div className="pointer-events-none absolute right-6 top-16 font-serif text-[8rem] leading-none text-black/[0.035]" aria-hidden="true">
-          ;
-        </div>
-      )}
-
-      <div className="relative flex h-full flex-col">
-        <div className="flex items-center justify-between gap-4">
-          <p className="text-[0.56rem] uppercase tracking-[0.22em] text-[#68769A]">Integral Values Books</p>
-          <span
-            className="rounded-full px-3 py-1.5 text-[0.54rem] uppercase tracking-[0.15em]"
-            style={{ backgroundColor: book.soft, color: book.accent }}
-          >
-            {book.language === "fr" ? "À paraître" : "Coming soon"}
-          </span>
-        </div>
-
-        <p className="mt-9 text-[0.56rem] uppercase tracking-[0.2em]" style={{ color: book.accent }}>
+      <div className="flex h-full flex-col p-8 sm:p-9">
+        <p className="text-[0.56rem] uppercase tracking-[0.22em] text-[#68769A]">Integral Values Books</p>
+        <p className="mt-6 text-[0.56rem] uppercase tracking-[0.2em]" style={{ color: book.accent }}>
           {book.kicker}
         </p>
-        <h3 className="mt-3 font-serif text-4xl leading-[1.02] text-[#100850] sm:text-5xl">{book.title}</h3>
+        <h3 className="mt-3 font-serif text-4xl leading-[1.02] text-[#100850]">{book.title}</h3>
         <p className="mt-3 font-serif text-lg italic" style={{ color: book.accent }}>
           {book.kind}
         </p>
