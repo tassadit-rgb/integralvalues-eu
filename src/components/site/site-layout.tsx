@@ -8,6 +8,7 @@ const NAV = [
   { to: "/works", label: "Works" },
   { to: "/psyche", label: "Psyché" },
   { to: "/for-you", label: "For You" },
+  { to: "/books", label: "Editions" },
   { to: "/circle", label: "Circle" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -34,7 +35,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/50 bg-background/85 backdrop-blur-md">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-8 px-6 py-3 lg:px-10 lg:py-4">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-3 lg:px-10 lg:py-4">
         <Link
           to="/"
           className="flex shrink-0 items-center"
@@ -47,12 +48,12 @@ export function SiteHeader() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-7">
+        <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
           {NAV.map((n) => (
             <Link
               key={n.to}
               to={n.to}
-              className="text-[0.72rem] uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:text-ink xl:text-[0.74rem] xl:tracking-[0.13em]"
+              className="text-[0.68rem] uppercase tracking-[0.10em] text-muted-foreground transition-colors hover:text-ink xl:text-[0.72rem] xl:tracking-[0.12em]"
               activeProps={{ className: "text-ink" }}
             >
               {n.label}
@@ -128,6 +129,7 @@ export function SiteFooter() {
               { to: "/works", label: "Works" },
               { to: "/psyche", label: "Psyché" },
               { to: "/for-you", label: "Resources" },
+              { to: "/books", label: "Editions & Books™" },
               { to: "/circle", label: "Integral Circle™" },
               { to: "/contact", label: "Contact" },
             ].map((l) => (
