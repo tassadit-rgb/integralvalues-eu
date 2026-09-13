@@ -53,7 +53,7 @@ function PrivacyPage() {
         </div>
       </Section>
 
-      <Section muted eyebrow="Digital services" title="Accounts, assessments and contact">
+      <Section muted eyebrow="Digital services" title="Accounts, assessments, newsletter and contact">
         <div className="max-w-3xl space-y-5 text-sm leading-relaxed text-muted-foreground">
           <p>
             Integral Values may use secure technical providers to operate authentication,
@@ -64,6 +64,12 @@ function PrivacyPage() {
             Self-assessment tools are not a substitute for diagnosis or emergency care. Where
             scores or responses are stored, they should remain connected to the user's account
             and protected by the access controls of the relevant service.
+          </p>
+          <p>
+            If you subscribe to the Integral Values newsletter, we store the email address you
+            provide together with the date and source of your consent for the purpose of sending
+            Integral Values news, reflections and resources. You can withdraw your consent at any
+            time by using an unsubscribe option provided in a message or by contacting us.
           </p>
           <p>
             For privacy requests, use the Contact page or write to
