@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
+import { NewsletterSignup } from "@/components/site/newsletter-signup";
 
 const NAV = [
   { to: "/", label: "Home" },
@@ -164,19 +165,7 @@ export function SiteFooter() {
             </li>
           </ul>
 
-          <div className="mt-8 border-t border-background/15 pt-6">
-            <div className="flex items-center justify-between gap-3">
-              <p className="text-[0.68rem] uppercase tracking-[0.22em] text-background/50">
-                Newsletter
-              </p>
-              <span className="rounded-full border border-background/20 px-3 py-1 text-[0.62rem] uppercase tracking-[0.15em] text-background/60">
-                Coming soon
-              </span>
-            </div>
-            <p className="mt-3 text-xs leading-relaxed text-background/60">
-              The Integral Values newsletter is not active yet. No email address is collected here.
-            </p>
-          </div>
+          <NewsletterSignup />
         </div>
       </div>
 
