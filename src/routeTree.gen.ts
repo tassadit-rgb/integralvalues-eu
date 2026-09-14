@@ -27,8 +27,8 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AffiliateStatusRouteImport } from './routes/affiliate.status'
 import { Route as AdminApplicationsRouteImport } from './routes/admin.applications'
-import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
-import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as EmailAuthWebhookRouteImport } from './routes/email/auth/webhook'
+import { Route as EmailAuthPreviewRouteImport } from './routes/email/auth/preview'
 
 const WorksRoute = WorksRouteImport.update({
   id: '/works',
@@ -120,14 +120,14 @@ const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
   path: '/admin/applications',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
-  id: '/lovable/email/auth/webhook',
-  path: '/lovable/email/auth/webhook',
+const EmailAuthWebhookRoute = EmailAuthWebhookRouteImport.update({
+  id: '/email/auth/webhook',
+  path: '/email/auth/webhook',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
-  id: '/lovable/email/auth/preview',
-  path: '/lovable/email/auth/preview',
+const EmailAuthPreviewRoute = EmailAuthPreviewRouteImport.update({
+  id: '/email/auth/preview',
+  path: '/email/auth/preview',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -150,8 +150,8 @@ export interface FileRoutesByFullPath {
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -172,8 +172,8 @@ export interface FileRoutesByTo {
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -195,8 +195,8 @@ export interface FileRoutesById {
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -219,8 +219,8 @@ export interface FileRouteTypes {
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -241,8 +241,8 @@ export interface FileRouteTypes {
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   id:
     | '__root__'
     | '/'
@@ -263,8 +263,8 @@ export interface FileRouteTypes {
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -285,8 +285,8 @@ export interface RootRouteChildren {
   Who5Route: typeof Who5Route
   WorksRoute: typeof WorksRoute
   AdminApplicationsRoute: typeof AdminApplicationsRoute
-  LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
-  LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
+  EmailAuthPreviewRoute: typeof EmailAuthPreviewRoute
+  EmailAuthWebhookRoute: typeof EmailAuthWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -417,18 +417,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminApplicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/auth/webhook': {
-      id: '/lovable/email/auth/webhook'
-      path: '/lovable/email/auth/webhook'
-      fullPath: '/lovable/email/auth/webhook'
-      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
+    '/email/auth/webhook': {
+      id: '/email/auth/webhook'
+      path: '/email/auth/webhook'
+      fullPath: '/email/auth/webhook'
+      preLoaderRoute: typeof EmailAuthWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/auth/preview': {
-      id: '/lovable/email/auth/preview'
-      path: '/lovable/email/auth/preview'
-      fullPath: '/lovable/email/auth/preview'
-      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
+    '/email/auth/preview': {
+      id: '/email/auth/preview'
+      path: '/email/auth/preview'
+      fullPath: '/email/auth/preview'
+      preLoaderRoute: typeof EmailAuthPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -464,8 +464,8 @@ const rootRouteChildren: RootRouteChildren = {
   Who5Route: Who5Route,
   WorksRoute: WorksRoute,
   AdminApplicationsRoute: AdminApplicationsRoute,
-  LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
-  LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
+  EmailAuthPreviewRoute: EmailAuthPreviewRoute,
+  EmailAuthWebhookRoute: EmailAuthWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
