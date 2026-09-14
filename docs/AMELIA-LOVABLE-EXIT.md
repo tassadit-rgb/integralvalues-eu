@@ -121,3 +121,24 @@ Lovable can be considered removable when all of the following are true:
 ## Non-negotiable principle
 
 Integral Values owns the customer experience, data model and source code. External services remain replaceable components, not the architecture itself.
+
+
+## État de l’implémentation sur la branche de sortie
+
+- [x] Adaptateur de réservation indépendant et testable.
+- [x] Calendly conservé comme repli sûr.
+- [x] Amelia configurable uniquement par URL publique.
+- [x] Configuration Vite/TanStack native avec entrée serveur explicite.
+- [x] Reporting client indépendant.
+- [x] Adaptateur email générique, désactivé par défaut.
+- [x] Suppression des routes et paquets email liés à Lovable.
+- [x] Contrat d’environnement documenté.
+- [x] Tests unitaires de réservation et d’email sans appels externes.
+- [x] Contrôle automatique des références runtime liées à Lovable.
+- [ ] Régénérer et valider `bun.lock` dans un environnement de build.
+- [ ] Faire passer le workflow CI complet.
+- [ ] Ajouter les identifiants Amelia réels après validation du backend.
+- [ ] Tester séparément le parcours Amelia de bout en bout.
+- [ ] Valider le déploiement Hostinger depuis GitHub.
+
+Aucun système externe ne doit être modifié pour exécuter les tests de cette branche.
