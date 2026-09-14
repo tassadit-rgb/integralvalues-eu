@@ -23,9 +23,6 @@ export const BOOKING_SERVICES: BookingService[] = [
   { key: "group", title: "Group Session", durationMinutes: 90 },
 ];
 
-const DEFAULT_AMELIA_PUBLIC_BASE_URL =
-  "https://tassaditcherfaoui-oawpe.wpcomstaging.com/booking-integral-values/";
-
 const CALENDLY_URLS: Record<BookingServiceKey, string> = {
   "initial-consultation": "https://calendly.com/integralvalues/chemistry-call",
   "individual-coaching": "https://calendly.com/integralvalues/individual-coaching-30-min",
@@ -42,24 +39,28 @@ export type BookingEnvironment = {
 
 export function createBookingProvider(environment: BookingEnvironment) {
   const configuredProvider = environment.VITE_BOOKING_PROVIDER;
-  const provider: BookingProviderName =
+  const configuredAmeliaUrl =
+    environment.VITE_AMELIA_PUBLIC_BASE_URL?.trim().replace(/\/$/, "") || null;
+
+  const requestedProvider: BookingProviderName =
     configuredProvider === "amelia" ||
     configuredProvider === "calendly" ||
     configuredProvider === "legacy"
       ? configuredProvider
       : "calendly";
 
-  const configuredAmeliaUrl = environment.VITE_AMELIA_PUBLIC_BASE_URL?.trim();
-  const ameliaPublicBaseUrl = (
-    configuredAmeliaUrl || DEFAULT_AMELIA_PUBLIC_BASE_URL
-  ).replace(/\/$/, "");
+  // Amelia is never activated with an implicit or guessed endpoint.
+  const provider: BookingProviderName =
+    requestedProvider === "amelia" && !configuredAmeliaUrl
+      ? "calendly"
+      : requestedProvider;
 
   function getAmeliaPublicBookingUrl(_serviceKey?: BookingServiceKey) {
-    return ameliaPublicBaseUrl;
+    return configuredAmeliaUrl;
   }
 
   function getBookingEntryUrl(serviceKey?: BookingServiceKey) {
-    if (provider === "amelia") return getAmeliaPublicBookingUrl(serviceKey);
+    if (provider === "amelia") return configuredAmeliaUrl!;
     if (provider === "calendly") {
       return CALENDLY_URLS[serviceKey ?? "initial-consultation"];
     }
