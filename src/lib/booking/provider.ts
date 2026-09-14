@@ -26,10 +26,6 @@ export const BOOKING_SERVICES: BookingService[] = [
 const DEFAULT_AMELIA_PUBLIC_BASE_URL =
   "https://tassaditcherfaoui-oawpe.wpcomstaging.com/booking-integral-values/";
 
-const AMELIA_PUBLIC_BASE_URL = (
-  import.meta.env.VITE_AMELIA_PUBLIC_BASE_URL ?? DEFAULT_AMELIA_PUBLIC_BASE_URL
-).replace(/\/$/, "");
-
 const CALENDLY_URLS: Record<BookingServiceKey, string> = {
   "initial-consultation": "https://calendly.com/integralvalues/chemistry-call",
   "individual-coaching": "https://calendly.com/integralvalues/individual-coaching-30-min",
@@ -39,37 +35,42 @@ const CALENDLY_URLS: Record<BookingServiceKey, string> = {
   group: "https://calendly.com/integralvalues/group-session-90-min",
 };
 
-const configuredProvider = import.meta.env.VITE_BOOKING_PROVIDER;
+export type BookingEnvironment = {
+  VITE_BOOKING_PROVIDER?: string;
+  VITE_AMELIA_PUBLIC_BASE_URL?: string;
+};
 
-export const BOOKING_PROVIDER: BookingProviderName =
-  configuredProvider === "amelia" ||
-  configuredProvider === "calendly" ||
-  configuredProvider === "legacy"
-    ? configuredProvider
-    : "calendly";
+export function createBookingProvider(environment: BookingEnvironment) {
+  const configuredProvider = environment.VITE_BOOKING_PROVIDER;
+  const provider: BookingProviderName =
+    configuredProvider === "amelia" ||
+    configuredProvider === "calendly" ||
+    configuredProvider === "legacy"
+      ? configuredProvider
+      : "calendly";
 
-/**
- * Returns the public Amelia booking entry point.
- *
- * Service-specific Amelia deep links will be added only after the Amelia service
- * IDs are mapped and verified. Until then, Amelia opens the same public booking
- * form for every service.
- *
- * Never place Amelia private API keys, WordPress credentials, Stripe secrets,
- * PayPal secrets or other privileged credentials in VITE_* variables.
- */
-export function getAmeliaPublicBookingUrl(_serviceKey?: BookingServiceKey) {
-  return AMELIA_PUBLIC_BASE_URL;
-}
+  const configuredAmeliaUrl = environment.VITE_AMELIA_PUBLIC_BASE_URL?.trim();
+  const ameliaPublicBaseUrl = (
+    configuredAmeliaUrl || DEFAULT_AMELIA_PUBLIC_BASE_URL
+  ).replace(/\/$/, "");
 
-export function getBookingEntryUrl(serviceKey?: BookingServiceKey) {
-  if (BOOKING_PROVIDER === "amelia") {
-    return getAmeliaPublicBookingUrl(serviceKey);
+  function getAmeliaPublicBookingUrl(_serviceKey?: BookingServiceKey) {
+    return ameliaPublicBaseUrl;
   }
 
-  if (BOOKING_PROVIDER === "calendly") {
-    return CALENDLY_URLS[serviceKey ?? "initial-consultation"];
+  function getBookingEntryUrl(serviceKey?: BookingServiceKey) {
+    if (provider === "amelia") return getAmeliaPublicBookingUrl(serviceKey);
+    if (provider === "calendly") {
+      return CALENDLY_URLS[serviceKey ?? "initial-consultation"];
+    }
+    return "/contact";
   }
 
-  return "/contact";
+  return { provider, getAmeliaPublicBookingUrl, getBookingEntryUrl };
 }
+
+const booking = createBookingProvider(import.meta.env);
+
+export const BOOKING_PROVIDER = booking.provider;
+export const getAmeliaPublicBookingUrl = booking.getAmeliaPublicBookingUrl;
+export const getBookingEntryUrl = booking.getBookingEntryUrl;
