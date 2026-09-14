@@ -18,6 +18,12 @@ describe("createBookingProvider", () => {
     ).toBe("calendly");
   });
 
+  it("does not activate Amelia without an explicit public URL", () => {
+    const booking = createBookingProvider({ VITE_BOOKING_PROVIDER: "amelia" });
+    expect(booking.provider).toBe("calendly");
+    expect(booking.getAmeliaPublicBookingUrl()).toBeNull();
+  });
+
   it("routes legacy mode to contact", () => {
     const booking = createBookingProvider({ VITE_BOOKING_PROVIDER: "legacy" });
     for (const service of BOOKING_SERVICES) {
