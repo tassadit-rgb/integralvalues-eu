@@ -41,5 +41,16 @@ jobs:
           SUPABASE_SERVICE_ROLE_KEY: test-service-role-key
           EMAIL_PROVIDER: disabled
 
+      - name: Built server smoke test
+        run: bun run test:smoke
+        env:
+          VITE_BOOKING_PROVIDER: legacy
+          VITE_SUPABASE_URL: https://example.supabase.co
+          SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_SERVICE_ROLE_KEY: test-service-role-key
+          EMAIL_PROVIDER: disabled
+
       - name: Lovable runtime dependency scan
         run: bun run check:no-lovable
