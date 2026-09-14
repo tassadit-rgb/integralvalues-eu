@@ -15,7 +15,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "check:no-lovable": "node scripts/check-no-lovable.mjs",
-    "check": "bun run typecheck && bun run lint && bun run test && bun run build && bun run check:no-lovable"
+    "check": "bun run typecheck && bun run lint && bun run test && bun run build && bun run check:no-lovable",
+    "test:smoke": "node scripts/smoke-built-server.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
