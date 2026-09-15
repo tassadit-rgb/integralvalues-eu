@@ -9,7 +9,7 @@ import { ReauthenticationEmail } from "@/lib/email-templates/reauthentication";
 import { RecoveryEmail } from "@/lib/email-templates/recovery";
 import { SignupEmail } from "@/lib/email-templates/signup";
 
-const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
+const EMAIL_TEMPLATES: Record<string, React.ElementType> = {
   signup: SignupEmail,
   invite: InviteEmail,
   magiclink: MagicLinkEmail,
@@ -20,11 +20,26 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 
 const SAMPLE_URL = "https://integralvalues.eu";
 const SAMPLE_DATA: Record<string, object> = {
-  signup: { siteName: "Integral Values Psy & Co", siteUrl: SAMPLE_URL, recipient: "user@example.test", confirmationUrl: SAMPLE_URL },
-  invite: { siteName: "Integral Values Psy & Co", siteUrl: SAMPLE_URL, confirmationUrl: SAMPLE_URL },
+  signup: {
+    siteName: "Integral Values Psy & Co",
+    siteUrl: SAMPLE_URL,
+    recipient: "user@example.test",
+    confirmationUrl: SAMPLE_URL,
+  },
+  invite: {
+    siteName: "Integral Values Psy & Co",
+    siteUrl: SAMPLE_URL,
+    confirmationUrl: SAMPLE_URL,
+  },
   magiclink: { siteName: "Integral Values Psy & Co", confirmationUrl: SAMPLE_URL },
   recovery: { siteName: "Integral Values Psy & Co", confirmationUrl: SAMPLE_URL },
-  email_change: { siteName: "Integral Values Psy & Co", oldEmail: "old@example.test", email: "user@example.test", newEmail: "new@example.test", confirmationUrl: SAMPLE_URL },
+  email_change: {
+    siteName: "Integral Values Psy & Co",
+    oldEmail: "old@example.test",
+    email: "user@example.test",
+    newEmail: "new@example.test",
+    confirmationUrl: SAMPLE_URL,
+  },
   reauthentication: { token: "123456" },
 };
 
@@ -37,7 +52,7 @@ export const Route = createFileRoute("/email/auth/preview")({
           return Response.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        const body = await request.json().catch(() => null) as { type?: string } | null;
+        const body = (await request.json().catch(() => null)) as { type?: string } | null;
         const EmailTemplate = body?.type ? EMAIL_TEMPLATES[body.type] : undefined;
         if (!EmailTemplate) {
           return Response.json({ error: "Unknown email type" }, { status: 400 });

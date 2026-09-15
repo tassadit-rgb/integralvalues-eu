@@ -1,10 +1,5 @@
 export type AuthEmailType =
-  | "signup"
-  | "invite"
-  | "magiclink"
-  | "recovery"
-  | "email_change"
-  | "reauthentication";
+  "signup" | "invite" | "magiclink" | "recovery" | "email_change" | "reauthentication";
 
 export type AuthEmailPayload = {
   type: AuthEmailType;
@@ -16,8 +11,7 @@ export type AuthEmailPayload = {
 };
 
 export type EmailProviderStatus =
-  | { enabled: false; reason: string }
-  | { enabled: true; endpoint: string; token: string };
+  { enabled: false; reason: string } | { enabled: true; endpoint: string; token: string };
 
 export function resolveEmailProvider(
   environment: Record<string, string | undefined> = process.env,
@@ -35,10 +29,7 @@ export function resolveEmailProvider(
   return { enabled: true, endpoint, token };
 }
 
-export async function sendAuthEmail(
-  payload: AuthEmailPayload,
-  status = resolveEmailProvider(),
-) {
+export async function sendAuthEmail(payload: AuthEmailPayload, status = resolveEmailProvider()) {
   if (!status.enabled) {
     return { delivered: false as const, reason: status.reason };
   }

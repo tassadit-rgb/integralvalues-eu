@@ -17,7 +17,7 @@
     "check:no-lovable": "node scripts/check-no-lovable.mjs",
     "check": "bun run typecheck && bun run lint && bun run test && bun run build && bun run check:no-lovable",
     "test:smoke": "node scripts/smoke-built-server.mjs",
-    "lint:exit": "eslint vite.config.ts src/lib/booking src/lib/email src/lib/error-reporting.ts src/routes/email scripts"
+    "lint:exit": "eslint vite.config.ts src/start.ts src/routes/__root.tsx src/routes/email src/integrations/supabase/client.ts src/integrations/supabase/client.server.ts src/integrations/supabase/auth-middleware.ts src/lib/booking src/lib/email src/lib/error-reporting.ts scripts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

@@ -1,10 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import {
-  BOOKING_SERVICES,
-  createBookingProvider,
-  type BookingServiceKey,
-} from "./provider";
+import { BOOKING_SERVICES, createBookingProvider, type BookingServiceKey } from "./provider";
 
 describe("createBookingProvider", () => {
   it("uses Calendly as the launch-safe default", () => {
@@ -13,9 +9,7 @@ describe("createBookingProvider", () => {
   });
 
   it("falls back safely when the configured provider is invalid", () => {
-    expect(
-      createBookingProvider({ VITE_BOOKING_PROVIDER: "unknown" }).provider,
-    ).toBe("calendly");
+    expect(createBookingProvider({ VITE_BOOKING_PROVIDER: "unknown" }).provider).toBe("calendly");
   });
 
   it("does not activate Amelia without an explicit public URL", () => {
@@ -38,9 +32,7 @@ describe("createBookingProvider", () => {
     });
 
     for (const service of BOOKING_SERVICES) {
-      expect(booking.getBookingEntryUrl(service.key)).toBe(
-        "https://booking.example.test/path",
-      );
+      expect(booking.getBookingEntryUrl(service.key)).toBe("https://booking.example.test/path");
     }
   });
 
@@ -48,9 +40,7 @@ describe("createBookingProvider", () => {
     const booking = createBookingProvider({
       VITE_BOOKING_PROVIDER: "calendly",
     });
-    const urls = BOOKING_SERVICES.map((service) =>
-      booking.getBookingEntryUrl(service.key),
-    );
+    const urls = BOOKING_SERVICES.map((service) => booking.getBookingEntryUrl(service.key));
 
     expect(new Set(urls).size).toBe(BOOKING_SERVICES.length);
     for (const url of urls) expect(url).toMatch(/^https:\/\/calendly\.com\//);
@@ -72,9 +62,10 @@ describe("createBookingProvider", () => {
       couples: 60,
       group: 90,
     };
-    expect(Object.fromEntries(BOOKING_SERVICES.map(({ key, durationMinutes }) => [
-      key,
-      durationMinutes,
-    ]))).toEqual(expected);
+    expect(
+      Object.fromEntries(
+        BOOKING_SERVICES.map(({ key, durationMinutes }) => [key, durationMinutes]),
+      ),
+    ).toEqual(expected);
   });
 });

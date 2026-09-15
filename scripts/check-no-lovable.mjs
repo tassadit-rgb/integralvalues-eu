@@ -5,11 +5,16 @@ const forbidden = [
   ["@lovable", ".dev"].join(""),
   ["LOVABLE", "_"].join(""),
   ["lovable", ".app"].join(""),
+  ["lovable", "project"].join(""),
+  ["Lovable", " Cloud"].join(""),
+  ["/", "lovable", "/"].join(""),
+  ["gpt", "engineer"].join(""),
+  ["gpt", "-eng"].join(""),
   ["__", "lovableEvents"].join(""),
 ];
 
 const roots = ["src"];
-const explicitFiles = ["package.json", "vite.config.ts", "README.md"];
+const explicitFiles = ["package.json", "bun.lock", "vite.config.ts", "README.md"];
 const files = [...explicitFiles];
 
 async function collect(directory) {

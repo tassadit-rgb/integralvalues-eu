@@ -1,10 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import {
-  resolveEmailProvider,
-  sendAuthEmail,
-  type AuthEmailPayload,
-} from "@/lib/email/provider";
+import { resolveEmailProvider, sendAuthEmail, type AuthEmailPayload } from "@/lib/email/provider";
 
 const AUTH_EMAIL_TYPES = new Set([
   "signup",
@@ -21,10 +17,7 @@ export const Route = createFileRoute("/email/auth/webhook")({
       POST: async ({ request }) => {
         const provider = resolveEmailProvider();
         if (!provider.enabled) {
-          return Response.json(
-            { delivered: false, error: provider.reason },
-            { status: 503 },
-          );
+          return Response.json({ delivered: false, error: provider.reason }, { status: 503 });
         }
 
         const incomingSecret = process.env.AUTH_EMAIL_WEBHOOK_SECRET;

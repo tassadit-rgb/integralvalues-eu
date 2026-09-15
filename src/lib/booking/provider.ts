@@ -51,9 +51,7 @@ export function createBookingProvider(environment: BookingEnvironment) {
 
   // Amelia is never activated with an implicit or guessed endpoint.
   const provider: BookingProviderName =
-    requestedProvider === "amelia" && !configuredAmeliaUrl
-      ? "calendly"
-      : requestedProvider;
+    requestedProvider === "amelia" && !configuredAmeliaUrl ? "calendly" : requestedProvider;
 
   function getAmeliaPublicBookingUrl(_serviceKey?: BookingServiceKey) {
     return configuredAmeliaUrl;
