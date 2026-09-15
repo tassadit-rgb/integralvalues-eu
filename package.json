@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "check:no-lovable": "node scripts/check-no-lovable.mjs",
     "check": "bun run typecheck && bun run lint && bun run test && bun run build && bun run check:no-lovable",
-    "test:smoke": "node scripts/smoke-built-server.mjs"
+    "test:smoke": "node scripts/smoke-built-server.mjs",
+    "lint:exit": "eslint vite.config.ts src/lib/booking src/lib/email src/lib/error-reporting.ts src/routes/email scripts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
