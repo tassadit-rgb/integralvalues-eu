@@ -21,16 +21,13 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Type-check
-        run: bun run typecheck
-
       - name: Lint
         run: bun run lint
 
       - name: Unit tests
         run: bun run test
 
-      - name: Production build
+      - name: Generate routes and production build
         run: bun run build
         env:
           VITE_BOOKING_PROVIDER: legacy
@@ -40,6 +37,9 @@ jobs:
           SUPABASE_PUBLISHABLE_KEY: test-publishable-key
           SUPABASE_SERVICE_ROLE_KEY: test-service-role-key
           EMAIL_PROVIDER: disabled
+
+      - name: Type-check generated routes
+        run: bun run typecheck
 
       - name: Built server smoke test
         run: bun run test:smoke
