@@ -70,7 +70,10 @@ export function createBookingProvider(environment: BookingEnvironment) {
   return { provider, getAmeliaPublicBookingUrl, getBookingEntryUrl };
 }
 
-const booking = createBookingProvider(import.meta.env);
+const booking = createBookingProvider({
+  VITE_BOOKING_PROVIDER: import.meta.env.VITE_BOOKING_PROVIDER,
+  VITE_AMELIA_PUBLIC_BASE_URL: import.meta.env.VITE_AMELIA_PUBLIC_BASE_URL,
+});
 
 export const BOOKING_PROVIDER = booking.provider;
 export const getAmeliaPublicBookingUrl = booking.getAmeliaPublicBookingUrl;
