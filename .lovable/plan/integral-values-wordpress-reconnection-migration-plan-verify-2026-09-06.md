@@ -24,7 +24,7 @@ Structure exists, content is almost entirely empty:
 - **WooCommerce present:** shop, cart, checkout, my-account.
 - **Missing entirely vs MASTER:** WHO-5, Wheel of Life, Affiliate, Affiliate status, Apply.
 
-Amelia's presence/config cannot be confirmed without authenticated access.
+Scheduling and payment settings are managed in Calendly.
 
 ## 3. MASTER route inventory (source of truth)
 
@@ -44,7 +44,7 @@ Internal: `/admin/applications`, email routes under `/lovable/email/...`.
 - Interactive app features: WHO-5 scoring, Wheel of Life chart + saved history, the multi-step /apply flow with email confirmation, referral tracking, and the admin applications dashboard. These are application logic backed by the current database — in WordPress they would need either custom plugin development or to stay hosted by this project and be embedded/linked from WordPress.
 - Auth-gated areas and the current email templates.
 
-**Amelia** remains the future source of truth for appointments, availability and payments; nothing in this plan writes to or replaces booking data. Booking CTAs would eventually point at the Amelia page on WordPress.
+**Calendly** is the booking and payment entry point. Booking CTAs use the verified Calendly service links.
 
 ## 5. Exact safest next step (single step, no writes)
 
@@ -52,7 +52,7 @@ Fix connector authentication, then re-verify with a read:
 
 1. In WordPress admin for integralvalues.eu, create a **new Application Password** for an Administrator user (Users → Profile → Application Passwords).
 2. Update the "Lovable Master" WordPress connection in workspace connector settings with that username + new application password.
-3. I then link the connection to this project and run one read-only call (`GET /users/me` and `GET /pages`) to confirm authenticated access, plus `GET /wp-json` to list installed namespaces (confirms WooCommerce/Amelia).
+3. I then link the connection to this project and run one read-only call (`GET /users/me` and `GET /pages`) to confirm authenticated access, plus `GET /wp-json` to list installed namespaces (inventory only).
 
 Nothing else happens until that read succeeds. No WordPress writes, no DNS, no deployment, no changes to integralvalue.co.
 
@@ -63,5 +63,5 @@ Nothing else happens until that read succeeds. No WordPress writes, no DNS, no d
 3. **Draft-first push:** create/update WordPress pages as **drafts** only, never overwriting a page that already has content, and never deleting existing pages. Duplicates (works-2, psyche-2, contact-2) reviewed manually, not auto-removed.
 4. **Theme/template decision:** choose between a custom child theme built to match MASTER, or a block-theme/page-builder rebuild. This is the real design work and is separate from content sync.
 5. **App features decision:** for WHO-5, Wheel, Affiliate and Apply — either keep them on this project under a subdomain and link from WordPress, or commission plugin development.
-6. **Booking:** wire all booking CTAs to Amelia.
+6. **Booking:** wire booking CTAs to their corresponding Calendly event types.
 7. **Cutover:** only after the WordPress site visually and functionally matches, review DNS as a separate approved step.

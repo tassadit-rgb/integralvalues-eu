@@ -12,7 +12,7 @@ rounded cards, editorial rows, sticky header, midnight footer).
 3. Appearance → Menus: create a "Primary menu" and a "Footer menu", assign them
    to the theme locations.
 4. Appearance → Customize → Integral Values:
-   - Booking URL (point it to the Amelia page once Amelia is installed)
+   - Booking URL (use an HTTPS Calendly scheduling link)
    - Homepage hero video (upload the lavender MP4 to Media, paste its URL)
    - Homepage hero image, founder portrait, and the four pillar images
 5. Settings → Reading: set the homepage to a static page (the theme's
@@ -26,4 +26,4 @@ rounded cards, editorial rows, sticky header, midnight footer).
 - Not covered: the interactive app features (WHO-5, Wheel of Life, the Apply
   flow and the affiliate admin dashboard). Those stay on the Lovable app or need
   dedicated WordPress plugins.
-- Booking/payments remain Amelia's responsibility once it is installed.
+- Booking and payment collection use Calendly. Payment requirements must be configured for each paid event type.

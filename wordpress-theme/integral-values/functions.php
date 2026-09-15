@@ -39,13 +39,12 @@ function integral_values_assets() {
 add_action( 'wp_enqueue_scripts', 'integral_values_assets' );
 
 /**
- * Booking URL — set in Customizer once Amelia is installed.
+ * Public Calendly scheduling URL.
  */
 function integral_values_booking_url() {
-	$url = get_theme_mod( 'integral_values_booking_url', '' );
-	if ( ! $url ) {
-		$page = get_page_by_path( 'contact' );
-		$url  = $page ? get_permalink( $page ) : home_url( '/contact/' );
+	$url = get_theme_mod( 'integral_values_calendly_url', 'https://calendly.com/integralvalues' );
+	if ( ! $url || wp_parse_url( $url, PHP_URL_SCHEME ) !== 'https' || wp_parse_url( $url, PHP_URL_HOST ) !== 'calendly.com' ) {
+		$url = 'https://calendly.com/integralvalues';
 	}
 	return esc_url( $url );
 }
@@ -59,11 +58,11 @@ function integral_values_customize( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting( 'integral_values_booking_url', array( 'sanitize_callback' => 'esc_url_raw', 'default' => '' ) );
+	$wp_customize->add_setting( 'integral_values_calendly_url', array( 'sanitize_callback' => 'esc_url_raw', 'default' => '' ) );
 	$wp_customize->add_control(
-		'integral_values_booking_url',
+		'integral_values_calendly_url',
 		array(
-			'label'       => __( 'Booking URL (Amelia page)', 'integral-values' ),
+			'label'       => __( 'Booking URL (Calendly)', 'integral-values' ),
 			'description' => __( 'Where every “Book a consultation” button points.', 'integral-values' ),
 			'section'     => 'integral_values_options',
 			'type'        => 'url',
