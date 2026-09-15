@@ -21,8 +21,8 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Lint
-        run: bun run lint
+      - name: Lint exit architecture
+        run: bun run lint:exit
 
       - name: Unit tests
         run: bun run test
