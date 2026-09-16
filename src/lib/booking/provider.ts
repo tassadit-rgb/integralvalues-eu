@@ -1,36 +1,71 @@
 export type BookingServiceKey =
   | "initial-consultation"
-  | "individual-coaching"
-  | "corporate-coaching"
   | "individual-counselling"
-  | "couples"
+  | "individual-coaching"
+  | "culture-talk"
+  | "corporate-coaching"
   | "group";
 
 export type BookingService = {
   key: BookingServiceKey;
   title: string;
   durationMinutes: number;
+  priceEur: number;
+  pricePerParticipant?: boolean;
+  maxParticipants?: number;
 };
 
 export const BOOKING_SERVICES: BookingService[] = [
-  { key: "initial-consultation", title: "Initial Consultation", durationMinutes: 15 },
-  { key: "individual-coaching", title: "Individual Coaching", durationMinutes: 30 },
-  { key: "corporate-coaching", title: "Corporate Coaching", durationMinutes: 60 },
-  { key: "individual-counselling", title: "Individual Counselling", durationMinutes: 45 },
-  { key: "couples", title: "Couples Session", durationMinutes: 60 },
-  { key: "group", title: "Group Session", durationMinutes: 90 },
+  {
+    key: "initial-consultation",
+    title: "Let’s talk!",
+    durationMinutes: 15,
+    priceEur: 0,
+  },
+  {
+    key: "individual-counselling",
+    title: "I Need Help!",
+    durationMinutes: 45,
+    priceEur: 75,
+  },
+  {
+    key: "individual-coaching",
+    title: "CoachMeUp!",
+    durationMinutes: 60,
+    priceEur: 99,
+  },
+  {
+    key: "culture-talk",
+    title: "Culture Talk",
+    durationMinutes: 60,
+    priceEur: 125,
+  },
+  {
+    key: "corporate-coaching",
+    title: "LeadUp (Core)",
+    durationMinutes: 60,
+    priceEur: 250,
+  },
+  {
+    key: "group",
+    title: "Supervision",
+    durationMinutes: 90,
+    priceEur: 75,
+    pricePerParticipant: true,
+    maxParticipants: 12,
+  },
 ];
 
 const CALENDLY_URLS: Record<BookingServiceKey, string> = {
   "initial-consultation": "https://calendly.com/integralvalues/chemistry-call",
-  "individual-coaching": "https://calendly.com/integralvalues/individual-coaching-30-min",
-  "corporate-coaching": "https://calendly.com/integralvalues/corporate-coaching-60-min",
-  "individual-counselling": "https://calendly.com/integralvalues/individual-counselling-45-min",
-  couples: "https://calendly.com/integralvalues/couples-session-60-min",
-  group: "https://calendly.com/integralvalues/group-session-90-min",
+  "individual-counselling": "https://calendly.com/integralvalues/ineedhelp",
+  "individual-coaching": "https://calendly.com/integralvalues/coachmeup",
+  "culture-talk": "https://calendly.com/integralvalues/culture-talk",
+  "corporate-coaching": "https://calendly.com/integralvalues/leadup-core",
+  group: "https://calendly.com/integralvalues/supervisor-group",
 };
 
-/** Public scheduling destinations. Payment settings are managed per event in Calendly. */
+/** Calendly controls payment collection; these prices describe the public offer. */
 export function getBookingEntryUrl(serviceKey: BookingServiceKey = "initial-consultation") {
   return CALENDLY_URLS[serviceKey];
 }

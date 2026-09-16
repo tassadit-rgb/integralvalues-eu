@@ -32,10 +32,8 @@ const COPY: Record<(typeof BOOKING_SERVICES)[number]["key"], string> = {
     "Executive and organisational coaching for leadership, decision-making and sustainable performance.",
   "individual-counselling":
     "A confidential space for emotional distress, transitions, trauma-related difficulties and personal support.",
-  couples:
-    "Support for communication, relational patterns, intimacy, conflict and meaningful reconnection.",
-  group:
-    "A structured group format for shared development, facilitated reflection and collective learning.",
+  "culture-talk": "A space to explore cultural identity, belonging and life across cultures.",
+  group: "Group supervision for reflective practice, shared learning and professional development.",
 };
 
 function BookingPage() {
@@ -44,13 +42,13 @@ function BookingPage() {
       <PageHero
         eyebrow="Booking"
         title="Choose the support that fits."
-        lead="Select a service below and continue to our scheduling environment. Session prices remain private on the public website."
+        lead="Select your service, choose a time and complete your booking on Calendly."
         quote="One clear path. One protected space."
       />
 
       <Section>
         <div className="mx-auto mb-10 max-w-2xl rounded-[1.5rem] border border-[#75E8D5]/45 bg-[#75E8D5]/10 px-5 py-4 text-center text-xs leading-relaxed text-muted-foreground">
-          Choose your appointment time on Calendly.
+          Let’s talk! is free. All other sessions require payment through Calendly.
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -60,6 +58,12 @@ function BookingPage() {
               <h2 className="mt-3 text-2xl leading-tight text-ink">{service.title}</h2>
               <p className="mt-5 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {COPY[service.key]}
+              </p>
+              <p className="mt-4 text-sm font-medium text-ink">
+                {service.priceEur === 0
+                  ? "Free"
+                  : `€${service.priceEur}${service.pricePerParticipant ? " per participant" : " per session"}`}
+                {service.maxParticipants && ` · Maximum ${service.maxParticipants} participants`}
               </p>
               <a
                 href={getBookingEntryUrl(service.key)}
