@@ -20,6 +20,14 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Self-hosted production target for Infomaniak Node.js hosting.
+  // This overrides Lovable's default Cloudflare-oriented build target outside the sandbox.
+  nitro: {
+    preset: "node-server",
+    output: {
+      dir: ".output",
+    },
+  },
   vite: {
     resolve: {
       alias: {
