@@ -1,12 +1,7 @@
 export type BookingProviderName = "calendly";
 
 export type BookingServiceKey =
-  | "lets-talk"
-  | "i-need-help"
-  | "coach-me-up"
-  | "culture-talk"
-  | "leadup-core"
-  | "supervision";
+  "lets-talk" | "i-need-help" | "coach-me-up" | "culture-talk" | "leadup-core" | "supervision";
 
 export type BookingService = {
   key: BookingServiceKey;
