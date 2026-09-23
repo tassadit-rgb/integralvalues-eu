@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - codex/exit-lovable-testable
+      - refactor/sovereign-stack
   workflow_dispatch:
 
 jobs:
@@ -30,7 +30,6 @@ jobs:
       - name: Generate routes and production build
         run: bun run build
         env:
-          VITE_BOOKING_PROVIDER: legacy
           VITE_SUPABASE_URL: https://example.supabase.co
           SUPABASE_URL: https://example.supabase.co
           VITE_SUPABASE_PUBLISHABLE_KEY: test-publishable-key
