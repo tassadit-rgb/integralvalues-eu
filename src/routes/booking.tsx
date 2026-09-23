@@ -24,18 +24,18 @@ export const Route = createFileRoute("/booking")({
 });
 
 const COPY: Record<(typeof BOOKING_SERVICES)[number]["key"], string> = {
-  "initial-consultation":
-    "A first conversation to understand your request and identify the most appropriate next step.",
-  "individual-coaching":
-    "Focused one-to-one coaching for clarity, transition, leadership, performance and personal development.",
-  "corporate-coaching":
+  "lets-talk":
+    "A complimentary first fifteen-minute conversation, available once, to understand your request and identify the most appropriate next step.",
+  "i-need-help":
+    "A confidential counselling or therapeutic conversation for distress, transitions, trauma-related difficulties and personal support.",
+  "coach-me-up":
+    "Focused one-to-one coaching for clarity, transition, performance, leadership and personal development.",
+  "culture-talk":
+    "A dedicated intercultural conversation for identity, mobility, belonging, communication and cross-cultural situations.",
+  "leadup-core":
     "Executive and organisational coaching for leadership, decision-making and sustainable performance.",
-  "individual-counselling":
-    "A confidential space for emotional distress, transitions, trauma-related difficulties and personal support.",
-  couples:
-    "Support for communication, relational patterns, intimacy, conflict and meaningful reconnection.",
-  group:
-    "A structured group format for shared development, facilitated reflection and collective learning.",
+  supervision:
+    "A structured 90-minute group supervision format for reflective practice, with a maximum of 12 participants.",
 };
 
 function BookingPage() {
@@ -44,13 +44,13 @@ function BookingPage() {
       <PageHero
         eyebrow="Booking"
         title="Choose the support that fits."
-        lead="Select a service below and continue to our scheduling environment. Session prices remain private on the public website."
+        lead="Select a service below and continue to our secure Calendly scheduling environment."
         quote="One clear path. One protected space."
       />
 
       <Section>
         <div className="mx-auto mb-10 max-w-2xl rounded-[1.5rem] border border-[#75E8D5]/45 bg-[#75E8D5]/10 px-5 py-4 text-center text-xs leading-relaxed text-muted-foreground">
-          Scheduling is handled through our secure Calendly booking pages.
+          Scheduling and any applicable payment are handled through our secure Calendly booking pages. Integral Values does not collect card details on this website.
         </div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -75,7 +75,7 @@ function BookingPage() {
         </div>
 
         <p className="mx-auto mt-12 max-w-2xl text-center text-xs leading-relaxed text-muted-foreground">
-          The durations shown here are the intended Integral Values session formats. Scheduling availability is confirmed in the booking environment.
+          Availability, fees and payment options are confirmed in the booking environment before final confirmation.
         </p>
       </Section>
     </SiteLayout>

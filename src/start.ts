@@ -6,7 +6,7 @@ import { attachSupabaseAuth } from "@/integrations/supabase/auth-attacher";
 const errorMiddleware = createMiddleware().server(async ({ next, request }) => {
   // Email/webhook routes authenticate themselves — never wrap or redirect them.
   const url = new URL(request.url);
-  if (url.pathname.startsWith("/lovable/")) {
+  if (url.pathname.startsWith("/email/auth/")) {
     return next();
   }
 

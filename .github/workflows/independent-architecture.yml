@@ -1,0 +1,55 @@
+name: Independent architecture checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - refactor/sovereign-stack
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: "1.4.2"
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint exit architecture
+        run: bun run lint:exit
+
+      - name: Unit tests
+        run: bun run test
+
+      - name: Generate routes and production build
+        run: bun run build
+        env:
+          VITE_SUPABASE_URL: https://example.supabase.co
+          SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_SERVICE_ROLE_KEY: test-service-role-key
+          EMAIL_PROVIDER: disabled
+
+      - name: Type-check generated routes
+        run: bun run typecheck
+
+      - name: Built server smoke test
+        run: bun run test:smoke
+        env:
+          VITE_BOOKING_PROVIDER: legacy
+          VITE_SUPABASE_URL: https://example.supabase.co
+          SUPABASE_URL: https://example.supabase.co
+          VITE_SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_PUBLISHABLE_KEY: test-publishable-key
+          SUPABASE_SERVICE_ROLE_KEY: test-service-role-key
+          EMAIL_PROVIDER: disabled
+
+      - name: Lovable runtime dependency scan
+        run: bun run check:no-lovable

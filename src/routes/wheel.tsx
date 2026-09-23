@@ -374,7 +374,7 @@ function WheelTracker({ userId }: { userId: string }) {
                   <PolarRadiusAxis
                     angle={90}
                     domain={[0, 10]}
-                    ticks={[2, 4, 6, 8, 10]}
+                    tickCount={6}
                     tick={{ fill: "var(--muted-foreground)", fontSize: 9 }}
                     axisLine={false}
                   />

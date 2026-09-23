@@ -1,26 +1,47 @@
 # Integral Values Psy & Co
 
-Mental health app
+Application web d’Integral Values Psy & Co, construite avec React, TanStack Start, Vite, Supabase et un adaptateur de réservation remplaçable.
 
-This project was built with [Lovable](https://lovable.dev).
+## Architecture de référence
 
-**Live app**: https://integralvalues-eu.lovable.app
+- GitHub : source canonique du code.
+- Hostinger : environnement d’exécution et de déploiement.
+- Supabase : authentification et données appartenant à Integral Values.
+- Amelia : moteur de réservation cible, hébergé séparément dans WordPress.
+- Calendly : solution de repli tant qu’Amelia n’a pas passé la validation de production.
 
-## Build with Lovable
+Lovable n’est ni une source de vérité, ni un fournisseur d’authentification, ni un moteur de réservation.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/c50a9c5b-dbca-492d-822d-007e172cfaa3).
+## Développement local
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Prérequis : Bun et une version de Node.js compatible avec Vite.
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+git clone https://github.com/tassadit-rgb/integralvalues-eu.git
+cd integralvalues-eu
+cp .env.example .env.local
+bun install
+bun run dev
 ```
+
+## Vérifications
+
+```sh
+bun run typecheck
+bun run lint
+bun run test
+bun run build
+bun run check:no-lovable
+```
+
+## Réservation
+
+Le fournisseur actif est choisi avec `VITE_BOOKING_PROVIDER` :
+
+- `calendly` : valeur de repli par défaut ;
+- `amelia` : utilise uniquement l’URL publique définie par `VITE_AMELIA_PUBLIC_BASE_URL` ;
+- `legacy` : redirige vers `/contact`.
+
+Aucun secret Amelia, WordPress, Stripe ou PayPal ne doit être placé dans une variable `VITE_*`.
+
+Voir `docs/AMELIA-LOVABLE-EXIT.md` pour les critères de sortie et de validation.

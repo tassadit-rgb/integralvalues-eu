@@ -9,95 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WorksRouteImport } from './routes/works'
-import { Route as Who5RouteImport } from './routes/who5'
-import { Route as WheelRouteImport } from './routes/wheel'
-import { Route as PsycheRouteImport } from './routes/psyche'
-import { Route as MethodRouteImport } from './routes/method'
-import { Route as ForYouRouteImport } from './routes/for-you'
-import { Route as CrossCultureRouteImport } from './routes/cross-culture'
-import { Route as CounsellingRouteImport } from './routes/counselling'
-import { Route as CoreRouteImport } from './routes/core'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CoachingRouteImport } from './routes/coaching'
-import { Route as AsrsRouteImport } from './routes/asrs'
-import { Route as ApplyRouteImport } from './routes/apply'
-import { Route as AffiliateRouteImport } from './routes/affiliate'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AffiliateStatusRouteImport } from './routes/affiliate.status'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AffiliateRouteImport } from './routes/affiliate'
+import { Route as ApplyRouteImport } from './routes/apply'
+import { Route as AsrsRouteImport } from './routes/asrs'
+import { Route as BookingRouteImport } from './routes/booking'
+import { Route as BooksRouteImport } from './routes/books'
+import { Route as CircleRouteImport } from './routes/circle'
+import { Route as CoachingRouteImport } from './routes/coaching'
+import { Route as CodeOfConductRouteImport } from './routes/code-of-conduct'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CoreRouteImport } from './routes/core'
+import { Route as CounsellingRouteImport } from './routes/counselling'
+import { Route as CrossCultureRouteImport } from './routes/cross-culture'
+import { Route as ForYouRouteImport } from './routes/for-you'
+import { Route as MethodRouteImport } from './routes/method'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PsycheRouteImport } from './routes/psyche'
+import { Route as SecurityRouteImport } from './routes/security'
+import { Route as ValuesMapRouteImport } from './routes/values-map'
+import { Route as WheelRouteImport } from './routes/wheel'
+import { Route as Who5RouteImport } from './routes/who5'
+import { Route as WorksRouteImport } from './routes/works'
 import { Route as AdminApplicationsRouteImport } from './routes/admin.applications'
-import { Route as LovableEmailAuthWebhookRouteImport } from './routes/lovable/email/auth/webhook'
-import { Route as LovableEmailAuthPreviewRouteImport } from './routes/lovable/email/auth/preview'
+import { Route as AffiliateStatusRouteImport } from './routes/affiliate.status'
+import { Route as EmailAuthPreviewRouteImport } from './routes/email/auth/preview'
+import { Route as EmailAuthWebhookRouteImport } from './routes/email/auth/webhook'
 
-const WorksRoute = WorksRouteImport.update({
-  id: '/works',
-  path: '/works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Who5Route = Who5RouteImport.update({
-  id: '/who5',
-  path: '/who5',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WheelRoute = WheelRouteImport.update({
-  id: '/wheel',
-  path: '/wheel',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PsycheRoute = PsycheRouteImport.update({
-  id: '/psyche',
-  path: '/psyche',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MethodRoute = MethodRouteImport.update({
-  id: '/method',
-  path: '/method',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ForYouRoute = ForYouRouteImport.update({
-  id: '/for-you',
-  path: '/for-you',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CrossCultureRoute = CrossCultureRouteImport.update({
-  id: '/cross-culture',
-  path: '/cross-culture',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CounsellingRoute = CounsellingRouteImport.update({
-  id: '/counselling',
-  path: '/counselling',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoreRoute = CoreRouteImport.update({
-  id: '/core',
-  path: '/core',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoachingRoute = CoachingRouteImport.update({
-  id: '/coaching',
-  path: '/coaching',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AsrsRoute = AsrsRouteImport.update({
-  id: '/asrs',
-  path: '/asrs',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ApplyRoute = ApplyRouteImport.update({
-  id: '/apply',
-  path: '/apply',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AffiliateRoute = AffiliateRouteImport.update({
-  id: '/affiliate',
-  path: '/affiliate',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -105,9 +47,114 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AffiliateRoute = AffiliateRouteImport.update({
+  id: '/affiliate',
+  path: '/affiliate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApplyRoute = ApplyRouteImport.update({
+  id: '/apply',
+  path: '/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsrsRoute = AsrsRouteImport.update({
+  id: '/asrs',
+  path: '/asrs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingRoute = BookingRouteImport.update({
+  id: '/booking',
+  path: '/booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BooksRoute = BooksRouteImport.update({
+  id: '/books',
+  path: '/books',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CircleRoute = CircleRouteImport.update({
+  id: '/circle',
+  path: '/circle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoachingRoute = CoachingRouteImport.update({
+  id: '/coaching',
+  path: '/coaching',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CodeOfConductRoute = CodeOfConductRouteImport.update({
+  id: '/code-of-conduct',
+  path: '/code-of-conduct',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoreRoute = CoreRouteImport.update({
+  id: '/core',
+  path: '/core',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounsellingRoute = CounsellingRouteImport.update({
+  id: '/counselling',
+  path: '/counselling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrossCultureRoute = CrossCultureRouteImport.update({
+  id: '/cross-culture',
+  path: '/cross-culture',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForYouRoute = ForYouRouteImport.update({
+  id: '/for-you',
+  path: '/for-you',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodRoute = MethodRouteImport.update({
+  id: '/method',
+  path: '/method',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PsycheRoute = PsycheRouteImport.update({
+  id: '/psyche',
+  path: '/psyche',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecurityRoute = SecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ValuesMapRoute = ValuesMapRouteImport.update({
+  id: '/values-map',
+  path: '/values-map',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WheelRoute = WheelRouteImport.update({
+  id: '/wheel',
+  path: '/wheel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Who5Route = Who5RouteImport.update({
+  id: '/who5',
+  path: '/who5',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorksRoute = WorksRouteImport.update({
+  id: '/works',
+  path: '/works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
+  id: '/admin/applications',
+  path: '/admin/applications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AffiliateStatusRoute = AffiliateStatusRouteImport.update({
@@ -115,19 +162,14 @@ const AffiliateStatusRoute = AffiliateStatusRouteImport.update({
   path: '/status',
   getParentRoute: () => AffiliateRoute,
 } as any)
-const AdminApplicationsRoute = AdminApplicationsRouteImport.update({
-  id: '/admin/applications',
-  path: '/admin/applications',
+const EmailAuthPreviewRoute = EmailAuthPreviewRouteImport.update({
+  id: '/email/auth/preview',
+  path: '/email/auth/preview',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LovableEmailAuthWebhookRoute = LovableEmailAuthWebhookRouteImport.update({
-  id: '/lovable/email/auth/webhook',
-  path: '/lovable/email/auth/webhook',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LovableEmailAuthPreviewRoute = LovableEmailAuthPreviewRouteImport.update({
-  id: '/lovable/email/auth/preview',
-  path: '/lovable/email/auth/preview',
+const EmailAuthWebhookRoute = EmailAuthWebhookRouteImport.update({
+  id: '/email/auth/webhook',
+  path: '/email/auth/webhook',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -137,21 +179,28 @@ export interface FileRoutesByFullPath {
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
   '/asrs': typeof AsrsRoute
+  '/booking': typeof BookingRoute
+  '/books': typeof BooksRoute
+  '/circle': typeof CircleRoute
   '/coaching': typeof CoachingRoute
+  '/code-of-conduct': typeof CodeOfConductRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
   '/for-you': typeof ForYouRoute
   '/method': typeof MethodRoute
+  '/privacy': typeof PrivacyRoute
   '/psyche': typeof PsycheRoute
+  '/security': typeof SecurityRoute
+  '/values-map': typeof ValuesMapRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -159,21 +208,28 @@ export interface FileRoutesByTo {
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
   '/asrs': typeof AsrsRoute
+  '/booking': typeof BookingRoute
+  '/books': typeof BooksRoute
+  '/circle': typeof CircleRoute
   '/coaching': typeof CoachingRoute
+  '/code-of-conduct': typeof CodeOfConductRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
   '/for-you': typeof ForYouRoute
   '/method': typeof MethodRoute
+  '/privacy': typeof PrivacyRoute
   '/psyche': typeof PsycheRoute
+  '/security': typeof SecurityRoute
+  '/values-map': typeof ValuesMapRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -182,21 +238,28 @@ export interface FileRoutesById {
   '/affiliate': typeof AffiliateRouteWithChildren
   '/apply': typeof ApplyRoute
   '/asrs': typeof AsrsRoute
+  '/booking': typeof BookingRoute
+  '/books': typeof BooksRoute
+  '/circle': typeof CircleRoute
   '/coaching': typeof CoachingRoute
+  '/code-of-conduct': typeof CodeOfConductRoute
   '/contact': typeof ContactRoute
   '/core': typeof CoreRoute
   '/counselling': typeof CounsellingRoute
   '/cross-culture': typeof CrossCultureRoute
   '/for-you': typeof ForYouRoute
   '/method': typeof MethodRoute
+  '/privacy': typeof PrivacyRoute
   '/psyche': typeof PsycheRoute
+  '/security': typeof SecurityRoute
+  '/values-map': typeof ValuesMapRoute
   '/wheel': typeof WheelRoute
   '/who5': typeof Who5Route
   '/works': typeof WorksRoute
   '/admin/applications': typeof AdminApplicationsRoute
   '/affiliate/status': typeof AffiliateStatusRoute
-  '/lovable/email/auth/preview': typeof LovableEmailAuthPreviewRoute
-  '/lovable/email/auth/webhook': typeof LovableEmailAuthWebhookRoute
+  '/email/auth/preview': typeof EmailAuthPreviewRoute
+  '/email/auth/webhook': typeof EmailAuthWebhookRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -206,21 +269,28 @@ export interface FileRouteTypes {
     | '/affiliate'
     | '/apply'
     | '/asrs'
+    | '/booking'
+    | '/books'
+    | '/circle'
     | '/coaching'
+    | '/code-of-conduct'
     | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
     | '/for-you'
     | '/method'
+    | '/privacy'
     | '/psyche'
+    | '/security'
+    | '/values-map'
     | '/wheel'
     | '/who5'
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -228,21 +298,28 @@ export interface FileRouteTypes {
     | '/affiliate'
     | '/apply'
     | '/asrs'
+    | '/booking'
+    | '/books'
+    | '/circle'
     | '/coaching'
+    | '/code-of-conduct'
     | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
     | '/for-you'
     | '/method'
+    | '/privacy'
     | '/psyche'
+    | '/security'
+    | '/values-map'
     | '/wheel'
     | '/who5'
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   id:
     | '__root__'
     | '/'
@@ -250,21 +327,28 @@ export interface FileRouteTypes {
     | '/affiliate'
     | '/apply'
     | '/asrs'
+    | '/booking'
+    | '/books'
+    | '/circle'
     | '/coaching'
+    | '/code-of-conduct'
     | '/contact'
     | '/core'
     | '/counselling'
     | '/cross-culture'
     | '/for-you'
     | '/method'
+    | '/privacy'
     | '/psyche'
+    | '/security'
+    | '/values-map'
     | '/wheel'
     | '/who5'
     | '/works'
     | '/admin/applications'
     | '/affiliate/status'
-    | '/lovable/email/auth/preview'
-    | '/lovable/email/auth/webhook'
+    | '/email/auth/preview'
+    | '/email/auth/webhook'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -273,120 +357,36 @@ export interface RootRouteChildren {
   AffiliateRoute: typeof AffiliateRouteWithChildren
   ApplyRoute: typeof ApplyRoute
   AsrsRoute: typeof AsrsRoute
+  BookingRoute: typeof BookingRoute
+  BooksRoute: typeof BooksRoute
+  CircleRoute: typeof CircleRoute
   CoachingRoute: typeof CoachingRoute
+  CodeOfConductRoute: typeof CodeOfConductRoute
   ContactRoute: typeof ContactRoute
   CoreRoute: typeof CoreRoute
   CounsellingRoute: typeof CounsellingRoute
   CrossCultureRoute: typeof CrossCultureRoute
   ForYouRoute: typeof ForYouRoute
   MethodRoute: typeof MethodRoute
+  PrivacyRoute: typeof PrivacyRoute
   PsycheRoute: typeof PsycheRoute
+  SecurityRoute: typeof SecurityRoute
+  ValuesMapRoute: typeof ValuesMapRoute
   WheelRoute: typeof WheelRoute
   Who5Route: typeof Who5Route
   WorksRoute: typeof WorksRoute
   AdminApplicationsRoute: typeof AdminApplicationsRoute
-  LovableEmailAuthPreviewRoute: typeof LovableEmailAuthPreviewRoute
-  LovableEmailAuthWebhookRoute: typeof LovableEmailAuthWebhookRoute
+  EmailAuthPreviewRoute: typeof EmailAuthPreviewRoute
+  EmailAuthWebhookRoute: typeof EmailAuthWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/works': {
-      id: '/works'
-      path: '/works'
-      fullPath: '/works'
-      preLoaderRoute: typeof WorksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/who5': {
-      id: '/who5'
-      path: '/who5'
-      fullPath: '/who5'
-      preLoaderRoute: typeof Who5RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/wheel': {
-      id: '/wheel'
-      path: '/wheel'
-      fullPath: '/wheel'
-      preLoaderRoute: typeof WheelRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/psyche': {
-      id: '/psyche'
-      path: '/psyche'
-      fullPath: '/psyche'
-      preLoaderRoute: typeof PsycheRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/method': {
-      id: '/method'
-      path: '/method'
-      fullPath: '/method'
-      preLoaderRoute: typeof MethodRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/for-you': {
-      id: '/for-you'
-      path: '/for-you'
-      fullPath: '/for-you'
-      preLoaderRoute: typeof ForYouRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/cross-culture': {
-      id: '/cross-culture'
-      path: '/cross-culture'
-      fullPath: '/cross-culture'
-      preLoaderRoute: typeof CrossCultureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/counselling': {
-      id: '/counselling'
-      path: '/counselling'
-      fullPath: '/counselling'
-      preLoaderRoute: typeof CounsellingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/core': {
-      id: '/core'
-      path: '/core'
-      fullPath: '/core'
-      preLoaderRoute: typeof CoreRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/coaching': {
-      id: '/coaching'
-      path: '/coaching'
-      fullPath: '/coaching'
-      preLoaderRoute: typeof CoachingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/asrs': {
-      id: '/asrs'
-      path: '/asrs'
-      fullPath: '/asrs'
-      preLoaderRoute: typeof AsrsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/apply': {
-      id: '/apply'
-      path: '/apply'
-      fullPath: '/apply'
-      preLoaderRoute: typeof ApplyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/affiliate': {
-      id: '/affiliate'
-      path: '/affiliate'
-      fullPath: '/affiliate'
-      preLoaderRoute: typeof AffiliateRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -396,11 +396,158 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/affiliate': {
+      id: '/affiliate'
+      path: '/affiliate'
+      fullPath: '/affiliate'
+      preLoaderRoute: typeof AffiliateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apply': {
+      id: '/apply'
+      path: '/apply'
+      fullPath: '/apply'
+      preLoaderRoute: typeof ApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asrs': {
+      id: '/asrs'
+      path: '/asrs'
+      fullPath: '/asrs'
+      preLoaderRoute: typeof AsrsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking': {
+      id: '/booking'
+      path: '/booking'
+      fullPath: '/booking'
+      preLoaderRoute: typeof BookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/books': {
+      id: '/books'
+      path: '/books'
+      fullPath: '/books'
+      preLoaderRoute: typeof BooksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/circle': {
+      id: '/circle'
+      path: '/circle'
+      fullPath: '/circle'
+      preLoaderRoute: typeof CircleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coaching': {
+      id: '/coaching'
+      path: '/coaching'
+      fullPath: '/coaching'
+      preLoaderRoute: typeof CoachingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/code-of-conduct': {
+      id: '/code-of-conduct'
+      path: '/code-of-conduct'
+      fullPath: '/code-of-conduct'
+      preLoaderRoute: typeof CodeOfConductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/core': {
+      id: '/core'
+      path: '/core'
+      fullPath: '/core'
+      preLoaderRoute: typeof CoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counselling': {
+      id: '/counselling'
+      path: '/counselling'
+      fullPath: '/counselling'
+      preLoaderRoute: typeof CounsellingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cross-culture': {
+      id: '/cross-culture'
+      path: '/cross-culture'
+      fullPath: '/cross-culture'
+      preLoaderRoute: typeof CrossCultureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/for-you': {
+      id: '/for-you'
+      path: '/for-you'
+      fullPath: '/for-you'
+      preLoaderRoute: typeof ForYouRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/method': {
+      id: '/method'
+      path: '/method'
+      fullPath: '/method'
+      preLoaderRoute: typeof MethodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/psyche': {
+      id: '/psyche'
+      path: '/psyche'
+      fullPath: '/psyche'
+      preLoaderRoute: typeof PsycheRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/security': {
+      id: '/security'
+      path: '/security'
+      fullPath: '/security'
+      preLoaderRoute: typeof SecurityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/values-map': {
+      id: '/values-map'
+      path: '/values-map'
+      fullPath: '/values-map'
+      preLoaderRoute: typeof ValuesMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wheel': {
+      id: '/wheel'
+      path: '/wheel'
+      fullPath: '/wheel'
+      preLoaderRoute: typeof WheelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/who5': {
+      id: '/who5'
+      path: '/who5'
+      fullPath: '/who5'
+      preLoaderRoute: typeof Who5RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/works': {
+      id: '/works'
+      path: '/works'
+      fullPath: '/works'
+      preLoaderRoute: typeof WorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/applications': {
+      id: '/admin/applications'
+      path: '/admin/applications'
+      fullPath: '/admin/applications'
+      preLoaderRoute: typeof AdminApplicationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/affiliate/status': {
@@ -410,25 +557,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AffiliateStatusRouteImport
       parentRoute: typeof AffiliateRoute
     }
-    '/admin/applications': {
-      id: '/admin/applications'
-      path: '/admin/applications'
-      fullPath: '/admin/applications'
-      preLoaderRoute: typeof AdminApplicationsRouteImport
+    '/email/auth/preview': {
+      id: '/email/auth/preview'
+      path: '/email/auth/preview'
+      fullPath: '/email/auth/preview'
+      preLoaderRoute: typeof EmailAuthPreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lovable/email/auth/webhook': {
-      id: '/lovable/email/auth/webhook'
-      path: '/lovable/email/auth/webhook'
-      fullPath: '/lovable/email/auth/webhook'
-      preLoaderRoute: typeof LovableEmailAuthWebhookRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lovable/email/auth/preview': {
-      id: '/lovable/email/auth/preview'
-      path: '/lovable/email/auth/preview'
-      fullPath: '/lovable/email/auth/preview'
-      preLoaderRoute: typeof LovableEmailAuthPreviewRouteImport
+    '/email/auth/webhook': {
+      id: '/email/auth/webhook'
+      path: '/email/auth/webhook'
+      fullPath: '/email/auth/webhook'
+      preLoaderRoute: typeof EmailAuthWebhookRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -452,20 +592,27 @@ const rootRouteChildren: RootRouteChildren = {
   AffiliateRoute: AffiliateRouteWithChildren,
   ApplyRoute: ApplyRoute,
   AsrsRoute: AsrsRoute,
+  BookingRoute: BookingRoute,
+  BooksRoute: BooksRoute,
+  CircleRoute: CircleRoute,
   CoachingRoute: CoachingRoute,
+  CodeOfConductRoute: CodeOfConductRoute,
   ContactRoute: ContactRoute,
   CoreRoute: CoreRoute,
   CounsellingRoute: CounsellingRoute,
   CrossCultureRoute: CrossCultureRoute,
   ForYouRoute: ForYouRoute,
   MethodRoute: MethodRoute,
+  PrivacyRoute: PrivacyRoute,
   PsycheRoute: PsycheRoute,
+  SecurityRoute: SecurityRoute,
+  ValuesMapRoute: ValuesMapRoute,
   WheelRoute: WheelRoute,
   Who5Route: Who5Route,
   WorksRoute: WorksRoute,
   AdminApplicationsRoute: AdminApplicationsRoute,
-  LovableEmailAuthPreviewRoute: LovableEmailAuthPreviewRoute,
-  LovableEmailAuthWebhookRoute: LovableEmailAuthWebhookRoute,
+  EmailAuthPreviewRoute: EmailAuthPreviewRoute,
+  EmailAuthWebhookRoute: EmailAuthWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
