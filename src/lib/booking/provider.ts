@@ -1,12 +1,12 @@
 export type BookingProviderName = "calendly";
 
 export type BookingServiceKey =
-  | "initial-consultation"
-  | "individual-coaching"
-  | "corporate-coaching"
-  | "individual-counselling"
-  | "couples"
-  | "group";
+  | "lets-talk"
+  | "i-need-help"
+  | "coachmeup"
+  | "culture-talk"
+  | "leadup-core"
+  | "supervisor-group";
 
 export type BookingService = {
   key: BookingServiceKey;
@@ -15,26 +15,26 @@ export type BookingService = {
 };
 
 export const BOOKING_SERVICES: BookingService[] = [
-  { key: "initial-consultation", title: "Initial Consultation", durationMinutes: 15 },
-  { key: "individual-coaching", title: "Individual Coaching", durationMinutes: 30 },
-  { key: "corporate-coaching", title: "Corporate Coaching", durationMinutes: 60 },
-  { key: "individual-counselling", title: "Individual Counselling", durationMinutes: 45 },
-  { key: "couples", title: "Couples Session", durationMinutes: 60 },
-  { key: "group", title: "Group Session", durationMinutes: 90 },
+  { key: "lets-talk", title: "Let's talk!", durationMinutes: 15 },
+  { key: "i-need-help", title: "I need Help!", durationMinutes: 45 },
+  { key: "coachmeup", title: "CoachmeUp!", durationMinutes: 60 },
+  { key: "culture-talk", title: "Culture Talk!", durationMinutes: 60 },
+  { key: "leadup-core", title: "LeadUp/Core", durationMinutes: 60 },
+  { key: "supervisor-group", title: "Supervisor Group", durationMinutes: 90 },
 ];
 
 const CALENDLY_URLS: Record<BookingServiceKey, string> = {
-  "initial-consultation": "https://calendly.com/integralvalues/chemistry-call",
-  "individual-coaching": "https://calendly.com/integralvalues/individual-coaching-30-min",
-  "corporate-coaching": "https://calendly.com/integralvalues/corporate-coaching-60-min",
-  "individual-counselling": "https://calendly.com/integralvalues/individual-counselling-45-min",
-  couples: "https://calendly.com/integralvalues/couples-session-60-min",
-  group: "https://calendly.com/integralvalues/group-session-90-min",
+  "lets-talk": "https://calendly.com/integralvalues/chemistry-call",
+  "i-need-help": "https://calendly.com/integralvalues/ineedhelp",
+  coachmeup: "https://calendly.com/integralvalues/coachmeup",
+  "culture-talk": "https://calendly.com/integralvalues/culture-talk",
+  "leadup-core": "https://calendly.com/integralvalues/leadup-core",
+  "supervisor-group": "https://calendly.com/integralvalues/supervisor-group",
 };
 
 // Calendly is the production booking provider for Integral Values.
 export const BOOKING_PROVIDER: BookingProviderName = "calendly";
 
 export function getBookingEntryUrl(serviceKey?: BookingServiceKey) {
-  return CALENDLY_URLS[serviceKey ?? "initial-consultation"];
+  return CALENDLY_URLS[serviceKey ?? "lets-talk"];
 }
